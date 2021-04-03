@@ -2,11 +2,24 @@
   "name": "vai-ts",
   "version": "1.0.0",
   "description": "Projeto criado para inicializar projetos com Typescript",
-  "main": "index.js",
   "repository": "git@github.com:lucaslacerdacl/vai-ts.git",
   "author": "Lucas <lucaslacerdacl@gmail.com>",
   "license": "MIT",
   "private": false,
+  "main": "build/src/index.js",
+  "files": [
+    "build"
+  ],
+  "scripts": {
+    "lint": "gts lint",
+    "lint-clean": "gts clean",
+    "lint-fix": "gts fix",
+    "compile": "tsc",
+    "test": "npx jest --runInBand --detectOpenHandles --colors --verbose --reporters=default",
+    "test-coverage": "yarn test --coverage",
+    "test-coverage-upload": "yarn test-coverage && codecov",
+    "docs": "typedoc src/*.ts src/**/*.ts"
+  },
   "devDependencies": {
     "@babel/core": "^7.13.14",
     "@babel/preset-env": "^7.13.12",
@@ -14,6 +27,7 @@
     "@types/jest": "^26.0.22",
     "@types/node": "^14.11.2",
     "babel-jest": "^26.6.3",
+    "codecov": "^3.8.1",
     "gts": "^3.1.0",
     "jest": "^26.6.3",
     "jest-junit": "^12.0.0",
@@ -23,14 +37,5 @@
     "typedoc": "^0.20.35",
     "typescript": "^4.0.3",
     "winston": "^3.3.3"
-  },
-  "scripts": {
-    "lint": "gts lint",
-    "lint-clean": "gts clean",
-    "lint-fix": "gts fix",
-    "compile": "tsc",
-    "test": "npx jest --runInBand --detectOpenHandles --colors --verbose --reporters=default",
-    "test-coverage": "yarn test --coverage",
-    "docs": "typedoc src/*.ts src/**/*.ts"
   }
 }
