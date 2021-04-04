@@ -15,6 +15,7 @@
     "lint-clean": "gts clean",
     "lint-fix": "gts fix",
     "compile": "tsc",
+    "compile-watch": "tsc -w",
     "test": "npx jest --runInBand --detectOpenHandles --colors --verbose --reporters=default",
     "test-coverage": "yarn test --coverage",
     "test-coverage-upload": "yarn test-coverage && codecov",
@@ -37,5 +38,9 @@
     "typedoc": "^0.20.35",
     "typescript": "^4.0.3",
     "winston": "^3.3.3"
+  },
+  "dependencies": {
+    "@types/lodash": "^4.14.168",
+    "lodash": "^4.17.21"
   }
 }
