@@ -12,10 +12,10 @@ export class StartUp {
     });
 
     if (!command) {
-      throw Error('Comando não encontrado.');
+      throw Error('Command not found.');
     }
 
-    command.run(arg1);
+    await command.run(arg1);
   }
 
   constructor(private commands: ICommand[]) {}
