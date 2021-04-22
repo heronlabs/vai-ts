@@ -4,5 +4,5 @@ export interface ICommand {
   whoami: Command;
 
   getOptions(): string[];
-  run(options: string[]): void;
+  run(options: string[]): Promise<void>;
 }
