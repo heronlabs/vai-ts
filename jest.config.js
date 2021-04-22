@@ -21,6 +21,7 @@ module.exports = {
   clearMocks: true,
   coverageDirectory: 'coverage',
   coverageProvider: 'v8',
+  collectCoverageFrom: ['src/**/*.service.ts'],
   testEnvironment: 'node',
   testMatch: ['<rootDir>/test/**/*.test.ts'],
 };
