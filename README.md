@@ -13,12 +13,19 @@ npm install -g vai-ts
 
 ### Opções
 
-```
-vaits init
-```
+### Init
 
 ```
-vaits version
+vai-ts init
+```
+```
+vai-ts init --name=meu-projeto
+```
+
+### Version
+
+```
+vai-ts version
 ```
 
 ### Documentação TypeDoc:
