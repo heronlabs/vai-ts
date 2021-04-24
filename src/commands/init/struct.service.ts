@@ -9,7 +9,7 @@ export class Struct {
     await exec(`mkdir ${projectName}`);
   }
 
-  async createPackageFile(projectName: string) {
+  createPackageFile(projectName: string) {
     const packageConfigFile = packageConfig(projectName);
     fs.writeFileSync(`${projectName}/package.json`, packageConfigFile);
   }
