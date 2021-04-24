@@ -1,6 +1,5 @@
 export const babelConfig = (): string => {
-  const template = `
-module.exports = {
+  const template = `module.exports = {
   presets: [
     [
       '@babel/preset-env',
@@ -13,7 +12,7 @@ module.exports = {
     ],
   ],
 };  
-  `;
+`;
 
-  return template.trim();
+  return template;
 };

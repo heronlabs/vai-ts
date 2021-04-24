@@ -1,6 +1,5 @@
 export const jestConfig = (): string => {
-  const template = `
-module.exports = {
+  const template = `module.exports = {
   preset: 'ts-jest',
   reporters: [
     'default',
@@ -27,7 +26,7 @@ module.exports = {
   testEnvironment: 'node',
   testMatch: ['<rootDir>/test/**/*.test.ts'],
 };    
-  `;
+`;
 
-  return template.trim();
+  return template;
 };
