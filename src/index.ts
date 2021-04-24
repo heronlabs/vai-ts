@@ -1,3 +1,5 @@
+'use strict';
+
 import {Babel} from './commands/init/babel.service';
 import {GTS} from './commands/init/gts.service';
 import {Git} from './commands/init/git.service';
