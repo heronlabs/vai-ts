@@ -29,5 +29,5 @@ module.exports = {
 };    
 `;
 
-  return template.trimStart().trimRight();
+  return template.trimStart();
 };

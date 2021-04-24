@@ -33,5 +33,5 @@ deploy:
       branch: main  
 `;
 
-  return template.trimStart().trimRight();
+  return template.trimStart();
 };

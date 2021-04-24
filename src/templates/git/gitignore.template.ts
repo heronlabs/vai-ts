@@ -113,5 +113,5 @@ build
 
 `;
 
-  return template.trimStart().trimRight();
+  return template.trimStart();
 };
