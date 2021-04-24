@@ -1,4 +1,5 @@
 import * as fs from 'fs';
+import path = require('path');
 
 import {Command} from '../../../src/commands/command.enum';
 import {Version} from '../../../src/commands/version/version.service';
@@ -9,6 +10,11 @@ describe('Version', () => {
   describe('Run', () => {
     it('Should log the version in package.json', async () => {
       const versionNumber = '1.0.0';
+      const configPath = './config.json';
+      const pathSpy = jest
+        .spyOn(path, 'join')
+        .mockImplementation()
+        .mockReturnValue(configPath);
       const readFileSpy = jest
         .spyOn(fs, 'readFileSync')
         .mockImplementation()
@@ -17,7 +23,8 @@ describe('Version', () => {
 
       await version.run();
 
-      expect(readFileSpy).toHaveBeenCalledWith('../../config.json', 'utf8');
+      expect(pathSpy).toHaveBeenCalled();
+      expect(readFileSpy).toHaveBeenCalledWith(configPath, 'utf8');
       expect(consoleLogSpy).toHaveBeenCalledWith(versionNumber);
     });
   });
