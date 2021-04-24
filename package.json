@@ -14,7 +14,7 @@
     "lint": "gts lint",
     "lint-clean": "gts clean",
     "lint-fix": "gts fix",
-    "compile": "tsc",
+    "compile": "tsc && cp ./package.json ./build/",
     "compile-watch": "tsc -w",
     "test": "npx jest --runInBand --detectOpenHandles --colors --verbose --reporters=default",
     "test-watch": "yarn test --watch",
@@ -42,6 +42,7 @@
   },
   "dependencies": {
     "@types/lodash": "^4.14.168",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "path": "^0.12.7"
   }
 }
