@@ -11,7 +11,7 @@
     "build"
   ],
   "bin": {
-    "vai-ts": "build/src/index.js"
+    "vaits": "build/src/index.js"
   },
   "scripts": {
     "lint": "gts lint",
