@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 'use strict';
 
 import {Babel} from './commands/init/babel.service';
