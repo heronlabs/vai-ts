@@ -1,8 +1,13 @@
 import {Command} from '../command.enum';
 import {ICommand} from '../command.interface';
+import {Babel} from './babel.service';
+import {Git} from './git.service';
+import {GTS} from './gts.service';
+import {Jest} from './jest.service';
 import {InitOptions} from './options.enum';
 import {Struct} from './struct.service';
-import {includes} from 'lodash';
+import {Travis} from './travis.service';
+import * as path from 'path';
 
 export class Init implements ICommand {
   whoami: Command = Command.init;
@@ -11,19 +16,43 @@ export class Init implements ICommand {
     return Object.values(InitOptions);
   }
 
-  private isCompleteInit(options: string[]): boolean {
-    const opt1 = InitOptions.full.toString().split(',')[0];
-    const opt2 = InitOptions.full.toString().split(',')[1];
+  private getProjectName(): string {
+    const currentDir = process.cwd().split(path.sep).pop();
 
-    return includes(options, opt1) || includes(options, opt2);
-  }
-
-  async run(options: string[]): Promise<void> {
-    const projectName = 'project';
-    if (this.isCompleteInit(options)) {
-      await this.struct.createProjectFolder(projectName);
+    if (currentDir) {
+      return currentDir;
     }
+
+    return 'my-project';
   }
 
-  constructor(private struct: Struct) {}
+  async run(): Promise<void> {
+    const projectName = this.getProjectName();
+
+    await this.struct.createProjectFolder(projectName);
+    this.struct.createPackageFile(projectName);
+    await this.struct.installDependencies(projectName);
+
+    this.babel.createBabelFile(projectName);
+
+    this.git.createGitIgnoreFile(projectName);
+
+    this.gts.createESLintFiles(projectName);
+    this.gts.createPrettierFile(projectName);
+    this.gts.createTsConfigFile(projectName);
+
+    this.jest.createJestConfigFile(projectName);
+    this.jest.createJestSetup(projectName);
+
+    this.travis.createTravisFile(projectName);
+  }
+
+  constructor(
+    private babel: Babel,
+    private git: Git,
+    private gts: GTS,
+    private jest: Jest,
+    private struct: Struct,
+    private travis: Travis
+  ) {}
 }
