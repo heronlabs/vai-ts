@@ -26,7 +26,7 @@ module.exports = {
   collectCoverageFrom: ['src/**/*.service.ts'],
   testEnvironment: 'node',
   testMatch: ['<rootDir>/test/**/*.test.ts'],
-};    
+};
 `;
 
   return template.trimStart();
