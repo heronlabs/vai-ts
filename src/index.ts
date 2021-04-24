@@ -6,6 +6,7 @@ import {Jest} from './commands/init/jest.service';
 import {StartUp} from './start-up.service';
 import {Struct} from './commands/init/struct.service';
 import {Travis} from './commands/init/travis.service';
+import {Version} from './commands/version/version.service';
 
 (async () => {
   try {
@@ -17,7 +18,10 @@ import {Travis} from './commands/init/travis.service';
     const travis = new Travis();
 
     const init = new Init(babel, git, gts, jest, struct, travis);
-    const commands = new Array(init);
+
+    const version = new Version();
+
+    const commands = [init, version];
     const startUp = new StartUp(commands);
     const arg0 = process.argv[2];
     const arg1 = process.argv.slice(3);
