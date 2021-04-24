@@ -110,7 +110,8 @@ build
 
 # Debugger
 .vscode  
-  `;
 
-  return template.trim();
+`;
+
+  return template.trimStart().trimRight();
 };

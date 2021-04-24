@@ -11,7 +11,7 @@ export const tsConfig = (): string => {
     "test/**/*.ts"
   ],
 }
-  `;
+`;
 
-  return template.trim();
+  return template.trimStart().trimRight();
 };

@@ -3,7 +3,7 @@ export const prettierConfig = (): string => {
 module.exports = {
   ...require('gts/.prettierrc.json')
 }
-  `;
+`;
 
-  return template.trim();
+  return template.trimStart().trimRight();
 };

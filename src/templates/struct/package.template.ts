@@ -39,7 +39,7 @@ export const packageConfig = (projectName: string): string => {
     "lodash": "^4.17.21"
   }
 }  
-  `;
+`;
 
-  return template.trim();
+  return template.trimStart().trimRight();
 };

@@ -1,5 +1,6 @@
 export const jestConfig = (): string => {
-  const template = `module.exports = {
+  const template = `
+module.exports = {
   preset: 'ts-jest',
   reporters: [
     'default',
@@ -28,5 +29,5 @@ export const jestConfig = (): string => {
 };    
 `;
 
-  return template;
+  return template.trimStart().trimRight();
 };

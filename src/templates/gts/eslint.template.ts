@@ -6,9 +6,9 @@ export const eslintrcConfig = (): string => {
     "node/no-unpublished-import": 0
   }
 }  
-  `;
+`;
 
-  return template.trim();
+  return template.trimStart().trimRight();
 };
 
 export const eslintIgnoreConfig = (): string => {
@@ -16,8 +16,8 @@ export const eslintIgnoreConfig = (): string => {
 build/
 node_modules/
 coverage/
-docs/  
-  `;
+docs/
+`;
 
-  return template.trim();
+  return template.trimStart().trimRight();
 };
