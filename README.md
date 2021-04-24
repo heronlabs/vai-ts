@@ -13,19 +13,13 @@ npm install -g vai-ts
 
 ### Opções
 
---version ou -v:
-Mostra a versão instalada.
+```
+vaits init
+```
 
---yes ou -y:
-Inicializa o projeto com todas as perguntas respondidas.
-
-<!-- 
-### Questionário:
-
-Inicializar com testes? (yes):
-Inicializar com documentação? (yes):
-Inicializar criar pacote NPM? (yes): -->
-
+```
+vaits version
+```
 
 ### Documentação TypeDoc:
 [https://lucaslacerdacl.github.io/vai-ts/](https://lucaslacerdacl.github.io/vai-ts/)
