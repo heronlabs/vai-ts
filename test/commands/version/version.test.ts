@@ -17,7 +17,7 @@ describe('Version', () => {
 
       await version.run();
 
-      expect(readFileSpy).toHaveBeenCalledWith('../../../package.json', 'utf8');
+      expect(readFileSpy).toHaveBeenCalledWith('../../config.json', 'utf8');
       expect(consoleLogSpy).toHaveBeenCalledWith(versionNumber);
     });
   });

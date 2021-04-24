@@ -12,7 +12,7 @@ export class Version implements ICommand {
   }
 
   async run(): Promise<void> {
-    const packageString = fs.readFileSync('../../../package.json', 'utf8');
+    const packageString = fs.readFileSync('../../config.json', 'utf8');
     const packageFile = JSON.parse(packageString);
     console.log(packageFile.version);
   }

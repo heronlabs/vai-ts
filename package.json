@@ -1,6 +1,6 @@
 {
   "name": "vai-ts",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Projeto criado para inicializar projetos com Typescript",
   "repository": "git@github.com:lucaslacerdacl/vai-ts.git",
   "author": "Lucas <lucaslacerdacl@gmail.com>",
@@ -8,8 +8,7 @@
   "private": false,
   "main": "build/src/index.js",
   "files": [
-    "build/*",
-    "build/**/*"
+    "build"
   ],
   "bin": {
     "vaits": "build/src/index.js"
@@ -18,7 +17,7 @@
     "lint": "gts lint",
     "lint-clean": "gts clean",
     "lint-fix": "gts fix",
-    "compile": "tsc && cp ./package.json ./build/",
+    "compile": "tsc && cp ./src/config.json ./build/src",
     "compile-watch": "tsc -w",
     "test": "npx jest --runInBand --detectOpenHandles --colors --verbose --reporters=default",
     "test-watch": "yarn test --watch",

@@ -108,3 +108,6 @@ build
 
 # Debugger
 .vscode
+
+# NPM Registry
+.npmrc
