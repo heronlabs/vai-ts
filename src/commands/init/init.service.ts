@@ -7,7 +7,7 @@ import {Jest} from './jest.service';
 import {InitOptions} from './options.enum';
 import {Struct} from './struct.service';
 import {Travis} from './travis.service';
-import * as path from 'path';
+import {each} from 'lodash';
 
 export class Init implements ICommand {
   whoami: Command = Command.init;
@@ -16,18 +16,24 @@ export class Init implements ICommand {
     return Object.values(InitOptions);
   }
 
-  private getProjectName(): string {
-    const currentDir = process.cwd().split(path.sep).pop();
+  private getProjectName(options: string[]): string {
+    let projectName = 'my-project';
 
-    if (currentDir) {
-      return currentDir;
-    }
+    each(options, option => {
+      if (option.includes('=')) {
+        const optionSplited = option.split('=');
+        const optionToBeValidate = `${optionSplited[0]}=`;
+        if (optionToBeValidate === InitOptions.projectName) {
+          projectName = optionSplited[1];
+        }
+      }
+    });
 
-    return 'my-project';
+    return projectName;
   }
 
-  async run(): Promise<void> {
-    const projectName = this.getProjectName();
+  async run(options: string[]): Promise<void> {
+    const projectName = this.getProjectName(options);
 
     await this.struct.createProjectFolder(projectName);
     this.struct.createPackageFile(projectName);

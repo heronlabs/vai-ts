@@ -2,11 +2,12 @@ import {Mock} from 'moq.ts';
 import {Command} from '../src/commands/command.enum';
 import {ICommand} from '../src/commands/command.interface';
 import {StartUp} from '../src/start-up.service';
+import {InitOptions} from '../src/commands/init/options.enum';
 
 describe('Start up', () => {
   it('Should run a found command', async () => {
     const arg0 = Command.init;
-    const arg1 = [''];
+    const arg1 = ['--name=test'];
     const runMock = jest.fn();
 
     const mockCommand = new Mock<ICommand>();
@@ -14,7 +15,7 @@ describe('Start up', () => {
       .setup(instance => instance.whoami)
       .returns(Command.init)
       .setup(instance => instance.getOptions)
-      .returns(() => [''])
+      .returns(() => Object.values(InitOptions))
       .setup(instance => instance.run)
       .returns(() => runMock())
       .object();
