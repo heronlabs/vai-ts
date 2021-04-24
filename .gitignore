@@ -106,5 +106,5 @@ dist
 # Dist
 build
 
-#Debugger
+# Debugger
 .vscode
