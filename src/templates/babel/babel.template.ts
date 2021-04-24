@@ -15,5 +15,5 @@ module.exports = {
 };  
   `;
 
-  return template;
+  return template.trim();
 };

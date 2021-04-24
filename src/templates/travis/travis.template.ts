@@ -33,5 +33,5 @@ deploy:
       branch: main  
 `;
 
-  return template;
+  return template.trim();
 };

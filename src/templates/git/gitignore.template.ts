@@ -112,5 +112,5 @@ build
 .vscode  
   `;
 
-  return template;
+  return template.trim();
 };

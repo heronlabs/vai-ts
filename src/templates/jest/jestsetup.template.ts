@@ -8,5 +8,5 @@ winston.remove(winston.transports.Console);
 winston.remove(winston.transports.File);  
 `;
 
-  return template;
+  return template.trim();
 };

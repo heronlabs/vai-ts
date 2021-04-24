@@ -41,5 +41,5 @@ export const packageConfig = (projectName: string): string => {
 }  
   `;
 
-  return template;
+  return template.trim();
 };

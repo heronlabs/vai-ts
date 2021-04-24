@@ -8,7 +8,7 @@ export const eslintrcConfig = (): string => {
 }  
   `;
 
-  return template;
+  return template.trim();
 };
 
 export const eslintIgnoreConfig = (): string => {
@@ -19,5 +19,5 @@ coverage/
 docs/  
   `;
 
-  return template;
+  return template.trim();
 };

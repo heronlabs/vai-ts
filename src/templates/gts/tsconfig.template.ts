@@ -13,5 +13,5 @@ export const tsConfig = (): string => {
 }
   `;
 
-  return template;
+  return template.trim();
 };
