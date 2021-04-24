@@ -1,0 +1,42 @@
+import * as fs from 'fs';
+
+import {Command} from '../../../src/commands/command.enum';
+import {Version} from '../../../src/commands/version/version.service';
+
+describe('Version', () => {
+  const version = new Version();
+
+  describe('Run', () => {
+    it('Should log the version in package.json', async () => {
+      const versionNumber = '1.0.0';
+      const readFileSpy = jest
+        .spyOn(fs, 'readFileSync')
+        .mockImplementation()
+        .mockReturnValue(`{"version":"${versionNumber}"}`);
+      const consoleLogSpy = jest.spyOn(console, 'log').mockImplementation();
+
+      await version.run();
+
+      expect(readFileSpy).toHaveBeenCalledWith('../../../package.json', 'utf8');
+      expect(consoleLogSpy).toHaveBeenCalledWith(versionNumber);
+    });
+  });
+
+  describe('Whoami', () => {
+    it('Should return whoami', () => {
+      const whoami = version.whoami;
+
+      expect(whoami).toBe(Command.version);
+    });
+  });
+
+  describe('Get Options', () => {
+    it('Should return options', () => {
+      const currentOptions = [''];
+
+      const options = version.getOptions().toString();
+
+      expect(options).toBe(currentOptions.toString());
+    });
+  });
+});
