@@ -1,14 +1,16 @@
 #!/usr/bin/env node
 'use strict';
 
-import {Babel} from './commands/init/babel.service';
-import {GTS} from './commands/init/gts.service';
-import {Git} from './commands/init/git.service';
+import 'reflect-metadata';
+
+import {Babel} from './commands/init/third-parties/babel.service';
+import {GTS} from './commands/init/third-parties/gts.service';
+import {Git} from './commands/init/third-parties/git.service';
 import {Init} from './commands/init/init.service';
-import {Jest} from './commands/init/jest.service';
+import {Jest} from './commands/init/third-parties/jest.service';
+import {Skeleton} from './commands/init/skeleton.service';
 import {StartUp} from './start-up.service';
-import {Struct} from './commands/init/struct.service';
-import {Travis} from './commands/init/travis.service';
+import {Travis} from './commands/init/third-parties/travis.service';
 import {Version} from './commands/version/version.service';
 
 (async () => {
@@ -17,10 +19,10 @@ import {Version} from './commands/version/version.service';
     const git = new Git();
     const gts = new GTS();
     const jest = new Jest();
-    const struct = new Struct();
+    const skeleton = new Skeleton();
     const travis = new Travis();
 
-    const init = new Init(babel, git, gts, jest, struct, travis);
+    const init = new Init(babel, git, gts, jest, travis, skeleton);
 
     const version = new Version();
 

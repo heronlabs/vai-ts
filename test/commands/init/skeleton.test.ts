@@ -1,27 +1,27 @@
 import * as cp from '../../../src/lib/exec';
 import * as fs from 'fs';
 
-import {Struct} from '../../../src/commands/init/struct.service';
-import {packageConfig} from '../../../src/templates/struct/package.template';
+import {Skeleton} from '../../../src/commands/init/skeleton.service';
+import {packageConfig} from '../../../src/templates/skeleton/package.template';
 
-describe('Struct', () => {
+describe('Skeleton', () => {
   it('Should create project folder', async () => {
-    const struct = new Struct();
+    const skeleton = new Skeleton();
     const projectName = 'project';
     const execSpy = jest.spyOn(cp, 'exec').mockImplementation();
 
-    await struct.createProjectFolder(projectName);
+    await skeleton.createProjectFolder(projectName);
 
     expect(execSpy).toHaveBeenCalledWith(`mkdir ${projectName}`);
   });
 
   it('Should create package.json', async () => {
-    const struct = new Struct();
+    const skeleton = new Skeleton();
     const projectName = 'project';
     const packageConfigFile = packageConfig(projectName);
     const execSpy = jest.spyOn(fs, 'writeFileSync').mockImplementation();
 
-    await struct.createPackageFile(projectName);
+    skeleton.createPackageFile(projectName);
 
     expect(execSpy).toHaveBeenCalledWith(
       `${projectName}/package.json`,
@@ -30,13 +30,13 @@ describe('Struct', () => {
   });
 
   it('Should install dependencies', async () => {
-    const struct = new Struct();
+    const skeleton = new Skeleton();
     const projectName = 'project';
     const execInProjectFolderSpy = jest
       .spyOn(cp, 'execInProjectFolder')
       .mockImplementation();
 
-    await struct.installDependencies(projectName);
+    await skeleton.installDependencies(projectName);
 
     expect(execInProjectFolderSpy).toHaveBeenCalledWith(projectName, 'yarn');
   });

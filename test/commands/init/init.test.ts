@@ -1,12 +1,12 @@
 import {Command} from '../../../src/commands/command.enum';
 import {Init} from '../../../src/commands/init/init.service';
 import {Mock} from 'moq.ts';
-import {Struct} from '../../../src/commands/init/struct.service';
-import {Babel} from '../../../src/commands/init/babel.service';
-import {Git} from '../../../src/commands/init/git.service';
-import {GTS} from '../../../src/commands/init/gts.service';
-import {Jest} from '../../../src/commands/init/jest.service';
-import {Travis} from '../../../src/commands/init/travis.service';
+import {Skeleton} from '../../../src/commands/init/skeleton.service';
+import {Babel} from '../../../src/commands/init/third-parties/babel.service';
+import {Git} from '../../../src/commands/init/third-parties/git.service';
+import {GTS} from '../../../src/commands/init/third-parties/gts.service';
+import {Jest} from '../../../src/commands/init/third-parties/jest.service';
+import {Travis} from '../../../src/commands/init/third-parties/travis.service';
 import {InitOptions} from '../../../src/commands/init/options.enum';
 
 describe('Init', () => {
@@ -29,28 +29,32 @@ describe('Init', () => {
   jestMock.setup(instance => instance.createJestSetup).returns(jest.fn());
   const _jest = jestMock.object();
 
-  const structMock = new Mock<Struct>();
-  structMock.setup(instance => instance.createProjectFolder).returns(jest.fn());
-  structMock.setup(instance => instance.createPackageFile).returns(jest.fn());
-  structMock.setup(instance => instance.installDependencies).returns(jest.fn());
-  const struct = structMock.object();
-
   const travisMock = new Mock<Travis>();
   travisMock.setup(instance => instance.createTravisFile).returns(jest.fn());
   const travis = travisMock.object();
 
-  const init = new Init(babel, git, gts, _jest, struct, travis);
+  const skeletonMock = new Mock<Skeleton>();
+  skeletonMock
+    .setup(instance => instance.createProjectFolder)
+    .returns(jest.fn());
+  skeletonMock.setup(instance => instance.createPackageFile).returns(jest.fn());
+  skeletonMock
+    .setup(instance => instance.installDependencies)
+    .returns(jest.fn());
+  const skeleton = skeletonMock.object();
+
+  const init = new Init(babel, git, gts, _jest, travis, skeleton);
 
   describe('Run', () => {
     const run = async (options: string[], projectName: string) => {
-      const structCreateProjectFolderSpy = jest
-        .spyOn(struct, 'createProjectFolder')
+      const skeletonCreateProjectFolderSpy = jest
+        .spyOn(skeleton, 'createProjectFolder')
         .mockImplementation();
-      const structCreatePackageFileSpy = jest
-        .spyOn(struct, 'createPackageFile')
+      const skeletonCreatePackageFileSpy = jest
+        .spyOn(skeleton, 'createPackageFile')
         .mockImplementation();
-      const structInstallDependenciesSpy = jest
-        .spyOn(struct, 'installDependencies')
+      const skeletonInstallDependenciesSpy = jest
+        .spyOn(skeleton, 'installDependencies')
         .mockImplementation();
       const babelCreateBabelFileSpy = jest
         .spyOn(babel, 'createBabelFile')
@@ -79,9 +83,9 @@ describe('Init', () => {
 
       await init.run(options);
 
-      expect(structCreateProjectFolderSpy).toHaveBeenCalledWith(projectName);
-      expect(structCreatePackageFileSpy).toHaveBeenCalledWith(projectName);
-      expect(structInstallDependenciesSpy).toHaveBeenCalledWith(projectName);
+      expect(skeletonCreateProjectFolderSpy).toHaveBeenCalledWith(projectName);
+      expect(skeletonCreatePackageFileSpy).toHaveBeenCalledWith(projectName);
+      expect(skeletonInstallDependenciesSpy).toHaveBeenCalledWith(projectName);
       expect(babelCreateBabelFileSpy).toHaveBeenCalledWith(projectName);
       expect(gitCreateGitIgnoreFileSpy).toHaveBeenCalledWith(projectName);
       expect(gtsCreateESLintFilesSpy).toHaveBeenCalledWith(projectName);

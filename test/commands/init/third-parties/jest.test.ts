@@ -1,8 +1,8 @@
 import * as fs from 'fs';
 
-import {Jest} from '../../../src/commands/init/jest.service';
-import {jestConfig} from '../../../src/templates/jest/jestconfig.template';
-import {jestSetupConfig} from '../../../src/templates/jest/jestsetup.template';
+import {Jest} from '../../../../src/commands/init/third-parties/jest.service';
+import {jestConfig} from '../../../../src/templates/jest/jestconfig.template';
+import {jestSetupConfig} from '../../../../src/templates/jest/jestsetup.template';
 
 describe('Jest', () => {
   it('Should create Jest config file', async () => {
