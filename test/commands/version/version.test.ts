@@ -10,7 +10,7 @@ describe('Version', () => {
   describe('Run', () => {
     it('Should log the version in package.json', async () => {
       const versionNumber = '1.0.0';
-      const configPath = './config.json';
+      const configPath = '../../../package.json';
       const pathSpy = jest
         .spyOn(path, 'join')
         .mockImplementation()
