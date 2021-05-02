@@ -17,6 +17,7 @@ build/
 node_modules/
 coverage/
 docs/
+.vscode/
 `;
 
   return template.trimStart();
