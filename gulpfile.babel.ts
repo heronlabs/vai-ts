@@ -13,7 +13,7 @@ task('compile', _task(['yarn compile']));
 task('set-version', _task([]));
 
 task('mv-json-files', () => {
-  return src(['./package.json']).pipe(dest('./build'));
+  return src(['./package.json']).pipe(dest('./build/src'));
 });
 
 task(

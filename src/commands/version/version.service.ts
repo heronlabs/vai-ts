@@ -27,7 +27,7 @@ export class Version implements ICommand {
    * after build.
    */
   async run(): Promise<void> {
-    const filePath = path.join(__dirname, '../../../package.json');
+    const filePath = path.join(__dirname, '../../package.json');
     const packageString = fs.readFileSync(filePath, 'utf8');
     const packageFile = JSON.parse(packageString);
     console.log(packageFile.version);
