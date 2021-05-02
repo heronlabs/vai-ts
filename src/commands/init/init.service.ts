@@ -8,6 +8,7 @@ import {InitOptions} from './options.enum';
 import {Skeleton} from './skeleton.service';
 import {Travis} from './third-parties/travis.service';
 import {each} from 'lodash';
+import {VsCodeDebugger} from './third-parties/vscode-debugger.service';
 
 /**
  * Class responsible for implement the init command.
@@ -71,10 +72,13 @@ export class Init implements ICommand {
     this.jest.createJestSetup(projectName);
 
     this.travis.createTravisFile(projectName);
+
+    this.vsCodeDebugger.createVsCodeDebuggerFile(projectName);
   }
 
   /**
    * The third-parties.
+   * @param vsCodeDebugger Visual Studio Code Debugger.
    * @param babel Babel.
    * @param git Git.
    * @param gts Google Typescript.
@@ -83,6 +87,7 @@ export class Init implements ICommand {
    * @param skeleton Skeleton.
    */
   constructor(
+    private vsCodeDebugger: VsCodeDebugger,
     private babel: Babel,
     private git: Git,
     private gts: GTS,

@@ -12,6 +12,7 @@ import {Skeleton} from './commands/init/skeleton.service';
 import {StartUp} from './start-up.service';
 import {Travis} from './commands/init/third-parties/travis.service';
 import {Version} from './commands/version/version.service';
+import {VsCodeDebugger} from './commands/init/third-parties/vscode-debugger.service';
 
 (async () => {
   try {
@@ -21,8 +22,17 @@ import {Version} from './commands/version/version.service';
     const jest = new Jest();
     const skeleton = new Skeleton();
     const travis = new Travis();
+    const vsCodeDebugger = new VsCodeDebugger();
 
-    const init = new Init(babel, git, gts, jest, travis, skeleton);
+    const init = new Init(
+      vsCodeDebugger,
+      babel,
+      git,
+      gts,
+      jest,
+      travis,
+      skeleton
+    );
 
     const version = new Version();
 

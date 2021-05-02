@@ -8,8 +8,15 @@ import {GTS} from '../../../src/commands/init/third-parties/gts.service';
 import {Jest} from '../../../src/commands/init/third-parties/jest.service';
 import {Travis} from '../../../src/commands/init/third-parties/travis.service';
 import {InitOptions} from '../../../src/commands/init/options.enum';
+import {VsCodeDebugger} from '../../../src/commands/init/third-parties/vscode-debugger.service';
 
 describe('Init', () => {
+  const vsCodeDebuggerMock = new Mock<VsCodeDebugger>();
+  vsCodeDebuggerMock
+    .setup(instance => instance.createVsCodeDebuggerFile)
+    .returns(jest.fn());
+  const vsCodeDebugger = vsCodeDebuggerMock.object();
+
   const babelMock = new Mock<Babel>();
   babelMock.setup(instance => instance.createBabelFile).returns(jest.fn());
   const babel = babelMock.object();
@@ -44,7 +51,15 @@ describe('Init', () => {
   skeletonMock.setup(instance => instance.createIndexFile).returns(jest.fn());
   const skeleton = skeletonMock.object();
 
-  const init = new Init(babel, git, gts, _jest, travis, skeleton);
+  const init = new Init(
+    vsCodeDebugger,
+    babel,
+    git,
+    gts,
+    _jest,
+    travis,
+    skeleton
+  );
 
   describe('Run', () => {
     const run = async (options: string[], projectName: string) => {
@@ -84,6 +99,9 @@ describe('Init', () => {
       const travisCreateTravisFileSpy = jest
         .spyOn(travis, 'createTravisFile')
         .mockImplementation();
+      const vsCodeDebuggerCreateLaunchFileSpy = jest
+        .spyOn(travis, 'createTravisFile')
+        .mockImplementation();
 
       await init.run(options);
 
@@ -99,6 +117,9 @@ describe('Init', () => {
       expect(_jestCreateJestConfigFileSpy).toHaveBeenCalledWith(projectName);
       expect(_jestCreateJestSetupSpy).toHaveBeenCalledWith(projectName);
       expect(travisCreateTravisFileSpy).toHaveBeenCalledWith(projectName);
+      expect(vsCodeDebuggerCreateLaunchFileSpy).toHaveBeenCalledWith(
+        projectName
+      );
     };
 
     it('Should run with my-test-project', async () => {
