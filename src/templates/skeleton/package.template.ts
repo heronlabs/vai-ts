@@ -57,7 +57,6 @@ import 'reflect-metadata';
     console.log(err.message);
   }
 })();
-   
 `;
 
   return template.trimStart();
