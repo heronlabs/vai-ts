@@ -28,6 +28,7 @@ export const packageConfig = (projectName: string): string => {
     "jest": "^26.6.3",
     "jest-junit": "^12.0.0",
     "moq.ts": "^7.3.4",
+    "nodemon": "^2.0.7",
     "ts-jest": "^26.5.4",
     "typedoc": "^0.20.35",
     "typescript": "^4.0.3",
