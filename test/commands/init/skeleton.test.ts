@@ -16,7 +16,8 @@ describe('Skeleton', () => {
 
     await skeleton.createProjectFolder(projectName);
 
-    expect(execSpy).toHaveBeenCalledWith(`mkdir ${projectName}`);
+    expect(execSpy).toHaveBeenNthCalledWith(1, `mkdir ${projectName}`);
+    expect(execSpy).toHaveBeenNthCalledWith(2, `mkdir ${projectName}/src`);
   });
 
   it('Should create package.json', async () => {

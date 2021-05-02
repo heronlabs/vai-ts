@@ -20,6 +20,7 @@ export class Skeleton {
    */
   async createProjectFolder(projectName: string) {
     await exec(`mkdir ${projectName}`);
+    await exec(`mkdir ${projectName}/src`);
   }
 
   /**
