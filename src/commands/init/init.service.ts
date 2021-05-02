@@ -57,6 +57,7 @@ export class Init implements ICommand {
     await this.skeleton.createProjectFolder(projectName);
     this.skeleton.createPackageFile(projectName);
     await this.skeleton.installDependencies(projectName);
+    this.skeleton.createIndexFile(projectName);
 
     this.babel.createBabelFile(projectName);
 

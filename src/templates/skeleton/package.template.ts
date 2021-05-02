@@ -43,3 +43,22 @@ export const packageConfig = (projectName: string): string => {
 
   return template.trimStart();
 };
+
+export const indexConfig = (): string => {
+  const template = `
+'use strict';
+
+import 'reflect-metadata';
+
+(async () => {
+  try {
+    console.log('OK');
+  } catch (err) {
+    console.log(err.message);
+  }
+})();
+   
+`;
+
+  return template.trimStart();
+};

@@ -41,6 +41,7 @@ describe('Init', () => {
   skeletonMock
     .setup(instance => instance.installDependencies)
     .returns(jest.fn());
+  skeletonMock.setup(instance => instance.createIndexFile).returns(jest.fn());
   const skeleton = skeletonMock.object();
 
   const init = new Init(babel, git, gts, _jest, travis, skeleton);
@@ -55,6 +56,9 @@ describe('Init', () => {
         .mockImplementation();
       const skeletonInstallDependenciesSpy = jest
         .spyOn(skeleton, 'installDependencies')
+        .mockImplementation();
+      const skeletonCreateIndexFileSpy = jest
+        .spyOn(skeleton, 'createIndexFile')
         .mockImplementation();
       const babelCreateBabelFileSpy = jest
         .spyOn(babel, 'createBabelFile')
@@ -86,6 +90,7 @@ describe('Init', () => {
       expect(skeletonCreateProjectFolderSpy).toHaveBeenCalledWith(projectName);
       expect(skeletonCreatePackageFileSpy).toHaveBeenCalledWith(projectName);
       expect(skeletonInstallDependenciesSpy).toHaveBeenCalledWith(projectName);
+      expect(skeletonCreateIndexFileSpy).toHaveBeenCalledWith(projectName);
       expect(babelCreateBabelFileSpy).toHaveBeenCalledWith(projectName);
       expect(gitCreateGitIgnoreFileSpy).toHaveBeenCalledWith(projectName);
       expect(gtsCreateESLintFilesSpy).toHaveBeenCalledWith(projectName);

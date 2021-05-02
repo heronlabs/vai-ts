@@ -2,7 +2,10 @@ import * as fs from 'fs';
 
 import {exec, execInProjectFolder} from '../../lib/exec';
 
-import {packageConfig} from '../../templates/skeleton/package.template';
+import {
+  indexConfig,
+  packageConfig,
+} from '../../templates/skeleton/package.template';
 
 /**
  * Class responsible for create the project skeleton.
@@ -37,5 +40,16 @@ export class Skeleton {
    */
   async installDependencies(projectName: string) {
     await execInProjectFolder(projectName, 'yarn');
+  }
+
+  /**
+   * [RANDOM] - Create a index file with basic configs, like:
+   * Use Strict
+   * Reflect metadata.
+   * @param projectName The project name.
+   */
+  async createIndexFile(projectName: string) {
+    const indexConfigFile = indexConfig();
+    fs.writeFileSync(`${projectName}/src/index.ts`, indexConfigFile);
   }
 }

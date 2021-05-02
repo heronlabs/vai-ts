@@ -1,8 +1,12 @@
 import * as cp from '../../../src/lib/exec';
 import * as fs from 'fs';
 
+import {
+  indexConfig,
+  packageConfig,
+} from '../../../src/templates/skeleton/package.template';
+
 import {Skeleton} from '../../../src/commands/init/skeleton.service';
-import {packageConfig} from '../../../src/templates/skeleton/package.template';
 
 describe('Skeleton', () => {
   it('Should create project folder', async () => {
@@ -39,5 +43,19 @@ describe('Skeleton', () => {
     await skeleton.installDependencies(projectName);
 
     expect(execInProjectFolderSpy).toHaveBeenCalledWith(projectName, 'yarn');
+  });
+
+  it('Should create index file', () => {
+    const skeleton = new Skeleton();
+    const projectName = 'project';
+    const packageConfigFile = indexConfig();
+    const execSpy = jest.spyOn(fs, 'writeFileSync').mockImplementation();
+
+    skeleton.createIndexFile(projectName);
+
+    expect(execSpy).toHaveBeenCalledWith(
+      `${projectName}/src/index.ts`,
+      packageConfigFile
+    );
   });
 });
