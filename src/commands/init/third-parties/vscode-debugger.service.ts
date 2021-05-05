@@ -1,4 +1,5 @@
 import * as fs from 'fs';
+import {exec} from '../../../lib/exec';
 import {vsCodeDebuggerConfig} from '../../../templates/vscode-debugger/vscode-debugger.template';
 
 /**
@@ -9,7 +10,8 @@ export class VsCodeDebugger {
    * [RANDOM] - Create the VSCode debugger file.
    * @param projectName The project name.
    */
-  createVsCodeDebuggerFile(projectName: string) {
+  async createVsCodeDebuggerFile(projectName: string) {
+    await exec(`mkdir ${projectName}/.vscode`);
     const vsCodeDebuggerConfigFile = vsCodeDebuggerConfig();
     fs.writeFileSync(
       `${projectName}/.vscode/launch.json`,

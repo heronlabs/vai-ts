@@ -73,7 +73,7 @@ export class Init implements ICommand {
 
     this.travis.createTravisFile(projectName);
 
-    this.vsCodeDebugger.createVsCodeDebuggerFile(projectName);
+    await this.vsCodeDebugger.createVsCodeDebuggerFile(projectName);
   }
 
   /**
