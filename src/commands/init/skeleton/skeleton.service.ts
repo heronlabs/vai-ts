@@ -1,8 +1,10 @@
 import * as fs from 'fs';
 
 import {exec, execInProjectFolder} from '../../../lib/exec';
-
 import {indexConfig, packageConfig} from './package.template';
+
+import {gitIgnoreConfig} from './gitignore.template';
+import {vsCodeDebuggerConfig} from './vscode-debugger.template';
 
 /**
  * Class responsible for create the project skeleton.
@@ -44,10 +46,32 @@ export class Skeleton {
    * [RANDOM] - Create a index file with basic configs, like:
    * Use Strict
    * Reflect metadata.
-   * @param projectName The project name.
+   @param projectFolder The folder where the project.
    */
   async createIndexFile(projectName: string) {
     const indexConfigFile = indexConfig();
     fs.writeFileSync(`${projectName}/src/index.ts`, indexConfigFile);
+  }
+
+  /**
+   * [RANDOM] - Create a git ignore file, with basic rules for Node.
+   * @param projectFolder The folder where the project.
+   */
+  createGitIgnoreFile(projectFolder: string) {
+    const gitIgnoreFile = gitIgnoreConfig();
+    fs.writeFileSync(`${projectFolder}/.gitignore`, gitIgnoreFile);
+  }
+
+  /**
+   * [RANDOM] - Create the VSCode debugger file.
+   * @param projectFolder The folder where the project.
+   */
+  async createVsCodeDebuggerFile(projectName: string) {
+    await exec(`mkdir ${projectName}/.vscode`);
+    const vsCodeDebuggerConfigFile = vsCodeDebuggerConfig();
+    fs.writeFileSync(
+      `${projectName}/.vscode/launch.json`,
+      vsCodeDebuggerConfigFile
+    );
   }
 }

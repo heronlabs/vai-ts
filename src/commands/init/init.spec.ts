@@ -1,29 +1,17 @@
+import {Babel} from './third-parties/babel/babel.service';
 import {Command} from '../command.enum';
+import {GTS} from './third-parties/gts/gts.service';
 import {Init} from './init.service';
+import {InitOptions} from './options.enum';
+import {Jest} from './third-parties/jest/jest.service';
 import {Mock} from 'moq.ts';
 import {Skeleton} from './skeleton/skeleton.service';
-import {Babel} from './third-parties/babel/babel.service';
-import {Git} from './third-parties/git/git.service';
-import {GTS} from './third-parties/gts/gts.service';
-import {Jest} from './third-parties/jest/jest.service';
 import {Travis} from './third-parties/travis/travis.service';
-import {InitOptions} from './options.enum';
-import {VsCodeDebugger} from './third-parties/vscode/vscode-debugger.service';
 
 describe('Init', () => {
-  const vsCodeDebuggerMock = new Mock<VsCodeDebugger>();
-  vsCodeDebuggerMock
-    .setup(instance => instance.createVsCodeDebuggerFile)
-    .returns(jest.fn());
-  const vsCodeDebugger = vsCodeDebuggerMock.object();
-
   const babelMock = new Mock<Babel>();
   babelMock.setup(instance => instance.createBabelFile).returns(jest.fn());
   const babel = babelMock.object();
-
-  const gitMock = new Mock<Git>();
-  gitMock.setup(instance => instance.createGitIgnoreFile).returns(jest.fn());
-  const git = gitMock.object();
 
   const gtsMock = new Mock<GTS>();
   gtsMock.setup(instance => instance.createESLintFiles).returns(jest.fn());
@@ -49,17 +37,15 @@ describe('Init', () => {
     .setup(instance => instance.installDependencies)
     .returns(jest.fn());
   skeletonMock.setup(instance => instance.createIndexFile).returns(jest.fn());
+  skeletonMock
+    .setup(instance => instance.createGitIgnoreFile)
+    .returns(jest.fn());
+  skeletonMock
+    .setup(instance => instance.createVsCodeDebuggerFile)
+    .returns(jest.fn());
   const skeleton = skeletonMock.object();
 
-  const init = new Init(
-    vsCodeDebugger,
-    babel,
-    git,
-    gts,
-    _jest,
-    travis,
-    skeleton
-  );
+  const init = new Init(babel, gts, _jest, travis, skeleton);
 
   describe('Run', () => {
     const run = async (options: string[], projectName: string) => {
@@ -75,11 +61,14 @@ describe('Init', () => {
       const skeletonCreateIndexFileSpy = jest
         .spyOn(skeleton, 'createIndexFile')
         .mockImplementation();
+      const skeletonCreateGitIgnoreFileSpy = jest
+        .spyOn(skeleton, 'createGitIgnoreFile')
+        .mockImplementation();
+      const skeletonCreateVsCodeDebuggerFile = jest
+        .spyOn(skeleton, 'createVsCodeDebuggerFile')
+        .mockImplementation();
       const babelCreateBabelFileSpy = jest
         .spyOn(babel, 'createBabelFile')
-        .mockImplementation();
-      const gitCreateGitIgnoreFileSpy = jest
-        .spyOn(git, 'createGitIgnoreFile')
         .mockImplementation();
       const gtsCreateESLintFilesSpy = jest
         .spyOn(gts, 'createESLintFiles')
@@ -99,9 +88,6 @@ describe('Init', () => {
       const travisCreateTravisFileSpy = jest
         .spyOn(travis, 'createTravisFile')
         .mockImplementation();
-      const vsCodeDebuggerCreateLaunchFileSpy = jest
-        .spyOn(travis, 'createTravisFile')
-        .mockImplementation();
 
       await init.run(options);
 
@@ -109,17 +95,21 @@ describe('Init', () => {
       expect(skeletonCreatePackageFileSpy).toHaveBeenCalledWith(projectName);
       expect(skeletonInstallDependenciesSpy).toHaveBeenCalledWith(projectName);
       expect(skeletonCreateIndexFileSpy).toHaveBeenCalledWith(projectName);
+      expect(skeletonCreateGitIgnoreFileSpy).toHaveBeenCalledWith(projectName);
+      expect(skeletonCreateVsCodeDebuggerFile).toHaveBeenCalledWith(
+        projectName
+      );
+
       expect(babelCreateBabelFileSpy).toHaveBeenCalledWith(projectName);
-      expect(gitCreateGitIgnoreFileSpy).toHaveBeenCalledWith(projectName);
+
       expect(gtsCreateESLintFilesSpy).toHaveBeenCalledWith(projectName);
       expect(gtsCreatePrettierFileSpy).toHaveBeenCalledWith(projectName);
       expect(gtsCreateTsConfigFileSpy).toHaveBeenCalledWith(projectName);
+
       expect(_jestCreateJestConfigFileSpy).toHaveBeenCalledWith(projectName);
       expect(_jestCreateJestSetupSpy).toHaveBeenCalledWith(projectName);
+
       expect(travisCreateTravisFileSpy).toHaveBeenCalledWith(projectName);
-      expect(vsCodeDebuggerCreateLaunchFileSpy).toHaveBeenCalledWith(
-        projectName
-      );
     };
 
     it('Should run with my-test-project', async () => {

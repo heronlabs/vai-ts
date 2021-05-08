@@ -4,6 +4,8 @@ import * as fs from 'fs';
 import {indexConfig, packageConfig} from './package.template';
 
 import {Skeleton} from './skeleton.service';
+import {gitIgnoreConfig} from './gitignore.template';
+import {vsCodeDebuggerConfig} from './vscode-debugger.template';
 
 describe('Skeleton', () => {
   it('Should create project folder', async () => {
@@ -54,6 +56,36 @@ describe('Skeleton', () => {
     expect(execSpy).toHaveBeenCalledWith(
       `${projectName}/src/index.ts`,
       packageConfigFile
+    );
+  });
+
+  it('Should create Git Ignore file', async () => {
+    const skeleton = new Skeleton();
+    const gitIgnoreFile = gitIgnoreConfig();
+    const projectFolder = 'project';
+    const writeFileSync = jest.spyOn(fs, 'writeFileSync').mockImplementation();
+
+    skeleton.createGitIgnoreFile(projectFolder);
+
+    expect(writeFileSync).toHaveBeenCalledWith(
+      `${projectFolder}/.gitignore`,
+      gitIgnoreFile
+    );
+  });
+
+  it('Should create Visual Studio Code Debugger config file', async () => {
+    const skeleton = new Skeleton();
+    const vsCodeDebuggerConfigFile = vsCodeDebuggerConfig();
+    const projectFolder = 'project';
+    const execSpy = jest.spyOn(cp, 'exec').mockImplementation();
+    const writeFileSync = jest.spyOn(fs, 'writeFileSync').mockImplementation();
+
+    await skeleton.createVsCodeDebuggerFile(projectFolder);
+
+    expect(execSpy).toHaveBeenCalledWith(`mkdir ${projectFolder}/.vscode`);
+    expect(writeFileSync).toHaveBeenCalledWith(
+      `${projectFolder}/.vscode/launch.json`,
+      vsCodeDebuggerConfigFile
     );
   });
 });

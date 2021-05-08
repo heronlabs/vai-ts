@@ -1,14 +1,12 @@
-import {Command} from '../command.enum';
-import {ICommand} from '../command.interface';
 import {Babel} from './third-parties/babel/babel.service';
-import {Git} from './third-parties/git/git.service';
+import {Command} from '../command.enum';
 import {GTS} from './third-parties/gts/gts.service';
-import {Jest} from './third-parties/jest/jest.service';
+import {ICommand} from '../command.interface';
 import {InitOptions} from './options.enum';
+import {Jest} from './third-parties/jest/jest.service';
 import {Skeleton} from './skeleton/skeleton.service';
 import {Travis} from './third-parties/travis/travis.service';
 import {each} from 'lodash';
-import {VsCodeDebugger} from './third-parties/vscode/vscode-debugger.service';
 
 /**
  * Class responsible for implement the init command.
@@ -59,10 +57,10 @@ export class Init implements ICommand {
     this.skeleton.createPackageFile(projectName);
     await this.skeleton.installDependencies(projectName);
     this.skeleton.createIndexFile(projectName);
+    this.skeleton.createGitIgnoreFile(projectName);
+    await this.skeleton.createVsCodeDebuggerFile(projectName);
 
     this.babel.createBabelFile(projectName);
-
-    this.git.createGitIgnoreFile(projectName);
 
     this.gts.createESLintFiles(projectName);
     this.gts.createPrettierFile(projectName);
@@ -72,24 +70,18 @@ export class Init implements ICommand {
     this.jest.createJestSetup(projectName);
 
     this.travis.createTravisFile(projectName);
-
-    await this.vsCodeDebugger.createVsCodeDebuggerFile(projectName);
   }
 
   /**
    * The third-parties.
-   * @param vsCodeDebugger Visual Studio Code Debugger.
    * @param babel Babel.
-   * @param git Git.
    * @param gts Google Typescript.
    * @param jest Jest.
    * @param travis Travis CI.
    * @param skeleton Skeleton.
    */
   constructor(
-    private vsCodeDebugger: VsCodeDebugger,
     private babel: Babel,
-    private git: Git,
     private gts: GTS,
     private jest: Jest,
     private travis: Travis,
