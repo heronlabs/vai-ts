@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 
 import {Git} from './git.service';
-import {gitIgnoreConfig} from '../../../templates/git/gitignore.template';
+import {gitIgnoreConfig} from './gitignore.template';
 
 describe('Git', () => {
   it('Should create Git Ignore file', async () => {

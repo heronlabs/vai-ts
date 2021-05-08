@@ -1,11 +1,8 @@
 import * as fs from 'fs';
 
-import {exec, execInProjectFolder} from '../../lib/exec';
+import {exec, execInProjectFolder} from '../../../lib/exec';
 
-import {
-  indexConfig,
-  packageConfig,
-} from '../../templates/skeleton/package.template';
+import {indexConfig, packageConfig} from './package.template';
 
 /**
  * Class responsible for create the project skeleton.

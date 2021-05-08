@@ -1,8 +1,8 @@
-import * as cp from '../../../lib/exec';
+import * as cp from '../../../../lib/exec';
 import * as fs from 'fs';
 
 import {VsCodeDebugger} from './vscode-debugger.service';
-import {vsCodeDebuggerConfig} from '../../../templates/vscode-debugger/vscode-debugger.template';
+import {vsCodeDebuggerConfig} from './vscode-debugger.template';
 
 describe('VsCodeDebugger', () => {
   it('Should create Visual Studio Code Debugger config file', async () => {

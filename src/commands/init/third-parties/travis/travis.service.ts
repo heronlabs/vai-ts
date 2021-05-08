@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import {travisConfig} from '../../../templates/travis/travis.template';
+import {travisConfig} from './travis.template';
 
 /**
  * Class responsible for Travis configuration.

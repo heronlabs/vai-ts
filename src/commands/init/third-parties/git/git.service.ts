@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import {gitIgnoreConfig} from '../../../templates/git/gitignore.template';
+import {gitIgnoreConfig} from './gitignore.template';
 
 /**
  * Class responsible Git operations.

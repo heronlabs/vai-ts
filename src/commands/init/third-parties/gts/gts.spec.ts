@@ -1,13 +1,10 @@
 import * as fs from 'fs';
 
-import {
-  eslintIgnoreConfig,
-  eslintrcConfig,
-} from '../../../templates/gts/eslint.template';
+import {eslintIgnoreConfig, eslintrcConfig} from './eslint.template';
 
 import {GTS} from './gts.service';
-import {prettierConfig} from '../../../templates/gts/prettier.template';
-import {tsConfig} from '../../../templates/gts/tsconfig.template';
+import {prettierConfig} from './prettier.template';
+import {tsConfig} from './tsconfig.template';
 
 describe('GTS', () => {
   it('Should create TSConfig file', async () => {

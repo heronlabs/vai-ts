@@ -1,10 +1,7 @@
-import * as cp from '../../lib/exec';
+import * as cp from '../../../lib/exec';
 import * as fs from 'fs';
 
-import {
-  indexConfig,
-  packageConfig,
-} from '../../templates/skeleton/package.template';
+import {indexConfig, packageConfig} from './package.template';
 
 import {Skeleton} from './skeleton.service';
 

@@ -1,12 +1,9 @@
 import * as fs from 'fs';
 
-import {
-  eslintIgnoreConfig,
-  eslintrcConfig,
-} from '../../../templates/gts/eslint.template';
+import {eslintIgnoreConfig, eslintrcConfig} from './eslint.template';
 
-import {prettierConfig} from '../../../templates/gts/prettier.template';
-import {tsConfig} from '../../../templates/gts/tsconfig.template';
+import {prettierConfig} from './prettier.template';
+import {tsConfig} from './tsconfig.template';
 
 /**
  * Class responsible for config Google Type Script

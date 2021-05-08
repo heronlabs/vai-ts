@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 
 import {Travis} from './travis.service';
-import {travisConfig} from '../../../templates/travis/travis.template';
+import {travisConfig} from './travis.template';
 
 describe('Travis', () => {
   it('Should create Travis config file', async () => {

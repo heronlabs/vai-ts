@@ -1,6 +1,6 @@
 import * as fs from 'fs';
-import {exec} from '../../../lib/exec';
-import {vsCodeDebuggerConfig} from '../../../templates/vscode-debugger/vscode-debugger.template';
+import {exec} from '../../../../lib/exec';
+import {vsCodeDebuggerConfig} from './vscode-debugger.template';
 
 /**
  * Class responsible for Visual Studio Code configuration.

@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import {babelConfig} from '../../../templates/babel/babel.template';
+import {babelConfig} from './babel.template';
 
 /**
  * Class responsible for Babel configurations.

@@ -3,16 +3,16 @@
 
 import 'reflect-metadata';
 
-import {Babel} from './commands/init/third-parties/babel.service';
-import {GTS} from './commands/init/third-parties/gts.service';
-import {Git} from './commands/init/third-parties/git.service';
+import {Babel} from './commands/init/third-parties/babel/babel.service';
+import {GTS} from './commands/init/third-parties/gts/gts.service';
+import {Git} from './commands/init/third-parties/git/git.service';
 import {Init} from './commands/init/init.service';
-import {Jest} from './commands/init/third-parties/jest.service';
-import {Skeleton} from './commands/init/skeleton.service';
+import {Jest} from './commands/init/third-parties/jest/jest.service';
+import {Skeleton} from './commands/init/skeleton/skeleton.service';
 import {StartUp} from './start-up.service';
-import {Travis} from './commands/init/third-parties/travis.service';
+import {Travis} from './commands/init/third-parties/travis/travis.service';
 import {Version} from './commands/version/version.service';
-import {VsCodeDebugger} from './commands/init/third-parties/vscode-debugger.service';
+import {VsCodeDebugger} from './commands/init/third-parties/vscode/vscode-debugger.service';
 
 (async () => {
   try {

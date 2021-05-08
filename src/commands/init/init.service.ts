@@ -1,14 +1,14 @@
 import {Command} from '../command.enum';
 import {ICommand} from '../command.interface';
-import {Babel} from './third-parties/babel.service';
-import {Git} from './third-parties/git.service';
-import {GTS} from './third-parties/gts.service';
-import {Jest} from './third-parties/jest.service';
+import {Babel} from './third-parties/babel/babel.service';
+import {Git} from './third-parties/git/git.service';
+import {GTS} from './third-parties/gts/gts.service';
+import {Jest} from './third-parties/jest/jest.service';
 import {InitOptions} from './options.enum';
-import {Skeleton} from './skeleton.service';
-import {Travis} from './third-parties/travis.service';
+import {Skeleton} from './skeleton/skeleton.service';
+import {Travis} from './third-parties/travis/travis.service';
 import {each} from 'lodash';
-import {VsCodeDebugger} from './third-parties/vscode-debugger.service';
+import {VsCodeDebugger} from './third-parties/vscode/vscode-debugger.service';
 
 /**
  * Class responsible for implement the init command.

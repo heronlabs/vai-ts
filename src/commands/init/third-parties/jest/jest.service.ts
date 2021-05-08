@@ -1,6 +1,6 @@
 import * as fs from 'fs';
-import {jestConfig} from '../../../templates/jest/jestconfig.template';
-import {jestSetupConfig} from '../../../templates/jest/jestsetup.template';
+import {jestConfig} from './jestconfig.template';
+import {jestSetupConfig} from './jestsetup.template';
 
 /**
  * Class responsible for Jest files.
