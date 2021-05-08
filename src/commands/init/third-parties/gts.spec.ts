@@ -3,11 +3,11 @@ import * as fs from 'fs';
 import {
   eslintIgnoreConfig,
   eslintrcConfig,
-} from '../../../../src/templates/gts/eslint.template';
+} from '../../../templates/gts/eslint.template';
 
-import {GTS} from '../../../../src/commands/init/third-parties/gts.service';
-import {prettierConfig} from '../../../../src/templates/gts/prettier.template';
-import {tsConfig} from '../../../../src/templates/gts/tsconfig.template';
+import {GTS} from './gts.service';
+import {prettierConfig} from '../../../templates/gts/prettier.template';
+import {tsConfig} from '../../../templates/gts/tsconfig.template';
 
 describe('GTS', () => {
   it('Should create TSConfig file', async () => {

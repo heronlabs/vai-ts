@@ -1,14 +1,14 @@
-import {Command} from '../../../src/commands/command.enum';
-import {Init} from '../../../src/commands/init/init.service';
+import {Command} from '../command.enum';
+import {Init} from './init.service';
 import {Mock} from 'moq.ts';
-import {Skeleton} from '../../../src/commands/init/skeleton.service';
-import {Babel} from '../../../src/commands/init/third-parties/babel.service';
-import {Git} from '../../../src/commands/init/third-parties/git.service';
-import {GTS} from '../../../src/commands/init/third-parties/gts.service';
-import {Jest} from '../../../src/commands/init/third-parties/jest.service';
-import {Travis} from '../../../src/commands/init/third-parties/travis.service';
-import {InitOptions} from '../../../src/commands/init/options.enum';
-import {VsCodeDebugger} from '../../../src/commands/init/third-parties/vscode-debugger.service';
+import {Skeleton} from './skeleton.service';
+import {Babel} from './third-parties/babel.service';
+import {Git} from './third-parties/git.service';
+import {GTS} from './third-parties/gts.service';
+import {Jest} from './third-parties/jest.service';
+import {Travis} from './third-parties/travis.service';
+import {InitOptions} from './options.enum';
+import {VsCodeDebugger} from './third-parties/vscode-debugger.service';
 
 describe('Init', () => {
   const vsCodeDebuggerMock = new Mock<VsCodeDebugger>();

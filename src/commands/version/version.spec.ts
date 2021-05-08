@@ -1,8 +1,8 @@
 import * as fs from 'fs';
 import path = require('path');
 
-import {Command} from '../../../src/commands/command.enum';
-import {Version} from '../../../src/commands/version/version.service';
+import {Command} from '../command.enum';
+import {Version} from './version.service';
 
 describe('Version', () => {
   const version = new Version();

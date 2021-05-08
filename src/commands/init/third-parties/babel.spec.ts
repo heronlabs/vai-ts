@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 
-import {Babel} from '../../../../src/commands/init/third-parties/babel.service';
-import {babelConfig} from '../../../../src/templates/babel/babel.template';
+import {Babel} from './babel.service';
+import {babelConfig} from '../../../templates/babel/babel.template';
 
 describe('Babel', () => {
   it('Should create Babel file', async () => {

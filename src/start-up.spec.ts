@@ -1,8 +1,8 @@
 import {Mock} from 'moq.ts';
-import {Command} from '../src/commands/command.enum';
-import {ICommand} from '../src/commands/command.interface';
-import {StartUp} from '../src/start-up.service';
-import {InitOptions} from '../src/commands/init/options.enum';
+import {Command} from './commands/command.enum';
+import {ICommand} from './commands/command.interface';
+import {StartUp} from './start-up.service';
+import {InitOptions} from './commands/init/options.enum';
 
 describe('Start up', () => {
   it('Should run a found command', async () => {

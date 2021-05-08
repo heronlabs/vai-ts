@@ -1,12 +1,12 @@
-import * as cp from '../../../src/lib/exec';
+import * as cp from '../../lib/exec';
 import * as fs from 'fs';
 
 import {
   indexConfig,
   packageConfig,
-} from '../../../src/templates/skeleton/package.template';
+} from '../../templates/skeleton/package.template';
 
-import {Skeleton} from '../../../src/commands/init/skeleton.service';
+import {Skeleton} from './skeleton.service';
 
 describe('Skeleton', () => {
   it('Should create project folder', async () => {
