@@ -17,7 +17,7 @@ export class Jest implements IInit {
   async installJest(projectName: string): Promise<void> {
     await execInProjectFolder(
       projectName,
-      'yarn add -D @types/jest babel-jest jest jest-junit ts-jest winston'
+      'yarn add -D @types/jest babel-jest jest jest-junit ts-jest'
     );
   }
 
@@ -52,6 +52,7 @@ export class Jest implements IInit {
 
     fs.writeFileSync(`${projectName}/package.json`, updatedPackageFile);
   }
+
   /**
    * Implement init command for Jest by:
    * * Installing dependencies.
