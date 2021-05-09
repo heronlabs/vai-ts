@@ -12,9 +12,12 @@ export const exec = async (command: string) => {
   });
 };
 
-export const execInProjectFolder = async (folder: string, command: string) => {
+export const execInProjectFolder = async (
+  projectFolder: string,
+  command: string
+) => {
   return new Promise((resolve, reject) => {
-    cp.exec(command, {cwd: `./${folder}`}, (error, stdout, stderr) => {
+    cp.exec(command, {cwd: `./${projectFolder}`}, (error, stdout, stderr) => {
       if (error) {
         return reject(error);
       }
@@ -22,4 +25,11 @@ export const execInProjectFolder = async (folder: string, command: string) => {
       resolve({stdout, stderr});
     });
   });
+};
+
+export const copyInProjectFolder = async (
+  projectFolder: string,
+  sourceFolder: string
+) => {
+  await execInProjectFolder(projectFolder, `cp -r ${sourceFolder}/. ./`);
 };
