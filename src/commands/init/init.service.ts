@@ -60,7 +60,7 @@ export class Init implements ICommand {
     this.skeleton.createGitIgnoreFile(projectName);
     await this.skeleton.createVsCodeDebuggerFile(projectName);
 
-    this.babel.createBabelFile(projectName);
+    this.babel.moveBabelTemplates(projectName);
 
     this.gts.createESLintFiles(projectName);
     this.gts.createPrettierFile(projectName);

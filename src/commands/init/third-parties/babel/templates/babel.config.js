@@ -1,5 +1,3 @@
-export const babelConfig = (): string => {
-  const template = `
 module.exports = {
   presets: [
     [
@@ -12,8 +10,4 @@ module.exports = {
       '@babel/preset-typescript',
     ],
   ],
-};
-`;
-
-  return template.trimStart();
 };

@@ -10,7 +10,7 @@ import {Travis} from './third-parties/travis/travis.service';
 
 describe('Init', () => {
   const babelMock = new Mock<Babel>();
-  babelMock.setup(instance => instance.createBabelFile).returns(jest.fn());
+  babelMock.setup(instance => instance.moveBabelTemplates).returns(jest.fn());
   const babel = babelMock.object();
 
   const gtsMock = new Mock<GTS>();
@@ -68,7 +68,7 @@ describe('Init', () => {
         .spyOn(skeleton, 'createVsCodeDebuggerFile')
         .mockImplementation();
       const babelCreateBabelFileSpy = jest
-        .spyOn(babel, 'createBabelFile')
+        .spyOn(babel, 'moveBabelTemplates')
         .mockImplementation();
       const gtsCreateESLintFilesSpy = jest
         .spyOn(gts, 'createESLintFiles')

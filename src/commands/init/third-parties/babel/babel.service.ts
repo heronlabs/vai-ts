@@ -1,17 +1,28 @@
-import * as fs from 'fs';
-import {babelConfig} from './babel.template';
+import {execInProjectFolder} from '../../../../lib/exec';
+
+import path = require('path');
 
 /**
  * Class responsible for Babel configurations.
  */
 export class Babel {
   /**
-   * [RANDOM] - Create the babel.config.js file.
-   * [RANDOM] - This file is the config for Jest works with ES6.
-   * @param projectFolder The Folder where is the project.
+   * Install dependencies inside project.
+   * @param projectName The project name.
    */
-  createBabelFile(projectFolder: string) {
-    const babelFile = babelConfig();
-    fs.writeFileSync(`${projectFolder}/babel.config.js`, babelFile);
+  async installBabel(projectName: string): Promise<void> {
+    await execInProjectFolder(
+      projectName,
+      'yarn add @babel/core @babel/preset-env @babel/preset-typescript @babel/register'
+    );
+  }
+
+  /**
+   * Move Babel templates.
+   * @param projectName The project name.
+   */
+  async moveBabelTemplates(projectName: string) {
+    const templatesFolder = path.join(__dirname, './templates');
+    await execInProjectFolder(projectName, `cp ${templatesFolder}/* ./`);
   }
 }
