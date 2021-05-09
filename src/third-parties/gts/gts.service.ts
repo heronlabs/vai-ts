@@ -29,10 +29,7 @@ export class GTS implements IInit {
   }
 
   /**
-   * Implement init command for GTS by:
-   * * Installing dependencies.
-   * * Moving templates.
-   * * Add scripts.
+   * Add scripts for GTS.
    * @param projectName The project name.
    */
   addGTSScripts(projectName: string) {
@@ -51,6 +48,13 @@ export class GTS implements IInit {
     fs.writeFileSync(`${projectName}/package.json`, updatedPackageFile);
   }
 
+  /**
+   * Implement init command for GTS by:
+   * * Installing dependencies.
+   * * Moving templates.
+   * * Add scripts.
+   * @param projectName The project name.
+   */
   async init(projectName: string): Promise<void> {
     await this.installGTS(projectName);
     await this.moveGTSTemplates(projectName);
