@@ -7,10 +7,6 @@ export const packageConfig = (projectName: string): string => {
   "scripts": {
     "compile": "tsc",
     "compile-watch": "tsc -w",
-    "test": "npx jest --runInBand --detectOpenHandles --colors --verbose --reporters=default",
-    "test-watch": "yarn test --watch",
-    "test-coverage": "yarn test --coverage",
-    "test-coverage-upload": "yarn test-coverage && codecov",
     "docs": "typedoc src/*.ts src/**/*.ts"
   },
   "devDependencies": {
