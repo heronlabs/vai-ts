@@ -5,9 +5,6 @@ export const packageConfig = (projectName: string): string => {
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "lint": "gts lint",
-    "lint-clean": "gts clean",
-    "lint-fix": "gts fix",
     "compile": "tsc",
     "compile-watch": "tsc -w",
     "test": "npx jest --runInBand --detectOpenHandles --colors --verbose --reporters=default",
@@ -17,14 +14,10 @@ export const packageConfig = (projectName: string): string => {
     "docs": "typedoc src/*.ts src/**/*.ts"
   },
   "devDependencies": {
-    "@babel/core": "^7.13.14",
-    "@babel/preset-env": "^7.13.12",
-    "@babel/preset-typescript": "^7.13.0",
     "@types/jest": "^26.0.22",
     "@types/node": "^14.11.2",
     "babel-jest": "^26.6.3",
     "codecov": "^3.8.1",
-    "gts": "^3.1.0",
     "jest": "^26.6.3",
     "jest-junit": "^12.0.0",
     "moq.ts": "^7.3.4",

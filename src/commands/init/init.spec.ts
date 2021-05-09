@@ -1,6 +1,6 @@
 import {Babel} from '../../third-parties/babel/babel.service';
 import {Command} from '../command.enum';
-import {GTS} from './third-parties/gts/gts.service';
+import {GTS} from '../../third-parties/gts/gts.service';
 import {Init} from './init.service';
 import {InitOptions} from './options.enum';
 import {Jest} from './third-parties/jest/jest.service';
@@ -14,9 +14,7 @@ describe('Init', () => {
   const babel = babelMock.object();
 
   const gtsMock = new Mock<GTS>();
-  gtsMock.setup(instance => instance.createESLintFiles).returns(jest.fn());
-  gtsMock.setup(instance => instance.createPrettierFile).returns(jest.fn());
-  gtsMock.setup(instance => instance.createTsConfigFile).returns(jest.fn());
+  gtsMock.setup(instance => instance.init).returns(jest.fn());
   const gts = gtsMock.object();
 
   const jestMock = new Mock<Jest>();
@@ -69,16 +67,8 @@ describe('Init', () => {
         .mockImplementation();
 
       const babelSpy = jest.spyOn(babel, 'init').mockImplementation();
+      const gtsSpy = jest.spyOn(gts, 'init').mockImplementation();
 
-      const gtsCreateESLintFilesSpy = jest
-        .spyOn(gts, 'createESLintFiles')
-        .mockImplementation();
-      const gtsCreatePrettierFileSpy = jest
-        .spyOn(gts, 'createPrettierFile')
-        .mockImplementation();
-      const gtsCreateTsConfigFileSpy = jest
-        .spyOn(gts, 'createTsConfigFile')
-        .mockImplementation();
       const _jestCreateJestConfigFileSpy = jest
         .spyOn(_jest, 'createJestConfigFile')
         .mockImplementation();
@@ -101,10 +91,7 @@ describe('Init', () => {
       );
 
       expect(babelSpy).toHaveBeenCalledWith(projectName);
-
-      expect(gtsCreateESLintFilesSpy).toHaveBeenCalledWith(projectName);
-      expect(gtsCreatePrettierFileSpy).toHaveBeenCalledWith(projectName);
-      expect(gtsCreateTsConfigFileSpy).toHaveBeenCalledWith(projectName);
+      expect(gtsSpy).toHaveBeenCalledWith(projectName);
 
       expect(_jestCreateJestConfigFileSpy).toHaveBeenCalledWith(projectName);
       expect(_jestCreateJestSetupSpy).toHaveBeenCalledWith(projectName);

@@ -1,5 +1,4 @@
 import {Command} from '../command.enum';
-import {GTS} from './third-parties/gts/gts.service';
 import {ICommand} from '../command.interface';
 import {IInit} from './init.interface';
 import {InitOptions} from './options.enum';
@@ -62,9 +61,7 @@ export class Init implements ICommand {
 
     await this.babel.init(projectName);
 
-    this.gts.createESLintFiles(projectName);
-    this.gts.createPrettierFile(projectName);
-    this.gts.createTsConfigFile(projectName);
+    await this.gts.init(projectName);
 
     this.jest.createJestConfigFile(projectName);
     this.jest.createJestSetup(projectName);
@@ -82,7 +79,7 @@ export class Init implements ICommand {
    */
   constructor(
     private babel: IInit,
-    private gts: GTS,
+    private gts: IInit,
     private jest: Jest,
     private travis: Travis,
     private skeleton: Skeleton
