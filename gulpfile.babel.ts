@@ -8,9 +8,9 @@ task('clean-build-folder', () => {
   return src('./build', {read: false, allowEmpty: true}).pipe(vinylPaths(del));
 });
 
-task('move-babel-templates', () => {
-  return src(['src/commands/init/third-parties/babel/templates/*']).pipe(
-    dest('./build/src/commands/init/third-parties/babel/templates')
+task('move-templates', () => {
+  return src(['src/third-parties/*/templates/*']).pipe(
+    dest('./build/src/third-parties/*/templates')
   );
 });
 

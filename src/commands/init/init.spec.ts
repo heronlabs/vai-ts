@@ -1,4 +1,4 @@
-import {Babel} from './third-parties/babel/babel.service';
+import {Babel} from '../../third-parties/babel/babel.service';
 import {Command} from '../command.enum';
 import {GTS} from './third-parties/gts/gts.service';
 import {Init} from './init.service';
@@ -10,7 +10,7 @@ import {Travis} from './third-parties/travis/travis.service';
 
 describe('Init', () => {
   const babelMock = new Mock<Babel>();
-  babelMock.setup(instance => instance.moveBabelTemplates).returns(jest.fn());
+  babelMock.setup(instance => instance.init).returns(jest.fn());
   const babel = babelMock.object();
 
   const gtsMock = new Mock<GTS>();
@@ -67,9 +67,9 @@ describe('Init', () => {
       const skeletonCreateVsCodeDebuggerFile = jest
         .spyOn(skeleton, 'createVsCodeDebuggerFile')
         .mockImplementation();
-      const babelCreateBabelFileSpy = jest
-        .spyOn(babel, 'moveBabelTemplates')
-        .mockImplementation();
+
+      const babelSpy = jest.spyOn(babel, 'init').mockImplementation();
+
       const gtsCreateESLintFilesSpy = jest
         .spyOn(gts, 'createESLintFiles')
         .mockImplementation();
@@ -100,7 +100,7 @@ describe('Init', () => {
         projectName
       );
 
-      expect(babelCreateBabelFileSpy).toHaveBeenCalledWith(projectName);
+      expect(babelSpy).toHaveBeenCalledWith(projectName);
 
       expect(gtsCreateESLintFilesSpy).toHaveBeenCalledWith(projectName);
       expect(gtsCreatePrettierFileSpy).toHaveBeenCalledWith(projectName);

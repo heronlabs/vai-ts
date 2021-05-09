@@ -3,7 +3,7 @@
 
 import 'reflect-metadata';
 
-import {Babel} from './commands/init/third-parties/babel/babel.service';
+import {Babel} from './third-parties/babel/babel.service';
 import {GTS} from './commands/init/third-parties/gts/gts.service';
 import {Init} from './commands/init/init.service';
 import {Jest} from './commands/init/third-parties/jest/jest.service';

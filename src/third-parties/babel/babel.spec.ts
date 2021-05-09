@@ -1,4 +1,4 @@
-import * as cp from '../../../../lib/exec';
+import * as cp from '../../lib/exec';
 
 import {Babel} from './babel.service';
 
@@ -15,7 +15,7 @@ describe('Babel', () => {
       .spyOn(cp, 'execInProjectFolder')
       .mockImplementation();
 
-    babel.moveBabelTemplates(projectName);
+    await babel.moveBabelTemplates(projectName);
 
     expect(execInProjectFolderSpy).toHaveBeenCalledWith(
       projectName,
@@ -34,5 +34,19 @@ describe('Babel', () => {
       projectName,
       'yarn add @babel/core @babel/preset-env @babel/preset-typescript @babel/register'
     );
+  });
+
+  it('Should implement the init command', async () => {
+    const moveBabelTemplatesSpy = jest
+      .spyOn(babel, 'moveBabelTemplates')
+      .mockImplementation();
+    const installBabelSpy = jest
+      .spyOn(babel, 'installBabel')
+      .mockImplementation();
+
+    await babel.init(projectName);
+
+    expect(moveBabelTemplatesSpy).toHaveBeenCalledWith(projectName);
+    expect(installBabelSpy).toHaveBeenCalledWith(projectName);
   });
 });

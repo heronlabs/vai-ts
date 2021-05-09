@@ -1,7 +1,7 @@
-import {Babel} from './third-parties/babel/babel.service';
 import {Command} from '../command.enum';
 import {GTS} from './third-parties/gts/gts.service';
 import {ICommand} from '../command.interface';
+import {IInit} from './init.interface';
 import {InitOptions} from './options.enum';
 import {Jest} from './third-parties/jest/jest.service';
 import {Skeleton} from './skeleton/skeleton.service';
@@ -60,7 +60,7 @@ export class Init implements ICommand {
     this.skeleton.createGitIgnoreFile(projectName);
     await this.skeleton.createVsCodeDebuggerFile(projectName);
 
-    this.babel.moveBabelTemplates(projectName);
+    await this.babel.init(projectName);
 
     this.gts.createESLintFiles(projectName);
     this.gts.createPrettierFile(projectName);
@@ -81,7 +81,7 @@ export class Init implements ICommand {
    * @param skeleton Skeleton.
    */
   constructor(
-    private babel: Babel,
+    private babel: IInit,
     private gts: GTS,
     private jest: Jest,
     private travis: Travis,
