@@ -5,34 +5,23 @@ import 'reflect-metadata';
 
 import {Babel} from './commands/init/third-parties/babel/babel.service';
 import {GTS} from './commands/init/third-parties/gts/gts.service';
-import {Git} from './commands/init/third-parties/git/git.service';
 import {Init} from './commands/init/init.service';
 import {Jest} from './commands/init/third-parties/jest/jest.service';
 import {Skeleton} from './commands/init/skeleton/skeleton.service';
 import {StartUp} from './start-up.service';
 import {Travis} from './commands/init/third-parties/travis/travis.service';
 import {Version} from './commands/version/version.service';
-import {VsCodeDebugger} from './commands/init/third-parties/vscode/vscode-debugger.service';
 
 (async () => {
   try {
     const babel = new Babel();
-    const git = new Git();
+
     const gts = new GTS();
     const jest = new Jest();
     const skeleton = new Skeleton();
     const travis = new Travis();
-    const vsCodeDebugger = new VsCodeDebugger();
 
-    const init = new Init(
-      vsCodeDebugger,
-      babel,
-      git,
-      gts,
-      jest,
-      travis,
-      skeleton
-    );
+    const init = new Init(babel, gts, jest, travis, skeleton);
 
     const version = new Version();
 
