@@ -14,18 +14,12 @@ export const packageConfig = (projectName: string): string => {
     "docs": "typedoc src/*.ts src/**/*.ts"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.22",
     "@types/node": "^14.11.2",
-    "babel-jest": "^26.6.3",
     "codecov": "^3.8.1",
-    "jest": "^26.6.3",
-    "jest-junit": "^12.0.0",
     "moq.ts": "^7.3.4",
     "nodemon": "^2.0.7",
-    "ts-jest": "^26.5.4",
     "typedoc": "^0.20.35",
-    "typescript": "^4.0.3",
-    "winston": "^3.3.3"
+    "typescript": "^4.0.3"
   },
   "dependencies": {
     "reflect-metadata": "^0.1.13",

@@ -6,7 +6,7 @@ import 'reflect-metadata';
 import {Babel} from './third-parties/babel/babel.service';
 import {GTS} from './third-parties/gts/gts.service';
 import {Init} from './commands/init/init.service';
-import {Jest} from './commands/init/third-parties/jest/jest.service';
+import {Jest} from './third-parties/jest/jest.service';
 import {Skeleton} from './commands/init/skeleton/skeleton.service';
 import {StartUp} from './start-up.service';
 import {Travis} from './commands/init/third-parties/travis/travis.service';

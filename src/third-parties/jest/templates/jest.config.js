@@ -1,5 +1,3 @@
-export const jestConfig = (): string => {
-  const template = `
 module.exports = {
   preset: 'ts-jest',
   reporters: [
@@ -25,9 +23,5 @@ module.exports = {
   coverageProvider: 'v8',
   collectCoverageFrom: ['src/**/*.service.ts'],
   testEnvironment: 'node',
-  testMatch: ['<rootDir>/test/**/*.test.ts'],
-};
-`;
-
-  return template.trimStart();
+  testMatch: ['<rootDir>/src/**/*.spec.ts'],
 };

@@ -3,7 +3,7 @@ import {Command} from '../command.enum';
 import {GTS} from '../../third-parties/gts/gts.service';
 import {Init} from './init.service';
 import {InitOptions} from './options.enum';
-import {Jest} from './third-parties/jest/jest.service';
+import {Jest} from '../../third-parties/jest/jest.service';
 import {Mock} from 'moq.ts';
 import {Skeleton} from './skeleton/skeleton.service';
 import {Travis} from './third-parties/travis/travis.service';
@@ -18,8 +18,7 @@ describe('Init', () => {
   const gts = gtsMock.object();
 
   const jestMock = new Mock<Jest>();
-  jestMock.setup(instance => instance.createJestConfigFile).returns(jest.fn());
-  jestMock.setup(instance => instance.createJestSetup).returns(jest.fn());
+  jestMock.setup(instance => instance.init).returns(jest.fn());
   const _jest = jestMock.object();
 
   const travisMock = new Mock<Travis>();
@@ -68,13 +67,8 @@ describe('Init', () => {
 
       const babelSpy = jest.spyOn(babel, 'init').mockImplementation();
       const gtsSpy = jest.spyOn(gts, 'init').mockImplementation();
+      const jestSpy = jest.spyOn(_jest, 'init').mockImplementation();
 
-      const _jestCreateJestConfigFileSpy = jest
-        .spyOn(_jest, 'createJestConfigFile')
-        .mockImplementation();
-      const _jestCreateJestSetupSpy = jest
-        .spyOn(_jest, 'createJestSetup')
-        .mockImplementation();
       const travisCreateTravisFileSpy = jest
         .spyOn(travis, 'createTravisFile')
         .mockImplementation();
@@ -92,9 +86,7 @@ describe('Init', () => {
 
       expect(babelSpy).toHaveBeenCalledWith(projectName);
       expect(gtsSpy).toHaveBeenCalledWith(projectName);
-
-      expect(_jestCreateJestConfigFileSpy).toHaveBeenCalledWith(projectName);
-      expect(_jestCreateJestSetupSpy).toHaveBeenCalledWith(projectName);
+      expect(jestSpy).toHaveBeenCalledWith(projectName);
 
       expect(travisCreateTravisFileSpy).toHaveBeenCalledWith(projectName);
     };

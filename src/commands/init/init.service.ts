@@ -2,7 +2,6 @@ import {Command} from '../command.enum';
 import {ICommand} from '../command.interface';
 import {IInit} from './init.interface';
 import {InitOptions} from './options.enum';
-import {Jest} from './third-parties/jest/jest.service';
 import {Skeleton} from './skeleton/skeleton.service';
 import {Travis} from './third-parties/travis/travis.service';
 import {each} from 'lodash';
@@ -63,8 +62,7 @@ export class Init implements ICommand {
 
     await this.gts.init(projectName);
 
-    this.jest.createJestConfigFile(projectName);
-    this.jest.createJestSetup(projectName);
+    await this.jest.init(projectName);
 
     this.travis.createTravisFile(projectName);
   }
@@ -80,7 +78,7 @@ export class Init implements ICommand {
   constructor(
     private babel: IInit,
     private gts: IInit,
-    private jest: Jest,
+    private jest: IInit,
     private travis: Travis,
     private skeleton: Skeleton
   ) {}
