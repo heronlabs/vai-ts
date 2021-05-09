@@ -1,4 +1,4 @@
-import * as cp from '../../lib/exec';
+import * as cp from '../../utils/exec';
 import * as fs from 'fs';
 
 import {Jest} from './jest.service';

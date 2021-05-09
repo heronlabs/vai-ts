@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 
-import {copyInProjectFolder, execInProjectFolder} from '../../lib/exec';
+import {copyInProjectFolder, execInProjectFolder} from '../../utils/exec';
 
 import {IInit} from '../../commands/init/init.interface';
 

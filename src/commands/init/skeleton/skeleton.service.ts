@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 
-import {exec, execInProjectFolder} from '../../../lib/exec';
+import {exec, execInProjectFolder} from '../../../utils/exec';
 import {indexConfig, packageConfig} from './package.template';
 
 import {gitIgnoreConfig} from './gitignore.template';
