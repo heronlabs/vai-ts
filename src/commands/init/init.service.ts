@@ -3,7 +3,6 @@ import {ICommand} from '../command.interface';
 import {IInit} from './init.interface';
 import {InitOptions} from './options.enum';
 import {Skeleton} from './skeleton/skeleton.service';
-import {Travis} from './third-parties/travis/travis.service';
 import {each} from 'lodash';
 
 /**
@@ -64,7 +63,7 @@ export class Init implements ICommand {
 
     await this.jest.init(projectName);
 
-    this.travis.createTravisFile(projectName);
+    await this.travis.init(projectName);
   }
 
   /**
@@ -79,7 +78,7 @@ export class Init implements ICommand {
     private babel: IInit,
     private gts: IInit,
     private jest: IInit,
-    private travis: Travis,
+    private travis: IInit,
     private skeleton: Skeleton
   ) {}
 }

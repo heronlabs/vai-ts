@@ -6,7 +6,7 @@ import {InitOptions} from './options.enum';
 import {Jest} from '../../third-parties/jest/jest.service';
 import {Mock} from 'moq.ts';
 import {Skeleton} from './skeleton/skeleton.service';
-import {Travis} from './third-parties/travis/travis.service';
+import {Travis} from '../../dev-ops/travis/travis.service';
 
 describe('Init', () => {
   const babelMock = new Mock<Babel>();
@@ -22,7 +22,7 @@ describe('Init', () => {
   const _jest = jestMock.object();
 
   const travisMock = new Mock<Travis>();
-  travisMock.setup(instance => instance.createTravisFile).returns(jest.fn());
+  travisMock.setup(instance => instance.init).returns(jest.fn());
   const travis = travisMock.object();
 
   const skeletonMock = new Mock<Skeleton>();
@@ -68,10 +68,7 @@ describe('Init', () => {
       const babelSpy = jest.spyOn(babel, 'init').mockImplementation();
       const gtsSpy = jest.spyOn(gts, 'init').mockImplementation();
       const jestSpy = jest.spyOn(_jest, 'init').mockImplementation();
-
-      const travisCreateTravisFileSpy = jest
-        .spyOn(travis, 'createTravisFile')
-        .mockImplementation();
+      const travisSpy = jest.spyOn(travis, 'init').mockImplementation();
 
       await init.run(options);
 
@@ -88,7 +85,7 @@ describe('Init', () => {
       expect(gtsSpy).toHaveBeenCalledWith(projectName);
       expect(jestSpy).toHaveBeenCalledWith(projectName);
 
-      expect(travisCreateTravisFileSpy).toHaveBeenCalledWith(projectName);
+      expect(travisSpy).toHaveBeenCalledWith(projectName);
     };
 
     it('Should run with my-test-project', async () => {
