@@ -5,7 +5,7 @@ import {Init} from './init.service';
 import {InitOptions} from './options.enum';
 import {Jest} from '../../third-parties/jest/jest.service';
 import {Mock} from 'moq.ts';
-import {Skeleton} from './skeleton/skeleton.service';
+import {Skeleton} from '../../skeleton/skeleton.service';
 import {Travis} from '../../dev-ops/travis/travis.service';
 
 describe('Init', () => {
@@ -26,45 +26,14 @@ describe('Init', () => {
   const travis = travisMock.object();
 
   const skeletonMock = new Mock<Skeleton>();
-  skeletonMock
-    .setup(instance => instance.createProjectFolder)
-    .returns(jest.fn());
-  skeletonMock.setup(instance => instance.createPackageFile).returns(jest.fn());
-  skeletonMock
-    .setup(instance => instance.installDependencies)
-    .returns(jest.fn());
-  skeletonMock.setup(instance => instance.createIndexFile).returns(jest.fn());
-  skeletonMock
-    .setup(instance => instance.createGitIgnoreFile)
-    .returns(jest.fn());
-  skeletonMock
-    .setup(instance => instance.createVsCodeDebuggerFile)
-    .returns(jest.fn());
+  skeletonMock.setup(instance => instance.init).returns(jest.fn());
   const skeleton = skeletonMock.object();
 
   const init = new Init(babel, gts, _jest, travis, skeleton);
 
   describe('Run', () => {
     const run = async (options: string[], projectName: string) => {
-      const skeletonCreateProjectFolderSpy = jest
-        .spyOn(skeleton, 'createProjectFolder')
-        .mockImplementation();
-      const skeletonCreatePackageFileSpy = jest
-        .spyOn(skeleton, 'createPackageFile')
-        .mockImplementation();
-      const skeletonInstallDependenciesSpy = jest
-        .spyOn(skeleton, 'installDependencies')
-        .mockImplementation();
-      const skeletonCreateIndexFileSpy = jest
-        .spyOn(skeleton, 'createIndexFile')
-        .mockImplementation();
-      const skeletonCreateGitIgnoreFileSpy = jest
-        .spyOn(skeleton, 'createGitIgnoreFile')
-        .mockImplementation();
-      const skeletonCreateVsCodeDebuggerFile = jest
-        .spyOn(skeleton, 'createVsCodeDebuggerFile')
-        .mockImplementation();
-
+      const skeletonSpy = jest.spyOn(skeleton, 'init').mockImplementation();
       const babelSpy = jest.spyOn(babel, 'init').mockImplementation();
       const gtsSpy = jest.spyOn(gts, 'init').mockImplementation();
       const jestSpy = jest.spyOn(_jest, 'init').mockImplementation();
@@ -72,14 +41,7 @@ describe('Init', () => {
 
       await init.run(options);
 
-      expect(skeletonCreateProjectFolderSpy).toHaveBeenCalledWith(projectName);
-      expect(skeletonCreatePackageFileSpy).toHaveBeenCalledWith(projectName);
-      expect(skeletonInstallDependenciesSpy).toHaveBeenCalledWith(projectName);
-      expect(skeletonCreateIndexFileSpy).toHaveBeenCalledWith(projectName);
-      expect(skeletonCreateGitIgnoreFileSpy).toHaveBeenCalledWith(projectName);
-      expect(skeletonCreateVsCodeDebuggerFile).toHaveBeenCalledWith(
-        projectName
-      );
+      expect(skeletonSpy).toHaveBeenCalledWith(projectName);
 
       expect(babelSpy).toHaveBeenCalledWith(projectName);
       expect(gtsSpy).toHaveBeenCalledWith(projectName);

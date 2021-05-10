@@ -2,7 +2,6 @@ import {Command} from '../command.enum';
 import {ICommand} from '../command.interface';
 import {IInit} from './init.interface';
 import {InitOptions} from './options.enum';
-import {Skeleton} from './skeleton/skeleton.service';
 import {each} from 'lodash';
 
 /**
@@ -50,19 +49,10 @@ export class Init implements ICommand {
   async run(options: string[]): Promise<void> {
     const projectName = this.getProjectName(options);
 
-    await this.skeleton.createProjectFolder(projectName);
-    this.skeleton.createPackageFile(projectName);
-    await this.skeleton.installDependencies(projectName);
-    this.skeleton.createIndexFile(projectName);
-    this.skeleton.createGitIgnoreFile(projectName);
-    await this.skeleton.createVsCodeDebuggerFile(projectName);
-
+    await this.skeleton.init(projectName);
     await this.babel.init(projectName);
-
     await this.gts.init(projectName);
-
     await this.jest.init(projectName);
-
     await this.travis.init(projectName);
   }
 
@@ -79,6 +69,6 @@ export class Init implements ICommand {
     private gts: IInit,
     private jest: IInit,
     private travis: IInit,
-    private skeleton: Skeleton
+    private skeleton: IInit
   ) {}
 }

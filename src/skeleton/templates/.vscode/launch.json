@@ -1,5 +1,3 @@
-export const vsCodeDebuggerConfig = (): string => {
-  const template = `
 {
   // Use IntelliSense to learn about possible attributes.
   // Hover to view descriptions of existing attributes.
@@ -11,17 +9,13 @@ export const vsCodeDebuggerConfig = (): string => {
       "request": "launch",
       "name": "nodemon",
       "runtimeExecutable": "nodemon",
-      "program": "${process.cwd()}/build/src/index.js",
+      "program": "${workspaceFolder}/build/src/index.js",
       "restart": true,
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
       "skipFiles": [
         "<node_internals>/**"
       ]
-    }
+    } 
   ]
 }
-`;
-
-  return template.trimStart();
-};

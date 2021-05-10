@@ -1,7 +1,5 @@
-export const packageConfig = (projectName: string): string => {
-  const template = `
 {
-  "name": "${projectName}",
+  "name": "to-be-replace",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -22,26 +20,4 @@ export const packageConfig = (projectName: string): string => {
     "@types/lodash": "^4.14.168",
     "lodash": "^4.17.21"
   }
-}  
-`;
-
-  return template.trimStart();
-};
-
-export const indexConfig = (): string => {
-  const template = `
-'use strict';
-
-import 'reflect-metadata';
-
-(async () => {
-  try {
-    console.log('OK');
-  } catch (err) {
-    console.log(err.message);
-  }
-})();
-`;
-
-  return template.trimStart();
-};
+}
