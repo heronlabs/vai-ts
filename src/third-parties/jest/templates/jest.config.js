@@ -17,7 +17,6 @@ module.exports = {
       lines: 0,
     },
   },
-  setupFiles: ['./jest.setup-file.ts'],
   clearMocks: true,
   coverageDirectory: 'coverage',
   coverageProvider: 'v8',
