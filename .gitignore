@@ -106,8 +106,5 @@ dist
 # Dist
 build
 
-# Debugger
-.vscode
-
 # NPM Registry
 .npmrc
