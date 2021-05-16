@@ -14,8 +14,7 @@ describe('Skeleton', () => {
 
     await skeleton.createProjectFolder(projectName);
 
-    expect(execSpy).toHaveBeenNthCalledWith(1, `mkdir ${projectName}`);
-    expect(execSpy).toHaveBeenNthCalledWith(2, `mkdir ${projectName}/src`);
+    expect(execSpy).toHaveBeenCalledWith(`mkdir ${projectName}`);
   });
 
   it('Should move skeleton templates', async () => {

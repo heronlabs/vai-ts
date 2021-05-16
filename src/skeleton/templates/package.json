@@ -9,8 +9,6 @@
   },
   "devDependencies": {
     "@types/node": "^14.11.2",
-    "codecov": "^3.8.1",
-    "moq.ts": "^7.3.4",
     "nodemon": "^2.0.7",
     "typedoc": "^0.20.35",
     "typescript": "^4.0.3"

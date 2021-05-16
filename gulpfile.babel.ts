@@ -28,7 +28,7 @@ task('move-skeleton-templates', () => {
       dest('./build/src/skeleton/templates')
     ),
     src(['src/skeleton/templates/.vscode/launch.json']).pipe(
-      dest('./build/src/skeleton/templates/.vscode/launch.json')
+      dest('./build/src/skeleton/templates/.vscode/')
     )
   );
 });

@@ -18,8 +18,6 @@ export class Skeleton implements IInit {
    */
   async createProjectFolder(projectName: string) {
     await exec(`mkdir ${projectName}`);
-    await exec(`mkdir ${projectName}/src`);
-    await exec(`mkdir ${projectName}/.vscode`);
   }
 
   /**
