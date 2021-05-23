@@ -25,6 +25,24 @@ export class Init implements ICommand {
         message: 'What is the name of the project?',
         default: 'my-project',
       },
+      {
+        name: InitQuestions.THIRD_PARTY_GTS,
+        type: 'confirm',
+        message: 'Should install GTS?',
+        default: true,
+      },
+      {
+        name: InitQuestions.THIRD_PARTY_JEST,
+        type: 'confirm',
+        message: 'Should install Jest?',
+        default: true,
+      },
+      {
+        name: InitQuestions.DEV_OPS_TRAVIS,
+        type: 'confirm',
+        message: 'Should start with Travis?',
+        default: true,
+      },
     ];
 
     const answers = await inquirer.prompt<InitQuestion>(questions);
@@ -37,13 +55,23 @@ export class Init implements ICommand {
    * @param options The options typed in the terminal.
    */
   async run(): Promise<void> {
-    const questions = await this.askQuestions();
+    const answers = await this.askQuestions();
 
-    await this.skeleton.init(questions.projectName);
-    await this.babel.init(questions.projectName);
-    await this.gts.init(questions.projectName);
-    await this.jest.init(questions.projectName);
-    await this.travis.init(questions.projectName);
+    const projectName = answers[InitQuestions.PROJECT_NAME];
+    await this.skeleton.init(projectName);
+    await this.babel.init(projectName);
+
+    if (answers[InitQuestions.THIRD_PARTY_GTS]) {
+      await this.gts.init(projectName);
+    }
+
+    if (answers[InitQuestions.THIRD_PARTY_JEST]) {
+      await this.jest.init(projectName);
+    }
+
+    if (answers[InitQuestions.DEV_OPS_TRAVIS]) {
+      await this.travis.init(projectName);
+    }
   }
 
   /**

@@ -46,12 +46,17 @@ describe('Init', () => {
   });
 
   describe('Run', () => {
-    it('Should run with my-test-project', async () => {
+    it('Should run with my-test-project with GTS with Jest', async () => {
       const projectName = 'my-test-project';
       const answersSpy = jest
         .spyOn(init, 'askQuestions')
         .mockImplementation()
-        .mockResolvedValue({[InitQuestions.PROJECT_NAME]: projectName});
+        .mockResolvedValue({
+          [InitQuestions.PROJECT_NAME]: projectName,
+          [InitQuestions.THIRD_PARTY_GTS]: true,
+          [InitQuestions.THIRD_PARTY_JEST]: true,
+          [InitQuestions.DEV_OPS_TRAVIS]: true,
+        });
 
       const skeletonSpy = jest.spyOn(skeleton, 'init').mockImplementation();
       const babelSpy = jest.spyOn(babel, 'init').mockImplementation();
