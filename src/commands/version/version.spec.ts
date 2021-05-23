@@ -36,14 +36,4 @@ describe('Version', () => {
       expect(whoami).toBe(Command.version);
     });
   });
-
-  describe('Get Options', () => {
-    it('Should return options', () => {
-      const currentOptions = [''];
-
-      const options = version.getOptions().toString();
-
-      expect(options).toBe(currentOptions.toString());
-    });
-  });
 });

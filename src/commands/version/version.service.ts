@@ -3,7 +3,6 @@ import path = require('path');
 
 import {Command} from '../command.enum';
 import {ICommand} from '../command.interface';
-import {VersionOptions} from './options.enum';
 /**
  * Class responsible for inform the current version.
  */
@@ -12,14 +11,6 @@ export class Version implements ICommand {
    * Return the version command name.
    */
   whoami: Command = Command.version;
-
-  /**
-   * Return the options avaliable for version command.
-   * @returns Version commands.
-   */
-  getOptions(): string[] {
-    return Object.values(VersionOptions);
-  }
 
   /**
    * Read the config file and show the version.
