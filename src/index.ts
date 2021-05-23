@@ -15,12 +15,10 @@ import {Version} from './commands/version/version.service';
 (async () => {
   try {
     const babel = new Babel();
-
     const gts = new GTS();
     const jest = new Jest();
     const skeleton = new Skeleton();
     const travis = new Travis();
-
     const init = new Init(babel, gts, jest, travis, skeleton);
 
     const version = new Version();
