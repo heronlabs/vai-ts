@@ -18,14 +18,14 @@ script:
 
 deploy:
   - provider: npm
-    cleanup: true
+    skip_cleanup: true
     email: $NPM_EMAIL
     api_token: $NPM_TOKEN
     on:
       branch: main
 
   - provider: pages
-    cleanup: true
+    skip_cleanup: true
     local_dir: docs/
     token: $GITHUB_TOKEN
     on:
