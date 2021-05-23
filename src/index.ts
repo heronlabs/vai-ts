@@ -28,9 +28,8 @@ import {Version} from './commands/version/version.service';
     const commands = [init, version];
     const startUp = new StartUp(commands);
     const arg0 = process.argv[2];
-    const arg1 = process.argv.slice(3);
 
-    await startUp.run(arg0, arg1);
+    await startUp.run(arg0);
   } catch (err) {
     console.log(err.message);
   }

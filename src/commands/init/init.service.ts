@@ -1,8 +1,8 @@
 import {Command} from '../command.enum';
 import {ICommand} from '../command.interface';
 import {IInit} from './init.interface';
-import {InitOptions} from './options.enum';
-import {each} from 'lodash';
+import inquirer = require('inquirer');
+import {InitQuestion, InitQuestions} from './init.questions';
 
 /**
  * Class responsible for implement the init command.
@@ -14,46 +14,36 @@ export class Init implements ICommand {
   whoami: Command = Command.init;
 
   /**
-   * Return the options avaliable for init command.
-   * @returns Init commands.
+   * Ask essencial questions for init.
+   * @returns Answers from input.
    */
-  getOptions(): string[] {
-    return Object.values(InitOptions);
-  }
+  async askQuestions(): Promise<InitQuestion> {
+    const questions = [
+      {
+        name: InitQuestions.PROJECT_NAME,
+        type: 'input',
+        message: 'What is the name of the project?',
+        default: 'my-project',
+      },
+    ];
 
-  /**
-   * Check for the project name typed.
-   * @param options The options typed in the terminal.
-   * @returns The project name.
-   */
-  private getProjectName(options: string[]): string {
-    let projectName = 'my-project';
+    const answers = await inquirer.prompt<InitQuestion>(questions);
 
-    each(options, option => {
-      if (option.includes('=')) {
-        const optionSplited = option.split('=');
-        const optionToBeValidate = `${optionSplited[0]}=`;
-        if (optionToBeValidate === InitOptions.projectName) {
-          projectName = optionSplited[1];
-        }
-      }
-    });
-
-    return projectName;
+    return answers;
   }
 
   /**
    * Create the skeleton. Execute third parties.
    * @param options The options typed in the terminal.
    */
-  async run(options: string[]): Promise<void> {
-    const projectName = this.getProjectName(options);
+  async run(): Promise<void> {
+    const questions = await this.askQuestions();
 
-    await this.skeleton.init(projectName);
-    await this.babel.init(projectName);
-    await this.gts.init(projectName);
-    await this.jest.init(projectName);
-    await this.travis.init(projectName);
+    await this.skeleton.init(questions.projectName);
+    await this.babel.init(questions.projectName);
+    await this.gts.init(questions.projectName);
+    await this.jest.init(questions.projectName);
+    await this.travis.init(questions.projectName);
   }
 
   /**

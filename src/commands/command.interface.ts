@@ -10,13 +10,7 @@ export interface ICommand {
   whoami: Command;
 
   /**
-   * Return the options avaliable in this command.
-   */
-  getOptions(): string[];
-
-  /**
    * Execute the command with the following options.
-   * @param options options typed in the terminal.
    */
-  run(options: string[]): Promise<void>;
+  run(): Promise<void>;
 }
