@@ -31,12 +31,14 @@
     "@babel/preset-env": "^7.13.12",
     "@babel/preset-typescript": "^7.13.0",
     "@babel/register": "^7.13.16",
+    "@types/chalk": "^2.2.0",
     "@types/gulp": "^4.0.8",
     "@types/gulp-shell": "^0.7.0",
     "@types/inquirer": "^7.3.1",
     "@types/jest": "^26.0.22",
     "@types/merge-stream": "^1.1.2",
     "@types/node": "^14.11.2",
+    "@types/ora": "^3.2.0",
     "@types/vinyl-paths": "^0.0.31",
     "babel-jest": "^26.6.3",
     "codecov": "^3.8.1",
@@ -57,8 +59,10 @@
   },
   "dependencies": {
     "@types/lodash": "^4.14.168",
+    "chalk": "^4.1.1",
     "inquirer": "^8.1.0",
     "lodash": "^4.17.21",
+    "ora": "^5.4.0",
     "path": "^0.12.7",
     "reflect-metadata": "^0.1.13"
   }

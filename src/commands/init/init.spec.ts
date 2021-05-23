@@ -9,7 +9,15 @@ import {Travis} from '../../dev-ops/travis/travis.service';
 import {InitQuestions} from './init.questions';
 import inquirer = require('inquirer');
 
+jest.mock('ora', () => () => ({
+  start: () => ({
+    stopAndPersist: () => {},
+  }),
+}));
+
 describe('Init', () => {
+  jest.spyOn(global.console, 'log').mockImplementation();
+
   const babelMock = new Mock<Babel>();
   babelMock.setup(instance => instance.init).returns(jest.fn());
   const babel = babelMock.object();
