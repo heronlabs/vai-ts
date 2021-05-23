@@ -23,10 +23,6 @@ npm install -g vai-ts
 vai-ts init
 ```
 
-```
-vai-ts init --name=meu-projeto
-```
-
 ### Version
 
 ```
