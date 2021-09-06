@@ -3,7 +3,6 @@
 
 import 'reflect-metadata';
 
-import {Babel} from './third-parties/babel/babel.service';
 import {GTS} from './third-parties/gts/gts.service';
 import {Init} from './commands/init/init.service';
 import {Jest} from './third-parties/jest/jest.service';
@@ -14,12 +13,11 @@ import {Version} from './commands/version/version.service';
 
 (async () => {
   try {
-    const babel = new Babel();
     const gts = new GTS();
     const jest = new Jest();
     const skeleton = new Skeleton();
     const travis = new Travis();
-    const init = new Init(babel, gts, jest, travis, skeleton);
+    const init = new Init(gts, jest, travis, skeleton);
 
     const version = new Version();
 
@@ -29,6 +27,6 @@ import {Version} from './commands/version/version.service';
 
     await startUp.run(arg0);
   } catch (err) {
-    console.log(err.message);
+    console.log(err);
   }
 })();

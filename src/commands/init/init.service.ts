@@ -62,7 +62,7 @@ export class Init implements ICommand {
     const progressRoot = ora('Initialize Node resources...').start();
     const projectName = answers[InitQuestions.PROJECT_NAME];
     await this.skeleton.init(projectName);
-    await this.babel.init(projectName);
+
     progressRoot.stopAndPersist({
       symbol: '📦',
       text: 'All done initializing Node!',
@@ -109,14 +109,12 @@ export class Init implements ICommand {
 
   /**
    * The third-parties.
-   * @param babel Babel.
    * @param gts Google Typescript.
    * @param jest Jest.
    * @param travis Travis CI.
    * @param skeleton Skeleton.
    */
   constructor(
-    private babel: IInit,
     private gts: IInit,
     private jest: IInit,
     private travis: IInit,
