@@ -69,7 +69,7 @@ describe('Jest', () => {
         scripts: {
           lint: 'echo lint',
           test:
-            'npx jest --runInBand --detectOpenHandles --colors --verbose --reporters=default',
+            'jest --runInBand --detectOpenHandles --colors --verbose --reporters=default',
           'test-watch': 'yarn test --watch',
           'test-coverage': 'yarn test --coverage',
           'test-coverage-upload': 'yarn test-coverage && codecov',

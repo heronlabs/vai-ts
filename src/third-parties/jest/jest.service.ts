@@ -42,7 +42,7 @@ export class Jest implements IInit {
     const packageFile = JSON.parse(packageFileString);
 
     packageFile.scripts['test'] =
-      'npx jest --runInBand --detectOpenHandles --colors --verbose --reporters=default';
+      'jest --runInBand --detectOpenHandles --colors --verbose --reporters=default';
     packageFile.scripts['test-watch'] = 'yarn test --watch';
     packageFile.scripts['test-coverage'] = 'yarn test --coverage';
     packageFile.scripts['test-coverage-upload'] =
