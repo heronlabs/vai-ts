@@ -1,0 +1,37 @@
+export const travisConfig = (): string => {
+  const template = `
+language: node_js
+node_js:
+  - 14
+
+branches:
+  only:
+    - main
+
+before_script:
+  - yarn
+
+script:
+  - yarn lint
+  - yarn test-coverage-upload
+  - yarn compile
+  - yarn docs
+
+deploy:
+  - provider: npm
+    skip_cleanup: true
+    email: $NPM_EMAIL
+    api_key: $NPM_TOKEN
+    on:
+      branch: main
+
+  - provider: pages
+    skip_cleanup: true
+    local_dir: docs/
+    github_token: $GITHUB_TOKEN
+    on:
+      branch: main  
+`;
+
+  return template.trimStart();
+};
