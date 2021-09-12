@@ -1,22 +1,15 @@
 import {Command} from '../command.enum';
-import {GTS} from '../../third-parties/gts/gts.service';
+import {GTS} from '../../options/third-parties/gts/gts.service';
+import {IPrint} from '../../services/print/print.interface';
 import {Init} from './init.service';
-import {Jest} from '../../third-parties/jest/jest.service';
-import {Mock} from 'moq.ts';
-import {Skeleton} from '../../skeleton/skeleton.service';
-import {Travis} from '../../dev-ops/travis/travis.service';
 import {InitQuestions} from './init.questions';
+import {Jest} from '../../options/third-parties/jest/jest.service';
+import {Mock} from 'moq.ts';
+import {Skeleton} from '../../options/skeleton/skeleton.service';
+import {Travis} from '../../options/dev-ops/travis/travis.service';
 import inquirer = require('inquirer');
 
-jest.mock('ora', () => () => ({
-  start: () => ({
-    stopAndPersist: () => {},
-  }),
-}));
-
 describe('Init', () => {
-  jest.spyOn(global.console, 'log').mockImplementation();
-
   const gtsMock = new Mock<GTS>();
   gtsMock.setup(instance => instance.init).returns(jest.fn());
   const gts = gtsMock.object();
@@ -33,7 +26,11 @@ describe('Init', () => {
   skeletonMock.setup(instance => instance.init).returns(jest.fn());
   const skeleton = skeletonMock.object();
 
-  const init = new Init(gts, _jest, travis, skeleton);
+  const printMock = new Mock<IPrint>();
+  printMock.setup(instance => instance.log).returns(jest.fn());
+  const print = printMock.object();
+
+  const init = new Init(gts, _jest, travis, skeleton, print);
 
   describe('Ask questions', () => {
     it('Should ask the project name', async () => {

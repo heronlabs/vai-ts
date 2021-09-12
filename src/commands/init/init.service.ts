@@ -1,10 +1,12 @@
+import {BackgroundColor, Color} from '../../services/print/print-options.model';
+import {InitQuestion, InitQuestions} from './init.questions';
+
 import {Command} from '../command.enum';
 import {ICommand} from '../command.interface';
 import {IInit} from './init.interface';
+import {IPrint} from '../../services/print/print.interface';
+
 import inquirer = require('inquirer');
-import {InitQuestion, InitQuestions} from './init.questions';
-import ora = require('ora');
-import chalk = require('chalk');
 
 /**
  * Class responsible for implement the init command.
@@ -20,7 +22,6 @@ export class Init implements ICommand {
    * @returns Answers from input.
    */
   async askQuestions(): Promise<InitQuestion> {
-    console.log(chalk.white.bgCyan.bold(' [1/3] Asking '));
     const questions = [
       {
         name: InitQuestions.PROJECT_NAME,
@@ -58,43 +59,19 @@ export class Init implements ICommand {
    * @param answers Answers from terminal input.
    */
   private async work(answers: InitQuestion): Promise<void> {
-    console.log(chalk.white.bgBlue.bold(' [2/3] Working '));
-    const progressRoot = ora('Initialize Node resources...').start();
     const projectName = answers[InitQuestions.PROJECT_NAME];
     await this.skeleton.init(projectName);
 
-    progressRoot.stopAndPersist({
-      symbol: '📦',
-      text: 'All done initializing Node!',
-    });
-
     if (answers[InitQuestions.THIRD_PARTY_GTS]) {
-      const progressGTS = ora(
-        'Initialize Google Typescript resources...'
-      ).start();
       await this.gts.init(projectName);
-      progressGTS.stopAndPersist({
-        symbol: '📘',
-        text: 'All done initializing Google Typescript!',
-      });
     }
 
     if (answers[InitQuestions.THIRD_PARTY_JEST]) {
-      const progressJest = ora('Initialize Jest resources...').start();
       await this.jest.init(projectName);
-      progressJest.stopAndPersist({
-        symbol: '🃏',
-        text: 'All done initializing Jest!',
-      });
     }
 
     if (answers[InitQuestions.DEV_OPS_TRAVIS]) {
-      const progressTravis = ora('Initialize Travis resources...').start();
       await this.travis.init(projectName);
-      progressTravis.stopAndPersist({
-        symbol: '🤖',
-        text: 'All done initializing Travis!',
-      });
     }
   }
 
@@ -102,9 +79,22 @@ export class Init implements ICommand {
    * Ask and work in which packages should be initialize.
    */
   async run(): Promise<void> {
+    this.print.log(' [1/3] Asking ', {
+      color: Color.WHITE,
+      backgroundColor: BackgroundColor.BG_CYAN,
+    });
     const answers = await this.askQuestions();
+
+    this.print.log(' [2/3] Working ', {
+      color: Color.WHITE,
+      backgroundColor: BackgroundColor.BG_BLUE,
+    });
     await this.work(answers);
-    console.log(chalk.white.bgGreen.bold(' [3/3] Finish '));
+
+    this.print.log(' [3/3] Finish ', {
+      color: Color.WHITE,
+      backgroundColor: BackgroundColor.BG_GREEN,
+    });
   }
 
   /**
@@ -118,6 +108,7 @@ export class Init implements ICommand {
     private gts: IInit,
     private jest: IInit,
     private travis: IInit,
-    private skeleton: IInit
+    private skeleton: IInit,
+    private print: IPrint
   ) {}
 }
