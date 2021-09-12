@@ -8,7 +8,7 @@
     "src/**/*.ts"
   ],
   "exclude": [
-    "src/skeleton/templates/src/*.ts",
-    "src/third-parties/jest/templates/*.ts"
+    "src/options/skeleton/templates/src/*.ts",
+    "src/options/third-parties/jest/templates/*.ts"
   ]
 }
