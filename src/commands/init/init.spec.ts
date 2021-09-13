@@ -1,13 +1,13 @@
 import {Command} from '../command.enum';
 import {GTS} from '../../options/third-parties/gts/gts.service';
 import {IPrint} from '../../services/print/print.interface';
+import {IPrompt} from '../../services/prompt/prompt.interface';
 import {Init} from './init.service';
 import {InitQuestions} from './init.questions';
 import {Jest} from '../../options/third-parties/jest/jest.service';
 import {Mock} from 'moq.ts';
 import {Skeleton} from '../../options/skeleton/skeleton.service';
 import {Travis} from '../../options/dev-ops/travis/travis.service';
-import inquirer = require('inquirer');
 
 describe('Init', () => {
   const gtsMock = new Mock<GTS>();
@@ -30,33 +30,26 @@ describe('Init', () => {
   printMock.setup(instance => instance.log).returns(jest.fn());
   const print = printMock.object();
 
-  const init = new Init(gts, _jest, travis, skeleton, print);
+  const promptMock = new Mock<IPrompt>();
 
-  describe('Ask questions', () => {
-    it('Should ask the project name', async () => {
-      jest
-        .spyOn(inquirer, 'prompt')
-        .mockImplementation()
-        .mockResolvedValue({[InitQuestions.PROJECT_NAME]: 'project-name'});
+  const prompt = promptMock.object();
 
-      const answers = await init.askQuestions();
-
-      expect(answers).toEqual({[InitQuestions.PROJECT_NAME]: 'project-name'});
-    });
-  });
+  const init = new Init(gts, _jest, travis, skeleton, print, prompt);
 
   describe('Run', () => {
     it('Should run with my-test-project with GTS with Jest', async () => {
       const projectName = 'my-test-project';
-      const answersSpy = jest
-        .spyOn(init, 'askQuestions')
-        .mockImplementation()
-        .mockResolvedValue({
-          [InitQuestions.PROJECT_NAME]: projectName,
-          [InitQuestions.THIRD_PARTY_GTS]: true,
-          [InitQuestions.THIRD_PARTY_JEST]: true,
-          [InitQuestions.DEV_OPS_TRAVIS]: true,
-        });
+
+      promptMock
+        .setup(instance => instance.askQuestions)
+        .returns(
+          jest.fn().mockResolvedValue({
+            [InitQuestions.PROJECT_NAME]: projectName,
+            [InitQuestions.THIRD_PARTY_GTS]: true,
+            [InitQuestions.THIRD_PARTY_JEST]: true,
+            [InitQuestions.DEV_OPS_TRAVIS]: true,
+          })
+        );
 
       const skeletonSpy = jest.spyOn(skeleton, 'init').mockImplementation();
       const gtsSpy = jest.spyOn(gts, 'init').mockImplementation();
@@ -65,7 +58,6 @@ describe('Init', () => {
 
       await init.run();
 
-      expect(answersSpy).toHaveBeenCalledWith();
       expect(skeletonSpy).toHaveBeenCalledWith(projectName);
       expect(gtsSpy).toHaveBeenCalledWith(projectName);
       expect(jestSpy).toHaveBeenCalledWith(projectName);
