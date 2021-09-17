@@ -10,11 +10,12 @@ branches:
 before_script:
   - yarn
 
+# Must change
 script:
- - yarn lint
- - yarn test-coverage-upload
- - yarn build
- - yarn docs
+  - yarn lint
+  - yarn test-coverage-upload
+  - yarn build
+  - yarn docs
 
 deploy:
   - provider: npm

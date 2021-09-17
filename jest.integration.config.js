@@ -5,7 +5,7 @@ module.exports = {
     [
       'jest-junit',
       {
-        outputName: 'junit-TEST.xml',
+        outputName: 'junit-test-integration.xml',
       },
     ],
   ],
@@ -19,9 +19,13 @@ module.exports = {
   },
   setupFiles: ['./jest.setup-file.ts'],
   clearMocks: true,
-  coverageDirectory: 'coverage',
+  coverageDirectory: 'coverage-integration',
   coverageProvider: 'v8',
-  collectCoverageFrom: ['src/**/*.service.ts', 'src/**/*.factory.ts'],
+  collectCoverageFrom: [
+    'src/commands/**/*.service.ts',
+    'src/commands/**/*.factory.ts',
+  ],
   testEnvironment: 'node',
-  testMatch: ['<rootDir>/src/**/*.spec.ts'],
+  testMatch: ['<rootDir>/tests/**/*.spec.ts'],
+  testTimeout: 300000,
 };
