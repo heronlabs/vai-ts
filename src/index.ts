@@ -3,23 +3,27 @@
 
 import 'reflect-metadata';
 
-import {Babel} from './third-parties/babel/babel.service';
-import {GTS} from './third-parties/gts/gts.service';
+import {ChalkService} from './services/print/chalk/print.service';
+import {GTS} from './options/third-parties/gts/gts.service';
 import {Init} from './commands/init/init.service';
-import {Jest} from './third-parties/jest/jest.service';
-import {Skeleton} from './skeleton/skeleton.service';
+import {InquirerService} from './services/prompt/inquirer/prompt.service';
+import {Jest} from './options/third-parties/jest/jest.service';
+import {Skeleton} from './options/skeleton/skeleton.service';
 import {StartUp} from './start-up.service';
-import {Travis} from './dev-ops/travis/travis.service';
+import {Travis} from './options/dev-ops/travis/travis.service';
 import {Version} from './commands/version/version.service';
 
 (async () => {
   try {
-    const babel = new Babel();
     const gts = new GTS();
     const jest = new Jest();
     const skeleton = new Skeleton();
     const travis = new Travis();
-    const init = new Init(babel, gts, jest, travis, skeleton);
+
+    const print = new ChalkService();
+    const prompt = new InquirerService();
+
+    const init = new Init(gts, jest, travis, skeleton, print, prompt);
 
     const version = new Version();
 
@@ -29,6 +33,6 @@ import {Version} from './commands/version/version.service';
 
     await startUp.run(arg0);
   } catch (err) {
-    console.log(err.message);
+    console.log(err);
   }
 })();

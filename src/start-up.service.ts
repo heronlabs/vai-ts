@@ -1,4 +1,4 @@
-import {map, find, includes} from 'lodash';
+import {find} from 'lodash';
 
 import {ICommand} from './commands/command.interface';
 

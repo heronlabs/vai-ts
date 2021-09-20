@@ -1,10 +1,13 @@
+import {BackgroundColor, Color} from '../../services/print/print-options.model';
+import {InitAnswers, InitQuestions} from './init.questions';
+
 import {Command} from '../command.enum';
 import {ICommand} from '../command.interface';
 import {IInit} from './init.interface';
-import inquirer = require('inquirer');
-import {InitQuestion, InitQuestions} from './init.questions';
-import ora = require('ora');
-import chalk = require('chalk');
+import {IPrint} from '../../services/print/print.interface';
+import {IPrompt} from '../../services/prompt/prompt.interface';
+import {Question} from '../../services/prompt/question.model';
+import {QuestionType} from '../../services/prompt/question.enum';
 
 /**
  * Class responsible for implement the init command.
@@ -19,36 +22,37 @@ export class Init implements ICommand {
    * Ask essencial questions for init.
    * @returns Answers from input.
    */
-  async askQuestions(): Promise<InitQuestion> {
-    console.log(chalk.white.bgCyan.bold(' [1/3] Asking '));
-    const questions = [
+  private async askQuestions(): Promise<InitAnswers> {
+    const questions: Question<InitQuestions>[] = [
       {
         name: InitQuestions.PROJECT_NAME,
-        type: 'input',
+        type: QuestionType.INPUT,
         message: 'What is the name of the project?',
         default: 'my-project',
       },
       {
         name: InitQuestions.THIRD_PARTY_GTS,
-        type: 'confirm',
+        type: QuestionType.CONFIRM,
         message: 'Should install GTS?',
         default: true,
       },
       {
         name: InitQuestions.THIRD_PARTY_JEST,
-        type: 'confirm',
+        type: QuestionType.CONFIRM,
         message: 'Should install Jest?',
         default: true,
       },
       {
         name: InitQuestions.DEV_OPS_TRAVIS,
-        type: 'confirm',
+        type: QuestionType.CONFIRM,
         message: 'Should start with Travis?',
         default: true,
       },
     ];
 
-    const answers = await inquirer.prompt<InitQuestion>(questions);
+    const answers = await this.prompt.askQuestions<InitQuestions, InitAnswers>(
+      questions
+    );
 
     return answers;
   }
@@ -57,69 +61,60 @@ export class Init implements ICommand {
    * Initialize all modules asked.
    * @param answers Answers from terminal input.
    */
-  private async work(answers: InitQuestion): Promise<void> {
-    console.log(chalk.white.bgBlue.bold(' [2/3] Working '));
-    const progressRoot = ora('Initialize Node resources...').start();
+  private async initializeModules(answers: InitAnswers): Promise<void> {
     const projectName = answers[InitQuestions.PROJECT_NAME];
     await this.skeleton.init(projectName);
-    await this.babel.init(projectName);
-    progressRoot.stopAndPersist({
-      symbol: '📦',
-      text: 'All done initializing Node!',
-    });
 
     if (answers[InitQuestions.THIRD_PARTY_GTS]) {
-      const progressGTS = ora(
-        'Initialize Google Typescript resources...'
-      ).start();
       await this.gts.init(projectName);
-      progressGTS.stopAndPersist({
-        symbol: '📘',
-        text: 'All done initializing Google Typescript!',
-      });
     }
 
     if (answers[InitQuestions.THIRD_PARTY_JEST]) {
-      const progressJest = ora('Initialize Jest resources...').start();
       await this.jest.init(projectName);
-      progressJest.stopAndPersist({
-        symbol: '🃏',
-        text: 'All done initializing Jest!',
-      });
     }
 
     if (answers[InitQuestions.DEV_OPS_TRAVIS]) {
-      const progressTravis = ora('Initialize Travis resources...').start();
       await this.travis.init(projectName);
-      progressTravis.stopAndPersist({
-        symbol: '🤖',
-        text: 'All done initializing Travis!',
-      });
     }
   }
 
   /**
-   * Ask and work in which packages should be initialize.
+   * Ask and initialize modules in which packages should be initialize.
    */
   async run(): Promise<void> {
+    this.print.log(' [1/3] Asking ', {
+      color: Color.WHITE,
+      backgroundColor: BackgroundColor.BG_CYAN,
+    });
     const answers = await this.askQuestions();
-    await this.work(answers);
-    console.log(chalk.white.bgGreen.bold(' [3/3] Finish '));
+
+    this.print.log(' [2/3] Working ', {
+      color: Color.WHITE,
+      backgroundColor: BackgroundColor.BG_BLUE,
+    });
+    await this.initializeModules(answers);
+
+    this.print.log(' [3/3] Finish ', {
+      color: Color.WHITE,
+      backgroundColor: BackgroundColor.BG_GREEN,
+    });
   }
 
   /**
    * The third-parties.
-   * @param babel Babel.
    * @param gts Google Typescript.
    * @param jest Jest.
    * @param travis Travis CI.
    * @param skeleton Skeleton.
+   * @param print Service for print in console.
+   * @param prompt Service for prompt in console.
    */
   constructor(
-    private babel: IInit,
     private gts: IInit,
     private jest: IInit,
     private travis: IInit,
-    private skeleton: IInit
+    private skeleton: IInit,
+    private print: IPrint,
+    private prompt: IPrompt
   ) {}
 }
