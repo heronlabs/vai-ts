@@ -24,6 +24,8 @@ module.exports = {
   collectCoverageFrom: [
     'src/commands/**/*.service.ts',
     'src/commands/**/*.factory.ts',
+    'src/options/**/*.service.ts',
+    'src/options/**/*.factory.ts',
   ],
   testEnvironment: 'node',
   testMatch: ['<rootDir>/tests/**/*.spec.ts'],
