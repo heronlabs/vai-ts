@@ -3,4 +3,4 @@ node_modules/
 coverage/
 docs/
 .vscode/
-src/third-parties/gts/templates/
+src/options/third-parties/gts/templates/
