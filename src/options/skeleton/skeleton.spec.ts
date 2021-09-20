@@ -69,7 +69,7 @@ describe('Skeleton', () => {
 
       expect(writeFileSyncSpy).toHaveBeenCalledWith(
         `${projectName}/package.json`,
-        JSON.stringify(updatedPackageFile, null, 2)
+        JSON.stringify(updatedPackageFile, null, 2).concat('\n')
       );
     });
   });

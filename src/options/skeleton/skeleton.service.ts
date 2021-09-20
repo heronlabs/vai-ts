@@ -43,7 +43,9 @@ export class Skeleton implements IInit {
 
     packageFile.name = projectName;
 
-    const updatedPackageFile = JSON.stringify(packageFile, null, 2);
+    const updatedPackageFile = JSON.stringify(packageFile, null, 2).concat(
+      '\n'
+    );
 
     fs.writeFileSync(`${projectName}/package.json`, updatedPackageFile);
   }

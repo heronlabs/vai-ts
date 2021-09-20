@@ -49,7 +49,9 @@ export class Jest implements IInit {
     packageFile.scripts['test-coverage-upload'] =
       'yarn test-coverage && codecov';
 
-    const updatedPackageFile = JSON.stringify(packageFile, null, 2);
+    const updatedPackageFile = JSON.stringify(packageFile, null, 2).concat(
+      '\n'
+    );
 
     fs.writeFileSync(`${projectName}/package.json`, updatedPackageFile);
   }

@@ -44,7 +44,9 @@ export class GTS implements IInit {
     packageFile.scripts['lint-clean'] = 'gts clean';
     packageFile.scripts['lint-fix'] = 'gts fix';
 
-    const updatedPackageFile = JSON.stringify(packageFile, null, 2);
+    const updatedPackageFile = JSON.stringify(packageFile, null, 2).concat(
+      '\n'
+    );
 
     fs.writeFileSync(`${projectName}/package.json`, updatedPackageFile);
   }
