@@ -111,3 +111,6 @@ __TEST__
 
 # NPM Registry
 .npmrc
+
+# Typedoc
+docs

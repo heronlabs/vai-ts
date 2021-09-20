@@ -14,8 +14,8 @@ script:
   - yarn lint
   - yarn test:unit:coverage-upload
   - yarn test:integration:coverage
-  - yarn build
   - yarn docs
+  - yarn build
 
 deploy:
   - provider: npm
