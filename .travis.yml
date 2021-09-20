@@ -10,10 +10,10 @@ branches:
 before_script:
   - yarn
 
-# Must change
 script:
   - yarn lint
-  - yarn test-coverage-upload
+  - yarn test:unit:coverage-upload
+  - yarn test:integration:coverage
   - yarn build
   - yarn docs
 
