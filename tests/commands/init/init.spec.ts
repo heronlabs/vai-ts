@@ -62,6 +62,19 @@ describe('Given Init command', () => {
     expect(packageJsonFile.original).toEqual(packageJsonFile.created);
   });
 
+  it('Should copy git ignore file', () => {
+    const gitIgnoreFile = {
+      original: readFileSync(
+        `${process.cwd()}/src/options/skeleton/templates/.gitignore`
+      ).toString(),
+      created: readFileSync(
+        `${process.cwd()}/${projectName}/.gitignore`
+      ).toString(),
+    };
+
+    expect(gitIgnoreFile.original).toEqual(gitIgnoreFile.created);
+  });
+
   it('Should initialize Travis with .travis.yml', () => {
     const travisFile = {
       original: travisConfig(),
