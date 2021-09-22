@@ -1,6 +1,8 @@
 node_modules
 coverage
+coverage-unit
+coverage-integration
 docs
-test
+tests
 src
 .vscode
