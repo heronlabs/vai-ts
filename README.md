@@ -29,6 +29,9 @@ vai-ts init
 vai-ts version
 ```
 
+### Erros conhecidos
+[.gitignore became .npmignore](https://github.com/npm/npm/issues/3763)
+
 ### Documentação TypeDoc:
 
 [https://lucaslacerdacl.github.io/vai-ts/](https://lucaslacerdacl.github.io/vai-ts/)
