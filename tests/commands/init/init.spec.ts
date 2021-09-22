@@ -49,7 +49,7 @@ describe('Given Init command', () => {
     rmdirSync(`${process.cwd()}/${projectName}`, {recursive: true});
   });
 
-  it('Should install all dependecies and add scripts in package.json', () => {
+  it('Should initialize Skelton with package.json', () => {
     const packageJsonFile = {
       original: readFileSync(
         `${process.cwd()}/tests/commands/init/templates/package.json`
@@ -62,7 +62,7 @@ describe('Given Init command', () => {
     expect(packageJsonFile.original).toEqual(packageJsonFile.created);
   });
 
-  it('Should copy git ignore file', () => {
+  it('Should initialize Skelton with .gitignore', () => {
     const gitIgnoreFile = {
       original: readFileSync(
         `${process.cwd()}/src/options/skeleton/templates/.gitignore`
