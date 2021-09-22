@@ -11,3 +11,12 @@ for file in $files; do
   targetFileFolder=$(echo "${targetFile%/*}")
   mkdir -p $targetFileFolder; cp $file $targetFile;
 done;
+
+# Move ts files without compiling them
+
+## Jest
+cp ./src/options/third-parties/jest/templates/jest.setup-file.ts ./build/src/options/third-parties/jest/templates/
+
+## Skeleton
+mkdir ./build/src/options/skeleton/templates/src
+cp ./src/options/skeleton/templates/src/index.ts ./build/src/options/skeleton/templates/src/
