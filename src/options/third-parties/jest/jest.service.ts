@@ -18,7 +18,7 @@ export class Jest implements IInit {
   async installJest(projectName: string): Promise<void> {
     await execInProjectFolder(
       projectName,
-      'yarn add -D @types/jest babel-jest jest jest-junit ts-jest moq.ts codecov winston'
+      'yarn add -D @types/jest jest jest-junit ts-jest moq.ts winston'
     );
   }
 

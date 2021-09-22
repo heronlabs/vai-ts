@@ -23,7 +23,7 @@ describe('Jest', () => {
 
     expect(execInProjectFolderSpy).toHaveBeenCalledWith(
       projectName,
-      'yarn add -D @types/jest babel-jest jest jest-junit ts-jest moq.ts codecov winston'
+      'yarn add -D @types/jest jest jest-junit ts-jest moq.ts winston'
     );
   });
 
