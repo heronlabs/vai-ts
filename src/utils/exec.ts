@@ -31,5 +31,5 @@ export const copyInProjectFolder = async (
   projectFolder: string,
   sourceFolder: string
 ) => {
-  await execInProjectFolder(projectFolder, `rsync -r ${sourceFolder}/. ./`);
+  await execInProjectFolder(projectFolder, `rsync -r ${sourceFolder}/ ./`);
 };
