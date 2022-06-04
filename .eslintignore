@@ -1,6 +1,0 @@
-build/
-node_modules/
-coverage/
-docs/
-.vscode/
-src/options/third-parties/gts/templates/

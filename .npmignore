@@ -1,8 +1,0 @@
-node_modules
-coverage
-coverage-unit
-coverage-integration
-docs
-tests
-src
-.vscode

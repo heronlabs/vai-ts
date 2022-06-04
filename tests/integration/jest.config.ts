@@ -1,0 +1,14 @@
+import type {Config} from '@jest/types';
+
+import baseConfig from '../../jest.config';
+
+const config: Config.InitialOptions = {
+  ...baseConfig,
+  testTimeout: 10000,
+  collectCoverageFrom: ['src/**/*.ts'],
+  coverageDirectory: 'coverage/integration',
+  testMatch: ['<rootDir>/tests/integration/**/*.spec.ts'],
+  setupFilesAfterEnv: ['<rootDir>/tests/integration/directory-setup.ts'],
+};
+
+export default config;
