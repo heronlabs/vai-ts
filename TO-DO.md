@@ -32,4 +32,4 @@ comando version
 unlink é apenas para arquivos.
 readstream com buffer.
 promise e readstream.
-jest roots apenas para src e tests
+jest roots apenas para src e tests hastimpl BOILERPLATE

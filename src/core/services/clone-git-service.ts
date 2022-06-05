@@ -1,12 +1,15 @@
+import {Inject} from '@nestjs/common';
 import axios from 'axios';
 import {renameSync} from 'fs';
-import {Readable} from 'stream';
-import {Extract} from 'unzipper';
 
+import {CompressedFile} from '../../infrastructure/zip/core/interfaces/compressed-file';
 import {RepositoryEntity} from '../entities/repository-entity';
 import {CloneGit} from '../interfaces/clone-git';
 
 export class CloneBoilerplateService implements CloneGit {
+  constructor(
+    @Inject('CompressedFile') private readonly compressedFile: CompressedFile
+  ) {}
   public async clone(
     targetFolderName: string,
     repository: RepositoryEntity
@@ -15,19 +18,7 @@ export class CloneBoilerplateService implements CloneGit {
       responseType: 'arraybuffer',
     });
 
-    await new Promise((resolve, reject) => {
-      const readableInstanceStream = new Readable({
-        read() {
-          this.push(file.data);
-          this.push(null);
-        },
-      });
-
-      readableInstanceStream
-        .pipe(Extract({path: '.'}))
-        .on('error', reject)
-        .on('finish', resolve);
-    });
+    await this.compressedFile.unzip(file.data);
 
     renameSync(
       `./${repository.name}-${repository.branch}`,
