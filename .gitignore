@@ -109,4 +109,4 @@ bin/
 .vscode
 
 # Generated Folders
-BOILERPLATE/
+.temp/

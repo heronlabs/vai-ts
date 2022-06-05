@@ -1,16 +1,17 @@
 import {Module, ModuleMetadata} from '@nestjs/common';
 
 import {ZipCoreBootstrap} from '../infrastructure/zip/zip-core-bootstrap';
-import {CloneBoilerplateService} from './services/clone-git-service';
+import {CloneBoilerplateService} from './services/clone-boilerplate-service';
 
 export const coreModule: ModuleMetadata = {
+  imports: [ZipCoreBootstrap],
   providers: [
     {
       useClass: CloneBoilerplateService,
       provide: 'CloneBoilerplate',
     },
   ],
-  imports: [ZipCoreBootstrap],
+  exports: ['CloneBoilerplate'],
 };
 
 @Module(coreModule)

@@ -8,7 +8,6 @@ const config: Config.InitialOptions = {
   collectCoverageFrom: ['src/**/*.ts'],
   coverageDirectory: 'coverage/integration',
   testMatch: ['<rootDir>/tests/integration/**/*.spec.ts'],
-  setupFilesAfterEnv: ['<rootDir>/tests/integration/directory-setup.ts'],
 };
 
 export default config;

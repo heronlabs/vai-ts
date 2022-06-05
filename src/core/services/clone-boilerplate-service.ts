@@ -1,5 +1,6 @@
 import {Inject} from '@nestjs/common';
 import axios from 'axios';
+import {execSync} from 'child_process';
 import {renameSync} from 'fs';
 
 import {CompressedFile} from '../../infrastructure/zip/core/interfaces/compressed-file';
@@ -10,6 +11,7 @@ export class CloneBoilerplateService implements CloneGit {
   constructor(
     @Inject('CompressedFile') private readonly compressedFile: CompressedFile
   ) {}
+
   public async clone(
     targetFolderName: string,
     repository: RepositoryEntity
@@ -24,6 +26,10 @@ export class CloneBoilerplateService implements CloneGit {
       `./${repository.name}-${repository.branch}`,
       `./${targetFolderName}`
     );
+
+    execSync('yarn', {
+      cwd: `./${targetFolderName}`,
+    });
 
     return targetFolderName;
   }

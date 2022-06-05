@@ -1,10 +1,10 @@
 import {faker} from '@faker-js/faker';
 import {Mock} from 'moq.ts';
 
-import {ZipReadableEntity} from '../../../../../src/infrastructure/zip/core/entities/zip-readable-entity';
-import {CompressedFile} from '../../../../../src/infrastructure/zip/core/interfaces/compressed-file';
-import {UnzipService} from '../../../../../src/infrastructure/zip/core/services/unzip-service';
-import {readableMock, readableMoq} from '../../../__mocks__/readable-mock';
+import {ZipReadableEntity} from '../../../../../../src/infrastructure/zip/core/entities/zip-readable-entity';
+import {CompressedFile} from '../../../../../../src/infrastructure/zip/core/interfaces/compressed-file';
+import {UnzipService} from '../../../../../../src/infrastructure/zip/core/services/unzip-service';
+import {readableMock, readableMoq} from '../../../../__mocks__/readable-mock';
 
 describe('Given Unzip Service', () => {
   let service: CompressedFile;
