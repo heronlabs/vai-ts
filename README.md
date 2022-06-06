@@ -1,6 +1,11 @@
 <img src="https://cdn.discordapp.com/attachments/983205521546956870/983205960568934470/unknown.png" alt="drawing" width="150"/>
 
-# Vai TS
+# Vai TS 
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Build Status](https://app.travis-ci.com/heronlabs/vai-ts.svg?branch=main)](https://app.travis-ci.com/heronlabs/vai-ts)
+
+#
 
 [![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 [![GTS](https://img.shields.io/badge/GTS-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://github.com/google/gts)
