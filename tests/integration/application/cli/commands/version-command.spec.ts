@@ -13,7 +13,7 @@ describe('Given Version Command', () => {
     command = moduleRef.get(VersionCommand);
   });
 
-  it('Should match init boilerplate command name', () => {
+  it('Should match version command name', () => {
     const name = command.getName();
 
     expect(name).toBe(Commands.VERSION);
