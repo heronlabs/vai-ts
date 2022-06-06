@@ -6,12 +6,12 @@
   "author": "Lucas <lucaslacerdacl@gmail.com>",
   "license": "MIT",
   "private": false,
-  "main": "bin/src/application/terminal-entry-point.js",
+  "main": "bin/src/application/terminal/terminal-entry-point.js",
   "files": [
-    "/build"
+    "/bin"
   ],
   "bin": {
-    "vai-ts": "bin/src/application/terminal-entry-point.js"
+    "vai-ts": "bin/src/application/terminal/terminal-entry-point.js"
   },
   "scripts": {
     "compile": "rm -rf ./bin && tsc --project tsconfig.production.json",
@@ -20,12 +20,14 @@
     "test": "jest --runInBand --colors",
     "test:unit": "yarn test --config=tests/unit/jest.config.ts",
     "test:integration": "yarn test --config=tests/integration/jest.config.ts",
-    "test:e2e": "yarn test --config=tests/e2e/jest.config.ts"
+    "docker:build": "docker build -t vai-ts .",
+    "docker:run": "docker run --rm -it vai-ts /bin/sh"
   },
   "devDependencies": {
     "@faker-js/faker": "6.1.2",
     "@jest/types": "27.5.1",
     "@nestjs/testing": "^8.4.6",
+    "@types/inquirer": "7.3.1",
     "@types/jest": "26.0.23",
     "eslint-plugin-simple-import-sort": "7.0.0",
     "gts": "3.1.0",
@@ -34,15 +36,15 @@
     "moq.ts": "7.3.4",
     "ts-jest": "27.0.5",
     "ts-node": "10.8.1",
-    "typescript": "4.7.2"
+    "typescript": "4.4.3"
   },
   "dependencies": {
     "@nestjs/common": "^8.4.6",
     "@nestjs/core": "^8.4.6",
-    "@types/axios": "^0.14.0",
     "@types/lodash": "^4.14.168",
     "@types/unzipper": "0.10.5",
     "axios": "^0.27.2",
+    "inquirer": "8.1.0",
     "lodash": "^4.17.21",
     "reflect-metadata": "^0.1.13",
     "unzipper": "0.10.11"

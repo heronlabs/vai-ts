@@ -5,7 +5,10 @@ import baseConfig from '../../jest.config';
 const config: Config.InitialOptions = {
   ...baseConfig,
   testTimeout: 10000,
-  collectCoverageFrom: ['src/**/*.ts'],
+  collectCoverageFrom: [
+    '<rootDir>/src/**/*.ts',
+    '!<rootDir>/src/application/terminal/**',
+  ],
   coverageDirectory: 'coverage/integration',
   testMatch: ['<rootDir>/tests/integration/**/*.spec.ts'],
 };

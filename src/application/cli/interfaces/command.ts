@@ -1,4 +1,4 @@
 export interface Command {
   getName(): string;
-  run(): Promise<void>;
+  run(options?: unknown): Promise<void>;
 }

@@ -1,36 +1,29 @@
-import {Inject} from '@nestjs/common';
 import axios from 'axios';
-import {execSync} from 'child_process';
 import {renameSync} from 'fs';
+import {Extract} from 'unzipper';
 
-import {CompressedFile} from '../../infrastructure/zip/core/interfaces/compressed-file';
 import {RepositoryEntity} from '../entities/repository-entity';
+import {ZipReadableEntity} from '../entities/zip-readable-entity';
 import {CloneGit} from '../interfaces/clone-git';
 
 export class CloneBoilerplateService implements CloneGit {
-  constructor(
-    @Inject('CompressedFile') private readonly compressedFile: CompressedFile
-  ) {}
-
   public async clone(
-    targetFolderName: string,
+    targetDirectory: string,
     repository: RepositoryEntity
   ): Promise<string> {
     const file = await axios.get<Buffer>(repository.zipUri, {
       responseType: 'arraybuffer',
     });
 
-    await this.compressedFile.unzip(file.data);
+    const readableInstanceStream = ZipReadableEntity.make(file.data);
+
+    await readableInstanceStream.pipe(Extract({path: '.'})).promise();
 
     renameSync(
       `./${repository.name}-${repository.branch}`,
-      `./${targetFolderName}`
+      `./${targetDirectory}`
     );
 
-    execSync('yarn', {
-      cwd: `./${targetFolderName}`,
-    });
-
-    return targetFolderName;
+    return targetDirectory;
   }
 }
