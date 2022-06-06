@@ -21,7 +21,7 @@ npm install -g vai-ts
 
 ### Inicialização de boilerplate 
 
-* Opção de boilerplate atual (vai-ts-boilerplate)[https://github.com/heronlabs/vai-ts-boilerplate].
+* Opção de boilerplate atual [vai-ts-boilerplate](https://github.com/heronlabs/vai-ts-boilerplate).
 
 ```
 vai-ts init-boilerplate
