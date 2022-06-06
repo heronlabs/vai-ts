@@ -1,58 +1,79 @@
 {
   "name": "vai-ts",
-  "version": "4.0.5",
+  "version": "5.0.0",
   "description": "Projeto criado para inicializar projetos com Typescript",
-  "repository": "git@github.com:lucaslacerdacl/vai-ts.git",
+  "repository": "git@github.com:heronlabs/vai-ts.git",
   "author": "Lucas <lucaslacerdacl@gmail.com>",
   "license": "MIT",
   "private": false,
-  "main": "build/src/index.js",
+  "main": "bin/src/application/terminal/terminal-entry-point.js",
   "files": [
-    "/build"
+    "/bin"
   ],
   "bin": {
-    "vai-ts": "build/src/index.js"
+    "vai-ts": "bin/src/application/terminal/terminal-entry-point.js"
   },
   "scripts": {
-    "build": "sh ./scripts/build.sh",
+    "compile": "rm -rf ./bin && tsc --project tsconfig.production.json",
     "lint": "gts lint",
-    "lint-clean": "gts clean",
-    "lint-fix": "gts fix",
-    "compile": "tsc --project tsconfig.production.json",
-    "compile-watch": "yarn:compile --watch",
-    "test:unit": "jest --config=jest.unit.config.js --runInBand --detectOpenHandles --colors --verbose --reporters=default",
-    "test:unit:watch": "yarn test:unit --watch",
-    "test:unit:coverage": "yarn test:unit --coverage",
-    "test:unit:coverage-upload": "yarn test:unit:coverage && codecov",
-    "test:integration": "jest --config=jest.integration.config.js --runInBand --detectOpenHandles --colors --verbose --reporters=default",
-    "test:integration:watch": "yarn test:integration --watch",
-    "test:integration:coverage": "yarn test:integration --coverage --no-cache --ci",
-    "docs": "typedoc src/*.ts src/**/*.ts"
+    "lint:fix": "gts fix",
+    "test": "jest --runInBand --colors",
+    "test:unit": "yarn test --config=tests/unit/jest.config.ts",
+    "test:integration": "yarn test --config=tests/integration/jest.config.ts",
+    "docker:build": "docker build -t vai-ts .",
+    "docker:run": "docker run --rm -it vai-ts /bin/sh"
   },
   "devDependencies": {
-    "@types/chalk": "^2.2.0",
-    "@types/inquirer": "^7.3.1",
-    "@types/jest": "^26.0.22",
-    "@types/node": "^14.11.2",
-    "@types/ora": "^3.2.0",
-    "codecov": "^3.8.1",
-    "gts": "^3.1.0",
-    "jest": "^26.6.3",
-    "jest-junit": "^12.0.0",
-    "moq.ts": "^7.3.4",
-    "nodemon": "^2.0.7",
-    "ts-jest": "^26.5.4",
-    "typedoc": "^0.20.35",
-    "typescript": "^4.0.3",
-    "winston": "^3.3.3"
+    "@faker-js/faker": "6.1.2",
+    "@jest/types": "27.5.1",
+    "@nestjs/testing": "^8.4.6",
+    "@types/inquirer": "7.3.1",
+    "@types/jest": "26.0.23",
+    "eslint-plugin-simple-import-sort": "7.0.0",
+    "gts": "3.1.0",
+    "jest": "27.2.3",
+    "jest-junit": "12.3.0",
+    "moq.ts": "7.3.4",
+    "ts-jest": "27.0.5",
+    "ts-node": "10.8.1",
+    "typescript": "4.4.3"
   },
   "dependencies": {
+    "@nestjs/common": "^8.4.6",
+    "@nestjs/core": "^8.4.6",
     "@types/lodash": "^4.14.168",
-    "chalk": "^4.1.1",
-    "inquirer": "^8.1.0",
+    "@types/unzipper": "0.10.5",
+    "axios": "^0.27.2",
+    "inquirer": "8.1.0",
     "lodash": "^4.17.21",
-    "ora": "^5.4.0",
-    "path": "^0.12.7",
-    "reflect-metadata": "^0.1.13"
+    "reflect-metadata": "^0.1.13",
+    "unzipper": "0.10.11"
+  },
+  "prettier": "gts/.prettierrc.json",
+  "eslintConfig": {
+    "extends": "./node_modules/gts/",
+    "plugins": [
+      "simple-import-sort"
+    ],
+    "rules": {
+      "node/no-unpublished-import": 0,
+      "node/no-extraneous-import": 0,
+      "node/no-extraneous-require": 0,
+      "simple-import-sort/exports": "error",
+      "simple-import-sort/imports": "error",
+      "no-process-exit": 0,
+      "@typescript-eslint/no-unused-vars": [
+        "error"
+      ],
+      "max-classes-per-file": [
+        "error",
+        1
+      ]
+    },
+    "ignorePatterns": [
+      "node_modules/",
+      "coverage*/",
+      "bin/"
+    ]
   }
 }
