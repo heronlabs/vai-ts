@@ -13,6 +13,9 @@
   "bin": {
     "vai-ts": "bin/src/application/terminal/terminal-entry-point.js"
   },
+  "engines": {
+    "node": ">=14.17.6"
+  },
   "scripts": {
     "compile": "rm -rf ./bin && tsc --project tsconfig.production.json",
     "lint": "gts lint",
@@ -29,11 +32,14 @@
     "@nestjs/testing": "^8.4.6",
     "@types/inquirer": "7.3.1",
     "@types/jest": "26.0.23",
+    "@types/node": "^17.0.40",
+    "eslint": "^7.10.0",
     "eslint-plugin-simple-import-sort": "7.0.0",
     "gts": "3.1.0",
     "jest": "27.2.3",
     "jest-junit": "12.3.0",
     "moq.ts": "7.3.4",
+    "rxjs": "^7.1.0",
     "ts-jest": "27.0.5",
     "ts-node": "10.8.1",
     "typescript": "4.4.3"

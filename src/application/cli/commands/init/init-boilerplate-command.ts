@@ -41,8 +41,8 @@ export class InitBoilerplateCommand
   async run(answers: InitBoilerplateAnswers): Promise<void> {
     const repositoryEntity = RepositoryEntity.make(
       'vai-ts-boilerplate',
-      'https://github.com/heronlabs/vai-ts-boilerplate/archive/refs/tags/2.1.0.zip',
-      '2.1.0'
+      'https://github.com/heronlabs/vai-ts-boilerplate/archive/refs/tags/2.3.0.zip',
+      '2.3.0'
     );
 
     await this.cloneBoilerplateService.clone(
