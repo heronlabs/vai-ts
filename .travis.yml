@@ -7,7 +7,7 @@ stages:
   - name: Build and test
     if: type = pull_request
   - name: Deploy
-    if: branch = main
+    if: branch = main AND type = push
 
 
 install:
