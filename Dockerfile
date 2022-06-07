@@ -4,6 +4,6 @@ WORKDIR /app
 
 COPY . .
 
-RUN yarn install --fronze-lockfile \
+RUN yarn install --frozen-lockfile \
   && yarn compile \
   && npm link

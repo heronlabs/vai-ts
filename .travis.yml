@@ -6,20 +6,26 @@ node_js:
 branches:
   only:
     - main
+    - /^v[0-9]+.*$/
 
-before_script:
-  - yarn
+install:
+  - yarn install --frozen-lockfile
 
-script:
-  - yarn lint
-  - yarn test:unit --coverage
-  - yarn test:integration --coverage
-  - yarn compile
+jobs:
+  include:
+    - stage: Build and test
+      script:
+        - yarn lint
+        - yarn test:unit --coverage
+        - yarn test:integration --coverage
+        - yarn compile
 
-deploy:
-  - provider: npm
-    skip_cleanup: true
-    email: $NPM_EMAIL
-    api_token: $NPM_TOKEN
-    on:
-      branch: main
+    - stage: Deploy
+      script: yarn compile
+      deploy:
+        - provider: npm
+          skip_cleanup: true
+          email: $NPM_EMAIL
+          api_token: $NPM_TOKEN
+          on:
+            branch: main
