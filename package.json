@@ -6,6 +6,9 @@
   "author": "Lucas <lucaslacerdacl@gmail.com>",
   "license": "MIT",
   "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "bin/src/application/entry-point.js",
   "files": [
     "/bin"
