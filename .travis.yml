@@ -6,7 +6,6 @@ node_js:
 branches:
   only:
     - main
-    - /^v[0-9]+.*$/
 
 install:
   - yarn install --frozen-lockfile
