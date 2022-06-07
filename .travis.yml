@@ -5,7 +5,7 @@ node_js:
 
 stages:
   - name: Build and test
-    if: type = pull_request
+    if: branch = main
   - name: Deploy
     if: branch = main AND type = push
 
