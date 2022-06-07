@@ -1,12 +1,9 @@
-import {Commands} from '../../enums/commands';
-import {Command} from '../../interfaces/command';
+import {Command, CommandRunner} from 'nest-commander';
 
-export class VersionCommand implements Command {
-  getName(): string {
-    return Commands.VERSION;
-  }
-
+@Command({name: 'version', description: 'Print current version'})
+export class VersionCommand implements CommandRunner {
   async run(): Promise<void> {
+    // FIXME: Show package.json version.
     console.log('v1');
   }
 }

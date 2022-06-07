@@ -1,21 +1,21 @@
 import {Inject} from '@nestjs/common';
+import {Command, CommandRunner, Option} from 'nest-commander';
 
 import {RepositoryEntity} from '../../../../core/entities/repository-entity';
 import {CloneGit} from '../../../../core/interfaces/clone-git';
 import {InstallPackages} from '../../../../core/interfaces/install-packages';
 import {CloneBoilerplateService} from '../../../../core/services/clone-boilerplate-service';
 import {InstallBoilerplatePackagesService} from '../../../../core/services/install-boilerplate-packages-service';
-import {InitBoilerplateAnswers} from '../../../terminal/answers/init-boilerplate-answers';
-import {Commands} from '../../enums/commands';
-import {QuestionType} from '../../enums/question-type';
-import {Command} from '../../interfaces/command';
-import {Options} from '../../interfaces/options';
-import {Question} from '../../interfaces/question/question';
-import {InitBoilerplateQuestions} from './init-boilerplate-questions';
+import {
+  InitBoilerplateAnswers,
+  InitBoilerplateOptions,
+} from './init-boilerplate-options';
 
-export class InitBoilerplateCommand
-  implements Command, Options<InitBoilerplateQuestions>
-{
+@Command({
+  name: 'init-boilerplate',
+  description: 'Initialize typescript boilerplate',
+})
+export class InitBoilerplateCommand implements CommandRunner {
   constructor(
     @Inject(CloneBoilerplateService)
     private readonly cloneBoilerplateService: CloneGit,
@@ -23,22 +23,16 @@ export class InitBoilerplateCommand
     private readonly installBoilerplatePackagesService: InstallPackages
   ) {}
 
-  getName(): string {
-    return Commands.INIT_BOILERPLATE;
+  @Option({
+    flags: `-p, --project-name [${InitBoilerplateOptions.PROJECT_NAME}]`,
+    description: 'The project name',
+    defaultValue: 'my-project',
+  })
+  public parseProjectName(val: string): string {
+    return val;
   }
 
-  getQuestions(): Question<InitBoilerplateQuestions>[] {
-    return [
-      {
-        name: InitBoilerplateQuestions.PROJECT_NAME,
-        type: QuestionType.INPUT,
-        message: 'What is the name of the project?',
-        default: 'my-project',
-      },
-    ];
-  }
-
-  async run(answers: InitBoilerplateAnswers): Promise<void> {
+  async run(_args: string[], options: InitBoilerplateAnswers): Promise<void> {
     const repositoryEntity = RepositoryEntity.make(
       'vai-ts-boilerplate',
       'https://github.com/heronlabs/vai-ts-boilerplate/archive/refs/tags/2.3.0.zip',
@@ -46,10 +40,10 @@ export class InitBoilerplateCommand
     );
 
     await this.cloneBoilerplateService.clone(
-      answers.projectName,
+      this.parseProjectName(options.projectName),
       repositoryEntity
     );
 
-    await this.installBoilerplatePackagesService.install(answers.projectName);
+    await this.installBoilerplatePackagesService.install(options.projectName);
   }
 }

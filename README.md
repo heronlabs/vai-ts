@@ -19,29 +19,24 @@
 ### Instalação
 
 ```
-npm install -g vai-ts
+npm install -g @heronlabs/vai-ts
 ```
 
-### Opções
-
-### Inicialização de boilerplate 
-
-* Opção de boilerplate atual [vai-ts-boilerplate](https://github.com/heronlabs/vai-ts-boilerplate).
+### Uso
 
 ```
-vai-ts init-boilerplate
-```
+Usage: entry-point [options] [command]
 
-### Version
+Options:
+  -h, --help                  display help for command
 
-* Versão atual: v1.
-
-```
-vai-ts version
+Commands:
+  init-boilerplate [options]  Initialize typescript boilerplate
+  version                     Print current version
+  help [command]              display help for command
 ```
 
 ## Construido com
 
 - [axios](https://github.com/axios)
-- [inquirer](https://github.com/SBoudrias/Inquirer.js/)
 - [unzipper](https://github.com/ZJONSSON/node-unzipper)

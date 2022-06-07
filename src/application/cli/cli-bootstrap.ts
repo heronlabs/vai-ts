@@ -7,7 +7,6 @@ import {VersionCommand} from './commands/version/version-command';
 export const cliModule: ModuleMetadata = {
   imports: [CoreBootstrap],
   providers: [InitBoilerplateCommand, VersionCommand],
-  exports: [InitBoilerplateCommand, VersionCommand],
 };
 
 @Module(cliModule)
