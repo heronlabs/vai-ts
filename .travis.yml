@@ -3,9 +3,12 @@ language: node_js
 node_js:
   - 14
 
-branches:
-  only:
-    - main
+stages:
+  - name: Build and test
+    if: type = pull_request
+  - name: Deploy
+    if: branch = main AND type = push
+
 
 install:
   - yarn install --frozen-lockfile
