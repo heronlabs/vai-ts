@@ -12,10 +12,10 @@ describe('Given Version Command', () => {
   });
 
   it('Should run version command', async () => {
-    jest.spyOn(console, 'log').mockImplementation();
+    const consoleLogSpy = jest.spyOn(console, 'log');
 
-    const output = await command.run();
+    await command.run();
 
-    expect(output).toBeUndefined();
+    expect(consoleLogSpy).toHaveBeenNthCalledWith(1, expect.any(String));
   });
 });

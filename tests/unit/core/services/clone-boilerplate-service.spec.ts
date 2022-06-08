@@ -41,12 +41,12 @@ describe('Given Clone Boilerplate Service', () => {
       );
       const targetDirectory = faker.lorem.words();
 
-      const createdFolder = await service.clone(
+      const success = await service.clone(
         targetDirectory,
         boilerplateRepository
       );
 
-      expect(createdFolder).toBe(targetDirectory);
+      expect(success).toBeTruthy();
     });
   });
 });

@@ -1,5 +1,9 @@
+# Folders
 node_modules/
 coverage/
 bin/
-assets/
+tests/
+
+# Files
+*.yml
 
