@@ -38,7 +38,10 @@ export class InitBoilerplateCommand
     return val;
   }
 
-  async run(_args: string[], options: InitBoilerplateAnswers): Promise<void> {
+  public async run(
+    _args: string[],
+    options: InitBoilerplateAnswers
+  ): Promise<void> {
     const repositoryEntity = RepositoryEntity.make(
       'vai-ts-boilerplate',
       'https://github.com/heronlabs/vai-ts-boilerplate/archive/refs/tags/2.4.0.zip',

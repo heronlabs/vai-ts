@@ -14,7 +14,8 @@ export class VersionCommand extends BaseCommand implements CommandRunner {
   ) {
     super();
   }
-  async run(): Promise<void> {
+
+  public async run(): Promise<void> {
     const packageFile = this.readPackageService.readFile('./package.json');
     const currentVersion = packageFile.version;
 
