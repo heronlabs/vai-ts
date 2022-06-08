@@ -1,23 +1,33 @@
 import axios from 'axios';
 import {renameSync} from 'fs';
+import {Readable} from 'stream';
 import {Extract} from 'unzipper';
 
 import {RepositoryEntity} from '../entities/repository-entity';
-import {ZipReadableEntity} from '../entities/zip-readable-entity';
 import {CloneGit} from '../interfaces/clone-git';
 
 export class CloneBoilerplateService implements CloneGit {
-  public async clone(
-    targetDirectory: string,
+  private async getZipFromRepository(
     repository: RepositoryEntity
-  ): Promise<boolean> {
+  ): Promise<Readable> {
     const file = await axios.get<Buffer>(repository.zipUri, {
       responseType: 'arraybuffer',
     });
 
-    const readableInstanceStream = ZipReadableEntity.make(file.data);
+    const readableInstanceStream = new Readable();
+    readableInstanceStream.push(file.data);
+    readableInstanceStream.push(null);
 
-    await readableInstanceStream.pipe(Extract({path: '.'})).promise();
+    return readableInstanceStream;
+  }
+
+  public async clone(
+    targetDirectory: string,
+    repository: RepositoryEntity
+  ): Promise<boolean> {
+    const file = await this.getZipFromRepository(repository);
+
+    await file.pipe(Extract({path: '.'})).promise();
 
     renameSync(
       `./${repository.name}-${repository.branch}`,

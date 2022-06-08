@@ -3,12 +3,12 @@ import {AxiosResponse} from 'axios';
 import axios from 'axios';
 import * as fs from 'fs';
 import {Mock} from 'moq.ts';
+import * as unzipper from 'unzipper';
+import {ParseStream} from 'unzipper';
 
 import {RepositoryEntity} from '../../../../src/core/entities/repository-entity';
-import {ZipReadableEntity} from '../../../../src/core/entities/zip-readable-entity';
 import {CloneGit} from '../../../../src/core/interfaces/clone-git';
 import {CloneBoilerplateService} from '../../../../src/core/services/clone-boilerplate-service';
-import {parseStreamMock, readableMoq} from '../../__mocks__/readable-mock';
 
 describe('Given Clone Boilerplate Service', () => {
   let service: CloneGit;
@@ -19,18 +19,41 @@ describe('Given Clone Boilerplate Service', () => {
 
   describe('Given clone method', () => {
     it('Should download repository in target directory', async () => {
-      const repositoryZip = new Mock<Buffer>().object();
+      const repositoryZip = Buffer.from(faker.lorem.words());
       const axiosResponse = new Mock<AxiosResponse<Buffer>>()
         .setup(mock => mock.data)
         .returns(repositoryZip)
         .object();
       jest.spyOn(axios, 'get').mockResolvedValueOnce(axiosResponse);
 
-      parseStreamMock.promise.mockResolvedValueOnce(undefined);
+      const parseStreamMoq = new Mock<ParseStream>();
+
+      const parseStreamMock = {
+        promise: jest.fn().mockResolvedValueOnce(undefined),
+        on: jest.fn(),
+        write: jest.fn(),
+        end: jest.fn(),
+        once: jest.fn(),
+        emit: jest.fn(),
+      };
+
+      parseStreamMoq
+        .setup(mock => mock.promise)
+        .returns(parseStreamMock.promise)
+        .setup(mock => mock.on)
+        .returns(parseStreamMock.on)
+        .setup(mock => mock.write)
+        .returns(parseStreamMock.write)
+        .setup(mock => mock.end)
+        .returns(parseStreamMock.end)
+        .setup(mock => mock.once)
+        .returns(parseStreamMock.once)
+        .setup(mock => mock.emit)
+        .returns(parseStreamMock.emit);
 
       jest
-        .spyOn(ZipReadableEntity, 'make')
-        .mockReturnValue(readableMoq.object());
+        .spyOn(unzipper, 'Extract')
+        .mockImplementation(() => parseStreamMoq.object());
 
       jest.spyOn(fs, 'renameSync').mockImplementation();
 
