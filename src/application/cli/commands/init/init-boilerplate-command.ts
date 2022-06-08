@@ -6,6 +6,7 @@ import {CloneGit} from '../../../../core/interfaces/clone-git';
 import {InstallPackages} from '../../../../core/interfaces/install-packages';
 import {CloneBoilerplateService} from '../../../../core/services/clone-boilerplate-service';
 import {InstallBoilerplatePackagesService} from '../../../../core/services/install-boilerplate-packages-service';
+import {BaseCommand} from '../base-command';
 import {
   InitBoilerplateAnswers,
   InitBoilerplateOptions,
@@ -15,13 +16,18 @@ import {
   name: 'init-boilerplate',
   description: 'Initialize typescript boilerplate',
 })
-export class InitBoilerplateCommand implements CommandRunner {
+export class InitBoilerplateCommand
+  extends BaseCommand
+  implements CommandRunner
+{
   constructor(
     @Inject(CloneBoilerplateService)
     private readonly cloneBoilerplateService: CloneGit,
     @Inject(InstallBoilerplatePackagesService)
     private readonly installBoilerplatePackagesService: InstallPackages
-  ) {}
+  ) {
+    super();
+  }
 
   @Option({
     flags: `-p, --project-name [${InitBoilerplateOptions.PROJECT_NAME}]`,
@@ -35,8 +41,8 @@ export class InitBoilerplateCommand implements CommandRunner {
   async run(_args: string[], options: InitBoilerplateAnswers): Promise<void> {
     const repositoryEntity = RepositoryEntity.make(
       'vai-ts-boilerplate',
-      'https://github.com/heronlabs/vai-ts-boilerplate/archive/refs/tags/2.3.0.zip',
-      '2.3.0'
+      'https://github.com/heronlabs/vai-ts-boilerplate/archive/refs/tags/2.4.0.zip',
+      '2.4.0'
     );
 
     await this.cloneBoilerplateService.clone(
@@ -45,5 +51,7 @@ export class InitBoilerplateCommand implements CommandRunner {
     );
 
     await this.installBoilerplatePackagesService.install(options.projectName);
+
+    this.envelope('Boilerplate initialized successfully! 📦 🃏 📘');
   }
 }

@@ -22,10 +22,14 @@ describe('Given Init Boilerplate Command', () => {
   });
 
   it('Should run init boilerplate command with project name', async () => {
-    const output = await command.run([], {
+    await command.run([], {
       projectName: TempFoldersNames.BOILERPLATE,
     } as InitBoilerplateAnswers);
 
-    expect(output).toBeUndefined();
+    const isBoilerplateCreated = existsSync(
+      `./${TempFoldersNames.BOILERPLATE}`
+    );
+
+    expect(isBoilerplateCreated).toBeTruthy();
   });
 });

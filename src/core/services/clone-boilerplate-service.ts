@@ -10,7 +10,7 @@ export class CloneBoilerplateService implements CloneGit {
   public async clone(
     targetDirectory: string,
     repository: RepositoryEntity
-  ): Promise<string> {
+  ): Promise<boolean> {
     const file = await axios.get<Buffer>(repository.zipUri, {
       responseType: 'arraybuffer',
     });
@@ -24,6 +24,6 @@ export class CloneBoilerplateService implements CloneGit {
       `./${targetDirectory}`
     );
 
-    return targetDirectory;
+    return true;
   }
 }

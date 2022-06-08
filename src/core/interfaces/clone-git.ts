@@ -6,5 +6,8 @@ export interface CloneGit {
    * @param targetDirectory The name of the folder to clone into.
    * @param repository The repository to clone.
    */
-  clone(targetDirectory: string, repository: RepositoryEntity): Promise<string>;
+  clone(
+    targetDirectory: string,
+    repository: RepositoryEntity
+  ): Promise<boolean>;
 }
