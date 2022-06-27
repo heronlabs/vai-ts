@@ -1,20 +1,13 @@
 import {Module, ModuleMetadata} from '@nestjs/common';
 
-import {CloneBoilerplateService} from './services/clone-boilerplate-service';
-import {InstallBoilerplatePackagesService} from './services/install-boilerplate-packages-service';
-import {ReadPackageService} from './services/read-package-service';
+import {TerminalBootstrap} from '../infrastructure/terminal/terminal-bootstrap';
+import {PackageInteractorService} from './services/package-interactor-service';
+import {RepositoryInteractorService} from './services/repository-interactor-service';
 
 export const coreModule: ModuleMetadata = {
-  providers: [
-    CloneBoilerplateService,
-    InstallBoilerplatePackagesService,
-    ReadPackageService,
-  ],
-  exports: [
-    CloneBoilerplateService,
-    InstallBoilerplatePackagesService,
-    ReadPackageService,
-  ],
+  imports: [TerminalBootstrap],
+  providers: [RepositoryInteractorService, PackageInteractorService],
+  exports: [RepositoryInteractorService, PackageInteractorService],
 };
 
 @Module(coreModule)

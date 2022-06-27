@@ -14,15 +14,15 @@
 [![Discord](https://img.shields.io/badge/%3CForum%3E-%237289DA.svg?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/vGCyfMC9X9)
 
 
-> Projeto criado para inicializar projetos com Typescript
+> This is a project to launch other projects with Typescript
 
-### Instalação
+### Installation
 
 ```
 npm install -g @heronlabs/vai-ts
 ```
 
-### Uso
+### Usage
 
 ```
 Usage: entry-point [options] [command]
@@ -36,7 +36,28 @@ Commands:
   help [command]              display help for command
 ```
 
-## Construido com
+## TLTR (Too long to read)
+
+This project was created with the intention of acting as a CLI in creating new projects.
+
+At first I used strings as the template format that would become the base files of the project to be created.
+
+After using this tool and new knowledge I used git to clone new models, and the use of string became obsolete and unnecessary.
+
+## How it works
+
+The project is made available through a CLI that has some commands to generate new projects with different purposes.
+
+Currently available templates are:
+
+* [Basic Boilerplate](https://github.com/heronlabs/vai-ts-basic-boilerplate)
+
+
+## Next steps
+
+Insert new commands for new formats, such as: cli, api and Node packages.
+
+## Built with
 
 - [axios](https://github.com/axios)
 - [unzipper](https://github.com/ZJONSSON/node-unzipper)

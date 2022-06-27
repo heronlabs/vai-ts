@@ -7,14 +7,14 @@ import * as unzipper from 'unzipper';
 import {ParseStream} from 'unzipper';
 
 import {RepositoryEntity} from '../../../../src/core/entities/repository-entity';
-import {CloneGit} from '../../../../src/core/interfaces/clone-git';
-import {CloneBoilerplateService} from '../../../../src/core/services/clone-boilerplate-service';
+import {RepositoryInteractor} from '../../../../src/core/interfaces/repository-interactor';
+import {RepositoryInteractorService} from '../../../../src/core/services/repository-interactor-service';
 
-describe('Given Clone Boilerplate Service', () => {
-  let service: CloneGit;
+describe('Given Repository Interactor Service', () => {
+  let service: RepositoryInteractor;
 
   beforeEach(() => {
-    service = new CloneBoilerplateService();
+    service = new RepositoryInteractorService();
   });
 
   describe('Given clone method', () => {

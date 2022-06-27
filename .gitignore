@@ -108,5 +108,8 @@ bin/
 # IDE
 .vscode
 
+# OSX
+.DS_Store
+
 # Generated Folders
 BOILERPLATE/

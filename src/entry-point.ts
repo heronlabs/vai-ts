@@ -5,7 +5,7 @@ import 'reflect-metadata';
 
 import {CommandFactory} from 'nest-commander';
 
-import {CliBootstrap} from './cli/cli-bootstrap';
+import {CliBootstrap} from './application/cli/cli-bootstrap';
 
 async function bootstrap() {
   await CommandFactory.run(CliBootstrap, {
