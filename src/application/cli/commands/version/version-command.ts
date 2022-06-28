@@ -1,24 +1,23 @@
 import {Inject} from '@nestjs/common';
 import {Command, CommandRunner} from 'nest-commander';
 
-import {PackageEntity} from '../../../../core/entities/package-entity';
-import {ReadAssets} from '../../../../core/interfaces/read-assets';
-import {ReadPackageService} from '../../../../core/services/read-package-service';
-import {BaseCommand} from '../base-command';
+import {PackageInteractor} from '../../../../core/interfaces/package-interactor';
+import {PackageInteractorService} from '../../../../core/services/package-interactor-service';
+import {ConsolePresenter} from '../../presenters/console-presenter';
 
 @Command({name: 'version', description: 'Print current version'})
-export class VersionCommand extends BaseCommand implements CommandRunner {
+export class VersionCommand implements CommandRunner {
   constructor(
-    @Inject(ReadPackageService)
-    private readonly readPackageService: ReadAssets<PackageEntity>
-  ) {
-    super();
-  }
+    @Inject(PackageInteractorService)
+    private readonly packageInteractor: PackageInteractor,
+    @Inject(ConsolePresenter)
+    private readonly consolePresenter: ConsolePresenter
+  ) {}
 
   public async run(): Promise<void> {
-    const packageFile = this.readPackageService.readFile('./package.json');
+    const packageFile = this.packageInteractor.readSelf();
     const currentVersion = packageFile.version;
 
-    this.envelope(`Current Version: ${currentVersion}`);
+    this.consolePresenter.envelope(`Current Version: ${currentVersion}`);
   }
 }

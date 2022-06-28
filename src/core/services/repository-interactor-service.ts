@@ -4,9 +4,9 @@ import {Readable} from 'stream';
 import {Extract} from 'unzipper';
 
 import {RepositoryEntity} from '../entities/repository-entity';
-import {CloneGit} from '../interfaces/clone-git';
+import {RepositoryInteractor} from '../interfaces/repository-interactor';
 
-export class CloneBoilerplateService implements CloneGit {
+export class RepositoryInteractorService implements RepositoryInteractor {
   private async getZipFromRepository(
     repository: RepositoryEntity
   ): Promise<Readable> {

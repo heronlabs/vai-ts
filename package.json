@@ -1,6 +1,6 @@
 {
   "name": "@heronlabs/vai-ts",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Project created to initialize projects with Typescript",
   "repository": "git@github.com:heronlabs/vai-ts.git",
   "author": "Lucas <lucaslacerdacl@gmail.com>",
@@ -9,12 +9,12 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "bin/application/entry-point.js",
+  "main": "bin/entry-point.js",
   "files": [
     "/bin"
   ],
   "bin": {
-    "vai-ts": "bin/application/entry-point.js"
+    "vai-ts": "bin/entry-point.js"
   },
   "engines": {
     "node": ">=14.17.6"
@@ -28,7 +28,7 @@
     "test:integration": "yarn test --config=tests/integration/jest.config.ts",
     "docker:build": "docker build -t vai-ts .",
     "docker:run": "docker run --rm -it vai-ts /bin/sh",
-    "cli:run": "node bin/src/application/entry-point.js"
+    "cli:run": "node bin/entry-point.js"
   },
   "devDependencies": {
     "@faker-js/faker": "6.1.2",

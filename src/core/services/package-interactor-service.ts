@@ -2,11 +2,11 @@ import {readFileSync} from 'fs';
 import path = require('path');
 
 import {PackageEntity} from '../entities/package-entity';
-import {ReadAssets} from '../interfaces/read-assets';
+import {PackageInteractor} from '../interfaces/package-interactor';
 
-export class ReadPackageService implements ReadAssets<PackageEntity> {
-  readFile(filePath: string): PackageEntity {
-    const filePathFromRoot = path.join(__dirname, `../../../${filePath}`);
+export class PackageInteractorService implements PackageInteractor {
+  readSelf(): PackageEntity {
+    const filePathFromRoot = path.join(__dirname, '../../../package.json');
 
     const packageString = readFileSync(filePathFromRoot, 'utf8');
     const packageFile = PackageEntity.make(packageString);
