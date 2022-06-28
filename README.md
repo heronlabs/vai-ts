@@ -25,15 +25,15 @@ npm install -g @heronlabs/vai-ts
 ### Usage
 
 ```
-Usage: entry-point [options] [command]
+Usage: vai-ts [options] [command]
 
 Options:
-  -h, --help                  display help for command
+  -h, --help                        display help for command
 
 Commands:
-  init-boilerplate [options]  Initialize typescript boilerplate
-  version                     Print current version
-  help [command]              display help for command
+  init-basic-boilerplate [options]  Initialize Typescript with basic boilerplate
+  version                           Print current version
+  help [command]                    display help for command
 ```
 
 ## TLTR (Too long to read)
