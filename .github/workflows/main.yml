@@ -1,0 +1,25 @@
+name: Publish Vai-TS
+
+on: 
+  - push
+  - workflow_dispatch
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Checkout action repository
+        uses: actions/checkout@v3
+        with:
+          repository: heronlabs/publish-npm-action
+          ref: main
+          token: ${{ secrets.AUTHOR_PERSONAL_ACCESS}}
+          path: ./publish-npm-action
+
+      - name: Run action
+        uses: './publish-npm-action/application/github'
+        with:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

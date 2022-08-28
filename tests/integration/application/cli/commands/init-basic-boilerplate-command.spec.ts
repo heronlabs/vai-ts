@@ -14,7 +14,7 @@ describe('Given Init Basic Boilerplate Command', () => {
     command = moduleRef.get(InitBasicBoilerplateCommand);
   });
 
-  afterAll(() => {
+  beforeAll(() => {
     [TempFoldersNames.BOILERPLATE].forEach(tempFolderName => {
       const path = `./${tempFolderName}`;
       if (existsSync(path)) rmdirSync(path, {recursive: true});

@@ -41,8 +41,8 @@ export class InitBasicBoilerplateCommand implements CommandRunner {
   ): Promise<void> {
     const repositoryEntity = RepositoryEntity.make(
       'vai-ts-basic-boilerplate',
-      'https://github.com/heronlabs/vai-ts-basic-boilerplate/archive/refs/tags/2.6.0.zip',
-      '2.6.0'
+      'https://github.com/heronlabs/vai-ts-basic-boilerplate/archive/refs/tags/2.7.0.zip',
+      '2.7.0'
     );
 
     await this.repositoryInteractor.clone(
