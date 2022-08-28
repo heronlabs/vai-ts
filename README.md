@@ -3,7 +3,7 @@
 # Vai TS 
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Build Status](https://app.travis-ci.com/heronlabs/vai-ts.svg?branch=main)](https://app.travis-ci.com/heronlabs/vai-ts)
+![Build Status](https://github.com/heronlabs/vai-ts/actions/workflows/main.yml/badge.svg?branch=main)
 
 #
 
@@ -12,6 +12,7 @@
 [![Jest](https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white)](https://github.com/facebook/jest)
 [![NestJS](https://img.shields.io/badge/nestjs-%23E0234E.svg?style=for-the-badge&logo=nestjs&logoColor=white)](https://docs.nestjs.com/)
 [![Discord](https://img.shields.io/badge/%3CForum%3E-%237289DA.svg?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/vGCyfMC9X9)
+[![NPM](https://img.shields.io/npm/v/@heronlabs/vai-ts?style=for-the-badge)](https://www.npmjs.com/package/@heronlabs/vai-ts)
 
 
 > This is a project to launch other projects with Typescript
@@ -61,3 +62,7 @@ Insert new commands for new formats, such as: cli, api and Node packages.
 
 - [axios](https://github.com/axios)
 - [unzipper](https://github.com/ZJONSSON/node-unzipper)
+
+## Delivery from
+
+- [NPM](https://www.npmjs.com/package/@heronlabs/vai-ts)
