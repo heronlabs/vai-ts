@@ -1,9 +1,11 @@
-# Folders
+# Bin
 node_modules/
-coverage/
 bin/
+
+# Tests
+coverage/
 tests/
 
-# Files
+# Etc
 *.yml
-
+*.md

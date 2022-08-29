@@ -1,9 +1,12 @@
-# Folders
+# Bin
 node_modules/
-coverage/
+
+# Source
 src/
+
+# Tests
+coverage/
 tests/
 
-# Files
+# Etc
 *.yml
-
