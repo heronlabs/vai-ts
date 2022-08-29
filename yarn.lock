@@ -583,7 +583,7 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@nestjs/common@^8.4.6":
+"@nestjs/common@8.4.6":
   version "8.4.6"
   resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-8.4.6.tgz#e2858c230371eeb5ccf7547d5b9434a2096da835"
   integrity sha512-INp1ERDrLiQ4GwRc3zotTwBLZm2sIwcJwnBE2yXqsth17KijmoVmY8UB5Tares0IlwjsqlRFWkCX8uWE5rzbSA==
@@ -593,7 +593,7 @@
     tslib "2.4.0"
     uuid "8.3.2"
 
-"@nestjs/core@^8.4.6":
+"@nestjs/core@8.4.6":
   version "8.4.6"
   resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-8.4.6.tgz#db1afa3202cddffa308c6f321e2e07ebcc05d513"
   integrity sha512-5zHpxTYV7HT3lfF7l/x0EWBfmuyuDOnGRcALf88tzDGs/7Q/VC6l65d6eFwDwI37NLtScqnmEkT9of8E3fT3mA==
@@ -606,7 +606,7 @@
     tslib "2.4.0"
     uuid "8.3.2"
 
-"@nestjs/testing@^8.4.6":
+"@nestjs/testing@8.4.6":
   version "8.4.6"
   resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-8.4.6.tgz#4e80368090bb71d775d14d99efa96803b96312d0"
   integrity sha512-uGRNQ0iWIHqjz5CLxQCTtQ3dB1KyPfkHXnko5mBwKk/iBTiACmll61rVt89Wh8RM+w0bmvCHp9sacNI7IynESg==
@@ -1065,7 +1065,7 @@ asynckit@^0.4.0:
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
   integrity sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==
 
-axios@0.27.2, axios@^0.27.2:
+axios@0.27.2:
   version "0.27.2"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.27.2.tgz#207658cc8621606e586c85db4b41a750e756d972"
   integrity sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==
@@ -3828,6 +3828,13 @@ run-parallel@^1.1.9:
   dependencies:
     queue-microtask "^1.2.2"
 
+rxjs@7.5.6:
+  version "7.5.6"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.5.6.tgz#0446577557862afd6903517ce7cae79ecb9662bc"
+  integrity sha512-dnyv2/YsXhnm461G+R/Pe5bWP41Nm6LBXEYWI6eiFP4fiwx6WRI/CD0zbdVAudd9xwLEF2IDcKXLHit0FYjUzw==
+  dependencies:
+    tslib "^2.1.0"
+
 rxjs@^6.6.0:
   version "6.6.7"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.6.7.tgz#90ac018acabf491bf65044235d5863c4dab804c9"
@@ -3835,7 +3842,7 @@ rxjs@^6.6.0:
   dependencies:
     tslib "^1.9.0"
 
-rxjs@^7.1.0, rxjs@^7.2.0, rxjs@^7.5.5:
+rxjs@^7.2.0, rxjs@^7.5.5:
   version "7.5.5"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.5.5.tgz#2ebad89af0f560f460ad5cc4213219e1f7dd4e9f"
   integrity sha512-sy+H0pQofO95VDmFLzyaw9xNJU4KTRSwQIGM6+iG3SypAtCiLDzpeG8sJrNCWn2Up9km+KhkvTdbkrdy+yzZdw==
