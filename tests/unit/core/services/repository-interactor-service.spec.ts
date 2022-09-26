@@ -1,4 +1,4 @@
-import faker from '@faker-js/faker';
+import {faker} from '@faker-js/faker';
 import {AxiosResponse} from 'axios';
 import axios from 'axios';
 import * as fs from 'fs';

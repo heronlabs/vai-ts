@@ -1,4 +1,4 @@
-import faker from '@faker-js/faker';
+import {faker} from '@faker-js/faker';
 import * as fs from 'fs';
 
 import {PackageEntity} from '../../../../src/core/entities/package-entity';

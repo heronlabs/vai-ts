@@ -1,4 +1,4 @@
-import faker from '@faker-js/faker';
+import {faker} from '@faker-js/faker';
 
 import {InitBasicBoilerplateCommand} from '../../../../src/application/cli/commands/init/init-basic-boilerplate-command';
 import {ConsoleMock} from '../../__mocks__/application/cli/presenters/console-mock';

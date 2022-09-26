@@ -1,9 +1,9 @@
 name: Publish Vai-TS
 
-on: 
+on:
   - push
   - workflow_dispatch
-  
+
 jobs:
   pipeline:
     runs-on: ubuntu-latest

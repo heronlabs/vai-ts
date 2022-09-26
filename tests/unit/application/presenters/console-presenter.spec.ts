@@ -1,4 +1,4 @@
-import faker from '@faker-js/faker';
+import {faker} from '@faker-js/faker';
 
 import {ConsolePresenter} from '../../../../src/application/cli/presenters/console-presenter';
 

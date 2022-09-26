@@ -1,4 +1,4 @@
-import faker from '@faker-js/faker';
+import {faker} from '@faker-js/faker';
 
 import {VersionCommand} from '../../../../src/application/cli/commands/version/version-command';
 import {PackageEntity} from '../../../../src/core/entities/package-entity';

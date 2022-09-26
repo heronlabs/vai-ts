@@ -1,4 +1,4 @@
-import faker from '@faker-js/faker';
+import {faker} from '@faker-js/faker';
 import * as cp from 'child_process';
 
 import {Terminal} from '../../../../../../src/infrastructure/terminal/core/interfaces/terminal';
