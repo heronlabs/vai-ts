@@ -112,4 +112,5 @@ bin/
 .DS_Store
 
 # Generated Folders
-BOILERPLATE/
+BASIC_BOILERPLATE/
+API_BOILERPLATE/

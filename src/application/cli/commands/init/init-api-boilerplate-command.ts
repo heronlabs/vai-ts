@@ -13,10 +13,10 @@ import {
 } from './init-boilerplate-options';
 
 @Command({
-  name: 'init-basic-boilerplate',
-  description: 'Initialize Typescript with basic boilerplate',
+  name: 'init-api-boilerplate',
+  description: 'Initialize Typescript with API boilerplate',
 })
-export class InitBasicBoilerplateCommand implements CommandRunner {
+export class InitApiBoilerplateCommand implements CommandRunner {
   constructor(
     @Inject(RepositoryInteractorService)
     private readonly repositoryInteractor: RepositoryInteractor,
@@ -40,9 +40,9 @@ export class InitBasicBoilerplateCommand implements CommandRunner {
     options: InitBoilerplateAnswers
   ): Promise<void> {
     const repositoryEntity = RepositoryEntity.make(
-      'vai-ts-basic-boilerplate',
-      'https://github.com/heronlabs/vai-ts-basic-boilerplate/archive/refs/tags/2.9.0.zip',
-      '2.9.0'
+      'vai-ts-api-boilerplate',
+      'https://github.com/heronlabs/vai-ts-api-boilerplate/archive/refs/tags/1.0.0.zip',
+      '1.0.0'
     );
 
     await this.repositoryInteractor.clone(
@@ -53,7 +53,7 @@ export class InitBasicBoilerplateCommand implements CommandRunner {
     await this.terminal.installNodePackages(options.projectName);
 
     this.consolePresenter.envelope(
-      'Basic Boilerplate initialized successfully! 📦 🃏 📘'
+      'API Boilerplate initialized successfully! 📦 🃏 📘'
     );
   }
 }

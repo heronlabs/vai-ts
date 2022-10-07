@@ -1,6 +1,6 @@
 {
   "name": "@heronlabs/vai-ts",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Project created to initialize projects with Typescript",
   "repository": "git@github.com:heronlabs/vai-ts.git",
   "author": "Lucas Lacerda",
@@ -20,7 +20,7 @@
     "node": ">=14.17.6"
   },
   "scripts": {
-    "compile": "rm -rf ./bin && tsc --project tsconfig.production.json",
+    "compile": "rm -rf ./bin && tsc --project tsconfig.bin.json",
     "lint:check": "gts lint",
     "lint:fix": "gts fix",
     "test": "jest --runInBand --colors",
