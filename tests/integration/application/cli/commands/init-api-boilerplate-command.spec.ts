@@ -15,7 +15,7 @@ describe('Given Api Basic Boilerplate Command', () => {
   });
 
   beforeAll(() => {
-    [TempFoldersNames.API_BOILERPLATE].forEach(tempFolderName => {
+    [TempFoldersNames.BOILERPLATE_API].forEach(tempFolderName => {
       const path = `./${tempFolderName}`;
       if (existsSync(path)) rmdirSync(path, {recursive: true});
     });
@@ -23,11 +23,11 @@ describe('Given Api Basic Boilerplate Command', () => {
 
   it('Should run init boilerplate command with project name', async () => {
     await command.run([], {
-      projectName: TempFoldersNames.API_BOILERPLATE,
+      projectName: TempFoldersNames.BOILERPLATE_API,
     } as InitBoilerplateAnswers);
 
     const isBoilerplateCreated = existsSync(
-      `./${TempFoldersNames.API_BOILERPLATE}`
+      `./${TempFoldersNames.BOILERPLATE_API}`
     );
 
     expect(isBoilerplateCreated).toBeTruthy();
