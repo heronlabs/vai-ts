@@ -10,8 +10,8 @@ jobs:
 
     steps:
       - name: '[BUILD] | Install Dependencies'
-      run: yarn install --frozen-lockfile
-      shell: bash
+        run: yarn install --frozen-lockfile
+        shell: bash
 
       - name: '[BUILD] | Compile'
         run: yarn compile
@@ -20,17 +20,18 @@ jobs:
       - name: '[TEST] | Lint Check'
         run: yarn lint:check
         shell: bash
-      
+
       - name: '[TEST] | Unit Tests'
         run: yarn test:unit --coverage
         shell: bash
-      
+
       - name: '[TEST] | Integration Tests'
         run: yarn test:integration --coverage
         shell: bash
 
       - uses: actions/checkout@v3
-        name: Checkout action repository
+
+      - name: Checkout action repository
         uses: actions/checkout@v3
         with:
           repository: heronlabs/publish-npm-action
