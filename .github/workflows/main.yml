@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v3
+
       - name: '[BUILD] | Install Dependencies'
         run: yarn install --frozen-lockfile
         shell: bash
@@ -28,8 +30,6 @@ jobs:
       - name: '[TEST] | Integration Tests'
         run: yarn test:integration --coverage
         shell: bash
-
-      - uses: actions/checkout@v3
 
       - name: Checkout action repository
         uses: actions/checkout@v3
