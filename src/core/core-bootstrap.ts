@@ -1,6 +1,6 @@
 import {Module, ModuleMetadata} from '@nestjs/common';
 
-import {TerminalBootstrap} from '../infrastructure/terminal/terminal-bootstrap';
+import {TerminalBootstrap} from '../application/terminal/terminal-bootstrap';
 import {PackageInteractorService} from './services/package-interactor-service';
 import {RepositoryInteractorService} from './services/repository-interactor-service';
 

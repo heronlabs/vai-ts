@@ -1,9 +1,9 @@
 import {faker} from '@faker-js/faker';
 
-import {VersionCommand} from '../../../../src/application/cli/commands/version/version-command';
-import {PackageEntity} from '../../../../src/core/entities/package-entity';
-import {ConsoleMock} from '../../__mocks__/application/cli/presenters/console-mock';
-import {PackageInteractorMock} from '../../__mocks__/core/services/package-interactor-mock';
+import {VersionCommand} from '../../../../../src/application/cli/commands/version/version-command';
+import {PackageEntity} from '../../../../../src/core/entities/package-entity';
+import {ConsoleMock} from '../../../__mocks__/application/cli/presenters/console-mock';
+import {PackageInteractorMock} from '../../../__mocks__/core/services/package-interactor-mock';
 
 describe('Given Version Command', () => {
   let command: VersionCommand;

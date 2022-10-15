@@ -1,6 +1,6 @@
 import {faker} from '@faker-js/faker';
 
-import {ConsolePresenter} from '../../../../src/application/cli/presenters/console-presenter';
+import {ConsolePresenter} from '../../../../../src/application/cli/presenters/console-presenter';
 
 describe('Given Console Presenter', () => {
   let presenter: ConsolePresenter;

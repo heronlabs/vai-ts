@@ -1,8 +1,8 @@
 import {faker} from '@faker-js/faker';
 import * as cp from 'child_process';
 
-import {Terminal} from '../../../../../../src/infrastructure/terminal/core/interfaces/terminal';
-import {TerminalService} from '../../../../../../src/infrastructure/terminal/core/services/terminal-service';
+import {Terminal} from '../../../../../../src/application/terminal/core/interfaces/terminal';
+import {TerminalService} from '../../../../../../src/application/terminal/core/services/terminal-service';
 
 describe('Given Terminal Service', () => {
   let service: Terminal;

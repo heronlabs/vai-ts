@@ -11,6 +11,7 @@ const config: Config.InitialOptions = {
   ],
   coverageDirectory: 'coverage/integration',
   testMatch: ['<rootDir>/tests/integration/**/*.spec.ts'],
+  globalSetup: '<rootDir>/tests/integration/setup-global.ts',
 };
 
 export default config;

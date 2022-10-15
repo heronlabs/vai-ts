@@ -112,4 +112,4 @@ bin/
 .DS_Store
 
 # Generated Folders
-BOILERPLATE*/
+boilerplate*/

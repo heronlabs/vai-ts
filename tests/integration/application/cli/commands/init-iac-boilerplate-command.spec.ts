@@ -1,10 +1,11 @@
 import {Test} from '@nestjs/testing';
-import {existsSync, rmdirSync} from 'fs';
+import {existsSync} from 'fs';
 
 import {cliModule} from '../../../../../src/application/cli/cli-bootstrap';
 import {InitBoilerplateAnswers} from '../../../../../src/application/cli/commands/init/init-boilerplate-options';
 import {InitIacBoilerplateCommand} from '../../../../../src/application/cli/commands/init/init-iac-boilerplate-command';
-import {TempFoldersNames} from '../../../temp-folders-names';
+import {BoilerplateFiles} from '../../../__factories__/boilerplate-files';
+import {BoilerplatePrefix} from '../../../__factories__/boilerplate-prefix';
 
 describe('Given Iac Basic Boilerplate Command', () => {
   let command: InitIacBoilerplateCommand;
@@ -14,21 +15,14 @@ describe('Given Iac Basic Boilerplate Command', () => {
     command = moduleRef.get(InitIacBoilerplateCommand);
   });
 
-  beforeAll(() => {
-    [TempFoldersNames.BOILERPLATE_IAC].forEach(tempFolderName => {
-      const path = `./${tempFolderName}`;
-      if (existsSync(path)) rmdirSync(path, {recursive: true});
-    });
-  });
-
   it('Should run init boilerplate command with project name', async () => {
+    const projectName = `${BoilerplateFiles.OUTPUT_FOLDER}/${BoilerplatePrefix.BOILERPLATE_IAC}`;
+
     await command.run([], {
-      projectName: TempFoldersNames.BOILERPLATE_IAC,
+      projectName,
     } as InitBoilerplateAnswers);
 
-    const isBoilerplateCreated = existsSync(
-      `./${TempFoldersNames.BOILERPLATE_IAC}`
-    );
+    const isBoilerplateCreated = existsSync(`./${projectName}`);
 
     expect(isBoilerplateCreated).toBeTruthy();
   });

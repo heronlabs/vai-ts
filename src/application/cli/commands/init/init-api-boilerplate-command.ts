@@ -4,8 +4,8 @@ import {Command, CommandRunner, Option} from 'nest-commander';
 import {RepositoryEntity} from '../../../../core/entities/repository-entity';
 import {RepositoryInteractor} from '../../../../core/interfaces/repository-interactor';
 import {RepositoryInteractorService} from '../../../../core/services/repository-interactor-service';
-import {Terminal} from '../../../../infrastructure/terminal/core/interfaces/terminal';
-import {TerminalService} from '../../../../infrastructure/terminal/core/services/terminal-service';
+import {Terminal} from '../../../terminal/core/interfaces/terminal';
+import {TerminalService} from '../../../terminal/core/services/terminal-service';
 import {ConsolePresenter} from '../../presenters/console-presenter';
 import {
   InitBoilerplateAnswers,
