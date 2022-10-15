@@ -1,7 +1,6 @@
 name: Publish Vai-TS
 
 on:
-  - push
   - workflow_dispatch
 
 jobs:
