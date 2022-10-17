@@ -2,8 +2,8 @@ import {faker} from '@faker-js/faker';
 
 import {InitIacBoilerplateCommand} from '../../../../../src/application/cli/commands/init/init-iac-boilerplate-command';
 import {ConsoleMock} from '../../../__mocks__/application/cli/presenters/console-mock';
+import {TerminalMock} from '../../../__mocks__/application/terminal/services/terminal-mock';
 import {RepositoryInteractorMock} from '../../../__mocks__/core/services/repository-interactor-mock';
-import {TerminalMock} from '../../../__mocks__/infrastructure/terminal/services/terminal-mock';
 
 describe('Given Init IaC Boilerplate Command', () => {
   let command: InitIacBoilerplateCommand;
@@ -23,7 +23,7 @@ describe('Given Init IaC Boilerplate Command', () => {
       ConsoleMock.envelope.mockReturnValue(undefined);
 
       await command.run([], {
-        projectName: faker.lorem.word(),
+        name: faker.lorem.word(),
       });
 
       expect(ConsoleMock.envelope).toHaveBeenNthCalledWith(

@@ -10,10 +10,11 @@ import {ConsolePresenter} from '../../presenters/console-presenter';
 import {
   InitBoilerplateAnswers,
   InitBoilerplateOptions,
-} from './init-boilerplate-options';
+} from './dtos/init-boilerplate-options';
 
 @Command({
   name: 'init-api-boilerplate',
+  aliases: ['i-api'],
   description: 'Initialize Typescript with API boilerplate',
 })
 export class InitApiBoilerplateCommand implements CommandRunner {
@@ -27,7 +28,7 @@ export class InitApiBoilerplateCommand implements CommandRunner {
   ) {}
 
   @Option({
-    flags: `-p, --project-name [${InitBoilerplateOptions.PROJECT_NAME}]`,
+    flags: `-n, --name [${InitBoilerplateOptions.PROJECT_NAME}]`,
     description: 'The project name',
     defaultValue: 'my-project',
   })
@@ -41,16 +42,18 @@ export class InitApiBoilerplateCommand implements CommandRunner {
   ): Promise<void> {
     const repositoryEntity = RepositoryEntity.make(
       'vai-ts-api-boilerplate',
-      'https://github.com/heronlabs/vai-ts-api-boilerplate/archive/refs/tags/1.1.1.zip',
-      '1.1.1'
+      'https://github.com/heronlabs/vai-ts-api-boilerplate/archive/refs/tags/1.2.0.zip',
+      '1.2.0'
     );
 
     await this.repositoryInteractor.clone(
-      this.parseProjectName(options.projectName),
+      this.parseProjectName(options[InitBoilerplateOptions.PROJECT_NAME]),
       repositoryEntity
     );
 
-    await this.terminal.installNodePackages(options.projectName);
+    await this.terminal.installNodePackages(
+      options[InitBoilerplateOptions.PROJECT_NAME]
+    );
 
     this.consolePresenter.envelope(
       'API Boilerplate initialized successfully! 📦 🃏 📘'

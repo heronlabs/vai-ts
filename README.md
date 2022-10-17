@@ -1,6 +1,6 @@
 <img src="https://cdn.discordapp.com/attachments/983205521546956870/983205960568934470/unknown.png" alt="drawing" width="150"/>
 
-# Vai TS 
+# Vai TS
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![Build Status](https://github.com/heronlabs/vai-ts/actions/workflows/main.yml/badge.svg?branch=main)
@@ -11,9 +11,7 @@
 [![GTS](https://img.shields.io/badge/GTS-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://github.com/google/gts)
 [![Jest](https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white)](https://github.com/facebook/jest)
 [![NestJS](https://img.shields.io/badge/nestjs-%23E0234E.svg?style=for-the-badge&logo=nestjs&logoColor=white)](https://docs.nestjs.com/)
-[![Discord](https://img.shields.io/badge/%3CForum%3E-%237289DA.svg?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/vGCyfMC9X9)
 [![NPM](https://img.shields.io/npm/v/@heronlabs/vai-ts?style=for-the-badge)](https://www.npmjs.com/package/@heronlabs/vai-ts)
-
 
 > This is a project to launch other projects with Typescript
 
@@ -32,9 +30,12 @@ Options:
   -h, --help                        display help for command
 
 Commands:
-  init-basic-boilerplate [options]  Initialize Typescript with basic boilerplate
-  version                           Print current version
-  help [command]                    display help for command
+  init-basic-boilerplate [options]    Initialize Typescript with basic boilerplate
+  version                             Print current version
+  init-api-boilerplate [options]      Initialize Typescript with API boilerplate
+  init-iac-boilerplate [options]      Initialize Typescript with IaC boilerplate
+  init-package-boilerplate [options]  Initialize Typescript with Package boilerplate
+  help [command]                      display help for command
 ```
 
 ## TLTR (Too long to read)
@@ -51,8 +52,7 @@ The project is made available through a CLI that has some commands to generate n
 
 Currently available templates are:
 
-* [Basic Boilerplate](https://github.com/heronlabs/vai-ts-basic-boilerplate)
-
+- [Basic Boilerplate](https://github.com/heronlabs/vai-ts-basic-boilerplate)
 
 ## Next steps
 

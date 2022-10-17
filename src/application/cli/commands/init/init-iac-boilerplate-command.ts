@@ -10,10 +10,11 @@ import {ConsolePresenter} from '../../presenters/console-presenter';
 import {
   InitBoilerplateAnswers,
   InitBoilerplateOptions,
-} from './init-boilerplate-options';
+} from './dtos/init-boilerplate-options';
 
 @Command({
   name: 'init-iac-boilerplate',
+  aliases: ['i-iac'],
   description: 'Initialize Typescript with IaC boilerplate',
 })
 export class InitIacBoilerplateCommand implements CommandRunner {
@@ -27,7 +28,7 @@ export class InitIacBoilerplateCommand implements CommandRunner {
   ) {}
 
   @Option({
-    flags: `-p, --project-name [${InitBoilerplateOptions.PROJECT_NAME}]`,
+    flags: `-n, --name [${InitBoilerplateOptions.PROJECT_NAME}]`,
     description: 'The project name',
     defaultValue: 'my-project',
   })
@@ -41,16 +42,18 @@ export class InitIacBoilerplateCommand implements CommandRunner {
   ): Promise<void> {
     const repositoryEntity = RepositoryEntity.make(
       'vai-ts-iac-boilerplate',
-      'https://github.com/heronlabs/vai-ts-iac-boilerplate/archive/refs/tags/1.0.0.zip',
-      '1.0.0'
+      'https://github.com/heronlabs/vai-ts-iac-boilerplate/archive/refs/tags/1.1.0.zip',
+      '1.1.0'
     );
 
     await this.repositoryInteractor.clone(
-      this.parseProjectName(options.projectName),
+      this.parseProjectName(options[InitBoilerplateOptions.PROJECT_NAME]),
       repositoryEntity
     );
 
-    await this.terminal.installNodePackages(options.projectName);
+    await this.terminal.installNodePackages(
+      options[InitBoilerplateOptions.PROJECT_NAME]
+    );
 
     this.consolePresenter.envelope(
       'IaC Boilerplate initialized successfully! 📦 🃏 📘'

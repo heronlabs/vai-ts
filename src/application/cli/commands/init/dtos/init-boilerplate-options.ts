@@ -1,5 +1,5 @@
 export enum InitBoilerplateOptions {
-  PROJECT_NAME = 'projectName',
+  PROJECT_NAME = 'name',
 }
 
 export type InitBoilerplateAnswers = {
