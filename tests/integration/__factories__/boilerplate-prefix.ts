@@ -4,4 +4,5 @@ export enum BoilerplatePrefix {
   BOILERPLATE_IAC = 'boilerplate-iac',
   BOILERPLATE_PACKAGE = 'boilerplate-package',
   BOILERPLATE_COMPONENT = 'boilerplate-component',
+  BOILERPLATE_WCS = 'boilerplate-wcs',
 }

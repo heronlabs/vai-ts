@@ -7,6 +7,7 @@ import {InitBasicBoilerplateCommand} from './commands/init/init-basic-boilerplat
 import {InitComponentBoilerplateCommand} from './commands/init/init-component-boilerplate-command';
 import {InitIacBoilerplateCommand} from './commands/init/init-iac-boilerplate-command';
 import {InitPackageBoilerplateCommand} from './commands/init/init-package-boilerplate-command';
+import {InitWCSBoilerplateCommand} from './commands/init/init-wcs-boilerplate-command';
 import {VersionCommand} from './commands/version/version-command';
 import {ConsolePresenter} from './presenters/console-presenter';
 
@@ -20,6 +21,7 @@ export const cliModule: ModuleMetadata = {
     InitIacBoilerplateCommand,
     InitPackageBoilerplateCommand,
     InitComponentBoilerplateCommand,
+    InitWCSBoilerplateCommand,
   ],
 };
 
