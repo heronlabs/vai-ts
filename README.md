@@ -36,6 +36,7 @@ Commands:
   init-iac-boilerplate|i-iac [options]              Initialize Typescript with IaC boilerplate
   init-package-boilerplate|i-package [options]      Initialize Typescript with package boilerplate
   init-component-boilerplate|i-component [options]  Initialize Typescript with component boilerplate
+  init-wcs-boilerplate|i-wcs [options]              Initialize Typescript with wcs boilerplate
   help [command]                                    display help for command
 
 
