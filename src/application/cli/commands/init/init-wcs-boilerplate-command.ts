@@ -42,8 +42,8 @@ export class InitWCSBoilerplateCommand implements CommandRunner {
   ): Promise<void> {
     const repositoryEntity = RepositoryEntity.make(
       'vai-ts-wcs-boilerplate',
-      'https://github.com/heronlabs/vai-ts-wcs-boilerplate/archive/refs/tags/1.0.0.zip',
-      '1.0.0'
+      'https://github.com/heronlabs/vai-ts-wcs-boilerplate/archive/refs/tags/1.1.0.zip',
+      '1.1.0'
     );
 
     await this.repositoryInteractor.clone(
