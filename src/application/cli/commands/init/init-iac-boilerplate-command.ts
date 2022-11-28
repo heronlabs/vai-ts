@@ -42,8 +42,8 @@ export class InitIacBoilerplateCommand implements CommandRunner {
   ): Promise<void> {
     const repositoryEntity = RepositoryEntity.make(
       'vai-ts-iac-boilerplate',
-      'https://github.com/heronlabs/vai-ts-iac-boilerplate/archive/refs/tags/1.1.0.zip',
-      '1.1.0'
+      'https://github.com/heronlabs/vai-ts-iac-boilerplate/archive/refs/tags/1.2.0.zip',
+      '1.2.0'
     );
 
     await this.repositoryInteractor.clone(
