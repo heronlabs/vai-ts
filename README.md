@@ -32,10 +32,14 @@ Options:
 Commands:
   init-basic-boilerplate|i-basic [options]          Initialize Typescript with basic boilerplate
   version                                           Print current version
+  init-api-store-boilerplate|i-api-store [options]  Initialize Typescript with API Store
+                                                    boilerplate
   init-api-boilerplate|i-api [options]              Initialize Typescript with API boilerplate
   init-iac-boilerplate|i-iac [options]              Initialize Typescript with IaC boilerplate
-  init-package-boilerplate|i-package [options]      Initialize Typescript with package boilerplate
-  init-component-boilerplate|i-component [options]  Initialize Typescript with component boilerplate
+  init-package-boilerplate|i-package [options]      Initialize Typescript with package
+                                                    boilerplate
+  init-component-boilerplate|i-component [options]  Initialize Typescript with component
+                                                    boilerplate
   init-wcs-boilerplate|i-wcs [options]              Initialize Typescript with wcs boilerplate
   help [command]                                    display help for command
 
@@ -57,6 +61,12 @@ The project is made available through a CLI that has some commands to generate n
 Currently available templates are:
 
 - [Basic Boilerplate](https://github.com/heronlabs/vai-ts-basic-boilerplate)
+- [API Boilerplate](https://github.com/heronlabs/vai-ts-api-boilerplate)
+- [API Store Boilerplate](https://github.com/heronlabs/vai-ts-api-store-boilerplate)
+- [IaC Boilerplate](https://github.com/heronlabs/vai-ts-iac-boilerplate)
+- [Package Boilerplate](https://github.com/heronlabs/vai-ts-package-boilerplate)
+- [Component Boilerplate](https://github.com/heronlabs/vai-ts-component-boilerplate)
+- [WCS Boilerplate](https://github.com/heronlabs/vai-ts-wcs-boilerplate)
 
 ## Next steps
 
