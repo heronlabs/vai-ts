@@ -13,11 +13,11 @@ import {
 } from './dtos/init-boilerplate-options';
 
 @Command({
-  name: 'init-api-boilerplate',
-  aliases: ['i-api'],
-  description: 'Initialize Typescript with API boilerplate',
+  name: 'init-api-store-boilerplate',
+  aliases: ['i-api-store'],
+  description: 'Initialize Typescript with API Store boilerplate',
 })
-export class InitApiBoilerplateCommand implements CommandRunner {
+export class InitApiStoreBoilerplateCommand implements CommandRunner {
   constructor(
     @Inject(RepositoryInteractorService)
     private readonly repositoryInteractor: RepositoryInteractor,
@@ -41,9 +41,9 @@ export class InitApiBoilerplateCommand implements CommandRunner {
     options: InitBoilerplateAnswers
   ): Promise<void> {
     const repositoryEntity = RepositoryEntity.make(
-      'vai-ts-api-boilerplate',
-      'https://github.com/heronlabs/vai-ts-api-boilerplate/archive/refs/tags/1.4.0.zip',
-      '1.4.0'
+      'vai-ts-api-store-boilerplate',
+      'https://github.com/heronlabs/vai-ts-api-store-boilerplate/archive/refs/tags/1.0.0.zip',
+      '1.0.0'
     );
 
     await this.repositoryInteractor.clone(
@@ -56,7 +56,7 @@ export class InitApiBoilerplateCommand implements CommandRunner {
     );
 
     this.consolePresenter.envelope(
-      'API Boilerplate initialized successfully! 📦 🃏 📘'
+      'API Store Boilerplate initialized successfully! 📦 🃏 📘'
     );
   }
 }
