@@ -113,3 +113,6 @@ bin/
 
 # Generated Folders
 __output__/
+
+# Registry Credentials
+.npmrc
