@@ -14,12 +14,14 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: heronlabs/build-package-action
-          ref: 1.0.0
+          ref: 1.1.0
           token: ${{ secrets.AUTHOR_PERSONAL_ACCESS}}
           path: ./build-package-action
 
       - name: Run action
         uses: './build-package-action/application/github'
+        with:
+          AUTHOR_PERSONAL_ACCESS: ${{ secrets.AUTHOR_PERSONAL_ACCESS }}
 
       - name: Checkout action repository
         uses: actions/checkout@v3
