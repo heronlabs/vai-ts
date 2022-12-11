@@ -42,8 +42,8 @@ export class InitApiStoreBoilerplateCommand implements CommandRunner {
   ): Promise<void> {
     const repositoryEntity = RepositoryEntity.make(
       'vai-ts-api-store-boilerplate',
-      'https://github.com/heronlabs/vai-ts-api-store-boilerplate/archive/refs/tags/1.3.0.zip',
-      '1.3.0'
+      'https://github.com/heronlabs/vai-ts-api-store-boilerplate/archive/refs/tags/1.4.0.zip',
+      '1.4.0'
     );
 
     await this.repositoryInteractor.clone(
