@@ -6,6 +6,7 @@ import {InitApiBoilerplateCommand} from './commands/init/init-api-boilerplate-co
 import {InitApiStoreBoilerplateCommand} from './commands/init/init-api-store-boilerplate-command';
 import {InitBasicBoilerplateCommand} from './commands/init/init-basic-boilerplate-command';
 import {InitComponentBoilerplateCommand} from './commands/init/init-component-boilerplate-command';
+import {InitCronBoilerplateCommand} from './commands/init/init-cron-boilerplate-command';
 import {InitIacBoilerplateCommand} from './commands/init/init-iac-boilerplate-command';
 import {InitPackageBoilerplateCommand} from './commands/init/init-package-boilerplate-command';
 import {InitWCSBoilerplateCommand} from './commands/init/init-wcs-boilerplate-command';
@@ -24,6 +25,7 @@ export const cliModule: ModuleMetadata = {
     InitPackageBoilerplateCommand,
     InitComponentBoilerplateCommand,
     InitWCSBoilerplateCommand,
+    InitCronBoilerplateCommand,
   ],
 };
 
