@@ -1,15 +1,15 @@
 import {faker} from '@faker-js/faker';
 
-import {InitWCSBoilerplateCommand} from '../../../../../src/application/cli/commands/init/init-wcs-boilerplate-command';
+import {InitWCSNextBoilerplateCommand} from '../../../../../src/application/cli/commands/init/init-wcs-next-boilerplate-command';
 import {ConsoleMock} from '../../../__mocks__/application/cli/presenters/console-mock';
 import {TerminalMock} from '../../../__mocks__/application/terminal/services/terminal-mock';
 import {RepositoryInteractorMock} from '../../../__mocks__/core/services/repository-interactor-mock';
 
-describe('Given Init WCS Boilerplate Command', () => {
-  let command: InitWCSBoilerplateCommand;
+describe('Given Init WCS Next Boilerplate Command', () => {
+  let command: InitWCSNextBoilerplateCommand;
 
   beforeEach(() => {
-    command = new InitWCSBoilerplateCommand(
+    command = new InitWCSNextBoilerplateCommand(
       RepositoryInteractorMock,
       TerminalMock,
       ConsoleMock
@@ -17,7 +17,7 @@ describe('Given Init WCS Boilerplate Command', () => {
   });
 
   describe('Given run method', () => {
-    it('Should initialize wcs boilerplate successfully', async () => {
+    it('Should initialize wcs next boilerplate successfully', async () => {
       RepositoryInteractorMock.clone.mockResolvedValueOnce(undefined);
       TerminalMock.installNodePackages.mockResolvedValueOnce(undefined);
       ConsoleMock.envelope.mockReturnValue(undefined);

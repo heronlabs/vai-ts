@@ -7,4 +7,5 @@ export enum BoilerplatePrefix {
   BOILERPLATE_COMPONENT = 'boilerplate-component',
   BOILERPLATE_WCS = 'boilerplate-wcs',
   BOILERPLATE_CRON = 'boilerplate-cron',
+  BOILERPLATE_WCS_NEXT = 'boilerplate-wcs-next',
 }

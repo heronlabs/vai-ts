@@ -10,6 +10,7 @@ import {InitCronBoilerplateCommand} from './commands/init/init-cron-boilerplate-
 import {InitIacBoilerplateCommand} from './commands/init/init-iac-boilerplate-command';
 import {InitPackageBoilerplateCommand} from './commands/init/init-package-boilerplate-command';
 import {InitWCSBoilerplateCommand} from './commands/init/init-wcs-boilerplate-command';
+import {InitWCSNextBoilerplateCommand} from './commands/init/init-wcs-next-boilerplate-command';
 import {VersionCommand} from './commands/version/version-command';
 import {ConsolePresenter} from './presenters/console-presenter';
 
@@ -26,6 +27,7 @@ export const cliModule: ModuleMetadata = {
     InitComponentBoilerplateCommand,
     InitWCSBoilerplateCommand,
     InitCronBoilerplateCommand,
+    InitWCSNextBoilerplateCommand,
   ],
 };
 

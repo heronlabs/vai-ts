@@ -13,11 +13,11 @@ import {
 } from './dtos/init-boilerplate-options';
 
 @Command({
-  name: 'init-wcs-boilerplate',
-  aliases: ['i-wcs'],
-  description: 'Initialize Typescript with wcs boilerplate',
+  name: 'init-wcs-next-boilerplate',
+  aliases: ['i-wcs-next'],
+  description: 'Initialize Typescript with wcs next boilerplate',
 })
-export class InitWCSBoilerplateCommand implements CommandRunner {
+export class InitWCSNextBoilerplateCommand implements CommandRunner {
   constructor(
     @Inject(RepositoryInteractorService)
     private readonly repositoryInteractor: RepositoryInteractor,
@@ -41,9 +41,9 @@ export class InitWCSBoilerplateCommand implements CommandRunner {
     options: InitBoilerplateAnswers
   ): Promise<void> {
     const repositoryEntity = RepositoryEntity.make(
-      'vai-ts-wcs-boilerplate',
-      'https://github.com/heronlabs/vai-ts-wcs-boilerplate/archive/refs/tags/1.5.0.zip',
-      '1.5.0'
+      'vai-ts-wcs-next-boilerplate',
+      'https://github.com/heronlabs/vai-ts-wcs-next-boilerplate/archive/refs/tags/1.0.0.zip',
+      '1.0.0'
     );
 
     await this.repositoryInteractor.clone(
@@ -56,7 +56,7 @@ export class InitWCSBoilerplateCommand implements CommandRunner {
     );
 
     this.consolePresenter.envelope(
-      'WCS Boilerplate initialized successfully! 📦 🃏 📘'
+      'WCS Next Boilerplate initialized successfully! 📦 🃏 📘'
     );
   }
 }
