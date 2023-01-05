@@ -39,6 +39,7 @@ Commands:
   init-component-boilerplate|i-component [options]  Initialize Typescript with component boilerplate
   init-wcs-boilerplate|i-wcs [options]              Initialize Typescript with wcs boilerplate
   init-cron-boilerplate|i-cron [options]            Initialize Typescript with CRON boilerplate
+  init-wcs-next-boilerplate|i-wcs-next [options]    Initialize Typescript with wcs next boilerplate
   help [command]                                    display help for command
 
 ```
