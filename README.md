@@ -64,7 +64,9 @@ Currently available templates are:
 - [IaC Boilerplate](https://github.com/heronlabs/vai-ts-iac-boilerplate)
 - [Package Boilerplate](https://github.com/heronlabs/vai-ts-package-boilerplate)
 - [Component Boilerplate](https://github.com/heronlabs/vai-ts-component-boilerplate)
+- [CRON Boilerplate](https://github.com/heronlabs/vai-ts-cron-boilerplate)
 - [WCS Boilerplate](https://github.com/heronlabs/vai-ts-wcs-boilerplate)
+- [WCS Next Boilerplate](https://github.com/heronlabs/vai-ts-wcs-next-boilerplate)
 
 ## Next steps
 
