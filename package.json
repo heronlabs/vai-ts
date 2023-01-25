@@ -1,6 +1,6 @@
 {
   "name": "@heronlabs/vai-ts",
-  "version": "6.22.1",
+  "version": "6.22.2",
   "description": "Project created to initialize projects with Typescript",
   "repository": "git@github.com:heronlabs/vai-ts.git",
   "author": "Lucas Lacerda",
