@@ -1,6 +1,5 @@
 import {faker} from '@faker-js/faker';
-import {AxiosResponse} from 'axios';
-import axios from 'axios';
+import axios, {AxiosResponse} from 'axios';
 import * as fs from 'fs';
 import {Mock} from 'moq.ts';
 import * as unzipper from 'unzipper';
