@@ -1,4 +1,4 @@
-<img src="https://cdn.discordapp.com/attachments/983205521546956870/983205960568934470/unknown.png" alt="drawing" width="150"/>
+<img src="https://public-static-heronlabs.s3.amazonaws.com/images/vai-ts/vai-ts.png" alt="drawing" width="150"/>
 
 # Vai TS
 
