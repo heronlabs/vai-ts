@@ -42,8 +42,8 @@ export class InitCronBoilerplateCommand implements CommandRunner {
   ): Promise<void> {
     const repositoryEntity = RepositoryEntity.make(
       'vai-ts-cron-boilerplate',
-      'https://github.com/heronlabs/vai-ts-cron-boilerplate/archive/refs/tags/1.2.0.zip',
-      '1.2.0'
+      'https://github.com/heronlabs/vai-ts-cron-boilerplate/archive/refs/tags/1.3.0.zip',
+      '1.3.0'
     );
 
     await this.repositoryInteractor.clone(
