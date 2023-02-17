@@ -8,4 +8,5 @@ export enum BoilerplatePrefix {
   BOILERPLATE_WCS = 'boilerplate-wcs',
   BOILERPLATE_CRON = 'boilerplate-cron',
   BOILERPLATE_WCS_NEXT = 'boilerplate-wcs-next',
+  BOILERPLATE_CMS_STORE = 'boilerplate-cms',
 }
