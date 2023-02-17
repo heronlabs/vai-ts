@@ -5,6 +5,7 @@ import {TerminalBootstrap} from '../terminal/terminal-bootstrap';
 import {InitApiBoilerplateCommand} from './commands/init/init-api-boilerplate-command';
 import {InitApiStoreBoilerplateCommand} from './commands/init/init-api-store-boilerplate-command';
 import {InitBasicBoilerplateCommand} from './commands/init/init-basic-boilerplate-command';
+import {InitCmsBoilerplateCommand} from './commands/init/init-cms-boilerplate-command';
 import {InitComponentBoilerplateCommand} from './commands/init/init-component-boilerplate-command';
 import {InitCronBoilerplateCommand} from './commands/init/init-cron-boilerplate-command';
 import {InitIacBoilerplateCommand} from './commands/init/init-iac-boilerplate-command';
@@ -28,6 +29,7 @@ export const cliModule: ModuleMetadata = {
     InitWCSBoilerplateCommand,
     InitCronBoilerplateCommand,
     InitWCSNextBoilerplateCommand,
+    InitCmsBoilerplateCommand,
   ],
 };
 
