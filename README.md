@@ -34,12 +34,13 @@ Commands:
   version                                           Print current version
   init-api-store-boilerplate|i-api-store [options]  Initialize Typescript with API Store boilerplate
   init-api-boilerplate|i-api [options]              Initialize Typescript with API boilerplate
+  init-cms-boilerplate|i-cms [options]              Initialize Typescript with CMS Headless boilerplate
   init-iac-boilerplate|i-iac [options]              Initialize Typescript with IaC boilerplate
-  init-package-boilerplate|i-package [options]      Initialize Typescript with package boilerplate
-  init-component-boilerplate|i-component [options]  Initialize Typescript with component boilerplate
-  init-wcs-boilerplate|i-wcs [options]              Initialize Typescript with wcs boilerplate
+  init-package-boilerplate|i-package [options]      Initialize Typescript with Package boilerplate
+  init-component-boilerplate|i-component [options]  Initialize Typescript with Component boilerplate
+  init-wcs-boilerplate|i-wcs [options]              Initialize Typescript with WCS boilerplate
   init-cron-boilerplate|i-cron [options]            Initialize Typescript with CRON boilerplate
-  init-wcs-next-boilerplate|i-wcs-next [options]    Initialize Typescript with wcs next boilerplate
+  init-wcs-next-boilerplate|i-wcs-next [options]    Initialize Typescript with WCS Next boilerplate
   help [command]                                    display help for command
 
 ```
