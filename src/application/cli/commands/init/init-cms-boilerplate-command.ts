@@ -42,8 +42,8 @@ export class InitCmsBoilerplateCommand implements CommandRunner {
   ): Promise<void> {
     const repositoryEntity = RepositoryEntity.make(
       'vai-ts-cms-boilerplate',
-      'https://github.com/heronlabs/vai-ts-cms-boilerplate/archive/refs/tags/1.4.0.zip',
-      '1.4.0'
+      'https://github.com/heronlabs/vai-ts-cms-boilerplate/archive/refs/tags/1.5.0.zip',
+      '1.5.0'
     );
 
     await this.repositoryInteractor.clone(
