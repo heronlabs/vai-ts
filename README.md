@@ -27,22 +27,22 @@ npm install -g @heronlabs/vai-ts
 Usage: vai-ts [options] [command]
 
 Options:
-  -h, --help                                        display help for command
+  -h, --help                                                    display help for command
 
 Commands:
-  init-basic-boilerplate|i-basic [options]          Initialize Typescript with basic boilerplate
-  version                                           Print current version
-  init-api-store-boilerplate|i-api-store [options]  Initialize Typescript with API Store boilerplate
-  init-api-boilerplate|i-api [options]              Initialize Typescript with API boilerplate
-  init-cms-boilerplate|i-cms [options]              Initialize Typescript with CMS Headless boilerplate
-  init-iac-boilerplate|i-iac [options]              Initialize Typescript with IaC boilerplate
-  init-package-boilerplate|i-package [options]      Initialize Typescript with Package boilerplate
-  init-component-boilerplate|i-component [options]  Initialize Typescript with Component boilerplate
-  init-wcs-boilerplate|i-wcs [options]              Initialize Typescript with WCS boilerplate
-  init-cron-boilerplate|i-cron [options]            Initialize Typescript with CRON boilerplate
-  init-wcs-next-boilerplate|i-wcs-next [options]    Initialize Typescript with WCS Next boilerplate
-  help [command]                                    display help for command
-
+  init-basic-boilerplate        |i-basic [options]              Initialize Typescript with basic boilerplate
+  init-api-store-boilerplate    |i-api-store [options]          Initialize Typescript with API Store boilerplate
+  init-api-broker-boilerplate   |i-api-broker [options]         Initialize Typescript with API Broker boilerplate
+  init-api-boilerplate          |i-api [options]                Initialize Typescript with API boilerplate
+  init-iac-boilerplate          |i-iac [options]                Initialize Typescript with IaC boilerplate
+  init-package-boilerplate      |i-package [options]            Initialize Typescript with package boilerplate
+  init-component-boilerplate    |i-component [options]          Initialize Typescript with component boilerplate
+  init-wcs-boilerplate          |i-wcs [options]                Initialize Typescript with wcs boilerplate
+  init-cron-boilerplate         |i-cron [options]               Initialize Typescript with CRON boilerplate
+  init-wcs-next-boilerplate     |i-wcs-next [options]           Initialize Typescript with wcs next boilerplate
+  init-cms-boilerplate          |i-cms [options]                Initialize Typescript with CMS Headless boilerplate
+  version                                                       Print current version
+  help [command]                                                display help for command
 ```
 
 ## TLTR (Too long to read)
