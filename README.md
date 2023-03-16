@@ -60,14 +60,16 @@ The project is made available through a CLI that has some commands to generate n
 Currently available templates are:
 
 - [Basic Boilerplate](https://github.com/heronlabs/vai-ts-basic-boilerplate)
-- [API Boilerplate](https://github.com/heronlabs/vai-ts-api-boilerplate)
 - [API Store Boilerplate](https://github.com/heronlabs/vai-ts-api-store-boilerplate)
+- [API Broker Boilerplate](https://github.com/heronlabs/vai-ts-api-broker-boilerplate)
+- [API Boilerplate](https://github.com/heronlabs/vai-ts-api-boilerplate)
 - [IaC Boilerplate](https://github.com/heronlabs/vai-ts-iac-boilerplate)
 - [Package Boilerplate](https://github.com/heronlabs/vai-ts-package-boilerplate)
 - [Component Boilerplate](https://github.com/heronlabs/vai-ts-component-boilerplate)
-- [CRON Boilerplate](https://github.com/heronlabs/vai-ts-cron-boilerplate)
 - [WCS Boilerplate](https://github.com/heronlabs/vai-ts-wcs-boilerplate)
+- [CRON Boilerplate](https://github.com/heronlabs/vai-ts-cron-boilerplate)
 - [WCS Next Boilerplate](https://github.com/heronlabs/vai-ts-wcs-next-boilerplate)
+- [CMS Boilerplate](https://github.com/heronlabs/vai-ts-cms-boilerplate)
 
 ## Next steps
 
