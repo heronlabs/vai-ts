@@ -13,11 +13,11 @@ import {
 } from './dtos/init-boilerplate-options';
 
 @Command({
-  name: 'init-cms-boilerplate',
-  aliases: ['i-cms'],
-  description: 'Initialize Typescript with CMS Headless boilerplate',
+  name: 'init-api-broker-boilerplate',
+  aliases: ['i-api-broker'],
+  description: 'Initialize Typescript with API Broker boilerplate',
 })
-export class InitCmsBoilerplateCommand implements CommandRunner {
+export class InitApiBrokerBoilerplateCommand implements CommandRunner {
   constructor(
     @Inject(RepositoryInteractorService)
     private readonly repositoryInteractor: RepositoryInteractor,
@@ -41,9 +41,9 @@ export class InitCmsBoilerplateCommand implements CommandRunner {
     options: InitBoilerplateAnswers
   ): Promise<void> {
     const repositoryEntity = RepositoryEntity.make(
-      'vai-ts-cms-boilerplate',
-      'https://github.com/heronlabs/vai-ts-cms-boilerplate/archive/refs/tags/1.7.0.zip',
-      '1.7.0'
+      'vai-ts-api-broker-boilerplate',
+      'https://github.com/heronlabs/vai-ts-api-broker-boilerplate/archive/refs/tags/1.1.0.zip',
+      '1.1.0'
     );
 
     await this.repositoryInteractor.clone(
@@ -56,7 +56,7 @@ export class InitCmsBoilerplateCommand implements CommandRunner {
     );
 
     this.consolePresenter.envelope(
-      'CMS Headless Boilerplate initialized successfully! 📦 🃏 📘'
+      'API Broker Boilerplate initialized successfully! 📦 🃏 📘'
     );
   }
 }
