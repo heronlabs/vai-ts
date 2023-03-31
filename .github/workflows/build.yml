@@ -1,4 +1,4 @@
-name: Publish Vai-TS
+name: Build Vai-TS
 
 on:
   - push
