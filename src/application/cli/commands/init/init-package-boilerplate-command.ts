@@ -40,10 +40,12 @@ export class InitPackageBoilerplateCommand implements CommandRunner {
     _args: string[],
     options: InitBoilerplateAnswers
   ): Promise<void> {
+    const version = '2.1.0';
+
     const repositoryEntity = RepositoryEntity.make(
       'vai-ts-package-boilerplate',
-      'https://github.com/heronlabs/vai-ts-package-boilerplate/archive/refs/tags/1.4.0.zip',
-      '1.4.0'
+      `https://github.com/heronlabs/vai-ts-package-boilerplate/archive/refs/tags/${version}.zip`,
+      version
     );
 
     await this.repositoryInteractor.clone(
