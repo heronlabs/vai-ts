@@ -40,7 +40,7 @@ export class InitCronBoilerplateCommand implements CommandRunner {
     _args: string[],
     options: InitBoilerplateAnswers
   ): Promise<void> {
-    const version = '3.0.0';
+    const version = '4.0.0';
 
     const repositoryEntity = RepositoryEntity.make(
       'vai-ts-cron-boilerplate',
