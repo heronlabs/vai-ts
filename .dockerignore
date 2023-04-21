@@ -5,6 +5,7 @@ bin/
 # Tests
 coverage/
 tests/
+__output__
 
 # Etc
 *.yml
