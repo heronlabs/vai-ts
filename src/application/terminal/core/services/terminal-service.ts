@@ -8,7 +8,22 @@ export class TerminalService implements Terminal {
     targetDirectory: string,
     runnerOption: RunnerOptions
   ): Promise<boolean> {
-    execSync(`${runnerOption} install`, {
+    const runners = [
+      {
+        runner: RunnerOptions.NPM,
+        command: 'npm ci',
+      },
+      {
+        runner: RunnerOptions.YARN,
+        command: 'yarn install --frozen-lockfile',
+      },
+    ];
+
+    const {command} = runners.filter(
+      runner => runner.runner === runnerOption
+    )[0];
+
+    execSync(command, {
       cwd: `./${targetDirectory}`,
       // stdio: 'ignore',
     });

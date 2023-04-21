@@ -23,7 +23,7 @@ describe('Given Terminal Service', () => {
       const execOptions = execSpy.mock.calls[0][1];
       expect(execOptions).toEqual({
         cwd: `./${targetDirectory}`,
-        stdio: 'ignore',
+        // stdio: 'ignore',
       });
     });
 
@@ -35,9 +35,10 @@ describe('Given Terminal Service', () => {
       await service.installNodePackages(targetDirectory, RunnerOptions.YARN);
 
       const execOptions = execSpy.mock.calls[0][1];
+
       expect(execOptions).toEqual({
         cwd: `./${targetDirectory}`,
-        stdio: 'ignore',
+        // stdio: 'ignore',
       });
     });
   });
