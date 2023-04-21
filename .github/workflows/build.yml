@@ -3,8 +3,6 @@ name: Build
 on:
   - push
 
-permissions: read-all
-
 jobs:
   pipeline:
     runs-on: ubuntu-latest
