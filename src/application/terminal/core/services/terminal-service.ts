@@ -8,14 +8,10 @@ export class TerminalService implements Terminal {
     targetDirectory: string,
     runnerOption: RunnerOptions
   ): Promise<boolean> {
-    try {
-      execSync(`${runnerOption} install`, {
-        cwd: `./${targetDirectory}`,
-        stdio: 'ignore',
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    execSync(`${runnerOption} install`, {
+      cwd: `./${targetDirectory}`,
+      stdio: 'ignore',
+    });
 
     return true;
   }
