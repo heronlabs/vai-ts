@@ -4,7 +4,7 @@ import {Terminal} from '../interfaces/terminal';
 
 export class TerminalService implements Terminal {
   async installNodePackages(targetDirectory: string): Promise<boolean> {
-    execSync('npm ci', {
+    execSync('npm install', {
       cwd: `./${targetDirectory}`,
       stdio: 'ignore',
     });
