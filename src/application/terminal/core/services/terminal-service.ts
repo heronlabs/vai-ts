@@ -11,7 +11,7 @@ export class TerminalService implements Terminal {
     const runners = [
       {
         runner: RunnerOptions.NPM,
-        command: 'npm ci',
+        command: 'npm install',
       },
       {
         runner: RunnerOptions.YARN,
