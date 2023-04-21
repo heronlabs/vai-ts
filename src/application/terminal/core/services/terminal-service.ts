@@ -4,7 +4,7 @@ import {Terminal} from '../interfaces/terminal';
 
 export class TerminalService implements Terminal {
   async installNodePackages(targetDirectory: string): Promise<boolean> {
-    execSync('yarn install', {
+    execSync('yarn install --frozen-lockfile', {
       cwd: `./${targetDirectory}`,
       stdio: 'ignore',
     });
