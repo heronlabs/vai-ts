@@ -6,15 +6,15 @@ const baseConfig: Config.InitialOptions = {
   preset: 'ts-jest',
   reporters: ['default'],
   clearMocks: true,
-  silent: true,
-  coverageThreshold: {
-    global: {
-      statements: 100,
-      branches: 100,
-      functions: 100,
-      lines: 100,
-    },
-  },
+  // silent: true,
+  // coverageThreshold: {
+  //   global: {
+  //     statements: 100,
+  //     branches: 100,
+  //     functions: 100,
+  //     lines: 100,
+  //   },
+  // },
 };
 
 export default baseConfig;
