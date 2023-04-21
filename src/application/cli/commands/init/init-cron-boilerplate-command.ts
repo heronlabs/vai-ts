@@ -4,13 +4,11 @@ import {Command, CommandRunner, Option} from 'nest-commander';
 import {RepositoryEntity} from '../../../../core/entities/repository-entity';
 import {RepositoryInteractor} from '../../../../core/interfaces/repository-interactor';
 import {RepositoryInteractorService} from '../../../../core/services/repository-interactor-service';
+import {InitBoilerplateOptions} from '../../../terminal/core/enums/init-boilerplate-options-enum';
+import {RunnerOptions} from '../../../terminal/core/enums/runner-options-enum';
 import {Terminal} from '../../../terminal/core/interfaces/terminal';
 import {TerminalService} from '../../../terminal/core/services/terminal-service';
 import {ConsolePresenter} from '../../presenters/console-presenter';
-import {
-  InitBoilerplateAnswers,
-  InitBoilerplateOptions,
-} from './dtos/init-boilerplate-options';
 
 @Command({
   name: 'init-cron-boilerplate',
@@ -36,11 +34,23 @@ export class InitCronBoilerplateCommand implements CommandRunner {
     return val;
   }
 
+  @Option({
+    flags: `-r, --runner [${InitBoilerplateOptions.RUNNER}]`,
+    description: 'Runner for install',
+    defaultValue: RunnerOptions.NPM,
+  })
+  public parseRunner(val: RunnerOptions): RunnerOptions {
+    return val;
+  }
+
   public async run(
     _args: string[],
-    options: InitBoilerplateAnswers
+    options: {
+      [InitBoilerplateOptions.PROJECT_NAME]: string;
+      [InitBoilerplateOptions.RUNNER]: RunnerOptions;
+    }
   ): Promise<void> {
-    const version = '5.0.0';
+    const version = '6.0.0';
 
     const repositoryEntity = RepositoryEntity.make(
       'vai-ts-cron-boilerplate',
@@ -54,7 +64,8 @@ export class InitCronBoilerplateCommand implements CommandRunner {
     );
 
     await this.terminal.installNodePackages(
-      options[InitBoilerplateOptions.PROJECT_NAME]
+      options[InitBoilerplateOptions.PROJECT_NAME],
+      this.parseRunner(options[InitBoilerplateOptions.RUNNER])
     );
 
     this.consolePresenter.envelope(
