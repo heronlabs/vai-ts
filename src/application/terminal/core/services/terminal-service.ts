@@ -10,7 +10,7 @@ export class TerminalService implements Terminal {
   ): Promise<boolean> {
     execSync(`${runnerOption} install`, {
       cwd: `./${targetDirectory}`,
-      stdio: 'ignore',
+      // stdio: 'ignore',
     });
 
     return true;
