@@ -25,7 +25,7 @@ export class TerminalService implements Terminal {
 
     execSync(command, {
       cwd: `./${targetDirectory}`,
-      // stdio: 'ignore',
+      stdio: 'ignore',
     });
 
     return true;
