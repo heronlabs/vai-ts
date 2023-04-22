@@ -1,7 +1,6 @@
 import {Module, ModuleMetadata} from '@nestjs/common';
 
 import {CoreBootstrap} from '../../core/core-bootstrap';
-import {TerminalBootstrap} from '../terminal/terminal-bootstrap';
 import {InitApiBoilerplateCommand} from './commands/init/init-api-boilerplate-command';
 import {InitApiBrokerBoilerplateCommand} from './commands/init/init-api-broker-boilerplate-command';
 import {InitApiStoreBoilerplateCommand} from './commands/init/init-api-store-boilerplate-command';
@@ -17,7 +16,7 @@ import {VersionCommand} from './commands/version/version-command';
 import {ConsolePresenter} from './presenters/console-presenter';
 
 export const cliModule: ModuleMetadata = {
-  imports: [CoreBootstrap, TerminalBootstrap],
+  imports: [CoreBootstrap],
   providers: [
     ConsolePresenter,
     InitBasicBoilerplateCommand,

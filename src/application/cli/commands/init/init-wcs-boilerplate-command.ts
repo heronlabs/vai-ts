@@ -4,10 +4,7 @@ import {Command, CommandRunner, Option} from 'nest-commander';
 import {RepositoryEntity} from '../../../../core/entities/repository-entity';
 import {RepositoryInteractor} from '../../../../core/interfaces/repository-interactor';
 import {RepositoryInteractorService} from '../../../../core/services/repository-interactor-service';
-import {InitBoilerplateOptions} from '../../../terminal/core/enums/init-boilerplate-options-enum';
-import {RunnerOptions} from '../../../terminal/core/enums/runner-options-enum';
-import {Terminal} from '../../../terminal/core/interfaces/terminal';
-import {TerminalService} from '../../../terminal/core/services/terminal-service';
+import {InitBoilerplateOptions} from '../../enums/init-boilerplate-options-enum';
 import {ConsolePresenter} from '../../presenters/console-presenter';
 
 @Command({
@@ -19,8 +16,6 @@ export class InitWCSBoilerplateCommand implements CommandRunner {
   constructor(
     @Inject(RepositoryInteractorService)
     private readonly repositoryInteractor: RepositoryInteractor,
-    @Inject(TerminalService)
-    private readonly terminal: Terminal,
     @Inject(ConsolePresenter)
     private readonly consolePresenter: ConsolePresenter
   ) {}
@@ -34,20 +29,10 @@ export class InitWCSBoilerplateCommand implements CommandRunner {
     return val;
   }
 
-  @Option({
-    flags: `-r, --runner [${InitBoilerplateOptions.RUNNER}]`,
-    description: 'Runner for install',
-    defaultValue: RunnerOptions.NPM,
-  })
-  public parseRunner(val: RunnerOptions): RunnerOptions {
-    return val;
-  }
-
   public async run(
     _args: string[],
     options: {
       [InitBoilerplateOptions.PROJECT_NAME]: string;
-      [InitBoilerplateOptions.RUNNER]: RunnerOptions;
     }
   ): Promise<void> {
     const version = '7.0.0';
@@ -61,11 +46,6 @@ export class InitWCSBoilerplateCommand implements CommandRunner {
     await this.repositoryInteractor.clone(
       this.parseProjectName(options[InitBoilerplateOptions.PROJECT_NAME]),
       repositoryEntity
-    );
-
-    await this.terminal.installNodePackages(
-      options[InitBoilerplateOptions.PROJECT_NAME],
-      this.parseRunner(options[InitBoilerplateOptions.RUNNER])
     );
 
     this.consolePresenter.envelope(
