@@ -35,7 +35,7 @@ export class InitPackageBoilerplateCommand implements CommandRunner {
       [InitBoilerplateOptions.PROJECT_NAME]: string;
     }
   ): Promise<void> {
-    const version = '6.0.0';
+    const version = '7.0.0';
 
     const repositoryEntity = RepositoryEntity.make(
       'vai-ts-package-boilerplate',

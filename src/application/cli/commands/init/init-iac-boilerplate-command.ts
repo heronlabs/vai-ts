@@ -35,7 +35,7 @@ export class InitIacBoilerplateCommand implements CommandRunner {
       [InitBoilerplateOptions.PROJECT_NAME]: string;
     }
   ): Promise<void> {
-    const version = '5.0.0';
+    const version = '6.0.0';
 
     const repositoryEntity = RepositoryEntity.make(
       'vai-ts-iac-boilerplate',
