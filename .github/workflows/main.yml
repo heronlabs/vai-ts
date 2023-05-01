@@ -10,18 +10,25 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: '[ACTION] | Clone build package action'
-        uses: actions/checkout@v3
-        with:
-          repository: heronlabs/build-package-action
-          ref: 3.0.0
-          token: ${{ secrets.AUTHOR_PERSONAL_ACCESS}}
-          path: ./build-package-action
+      - name: '[BUILD] | Install Dependencies'
+        run: yarn install --frozen-lockfile
+        shell: bash
 
-      - name: '[ACTION] | Run build package action'
-        uses: './build-package-action/application/github'
-        with:
-          AUTHOR_PERSONAL_ACCESS: ${{ secrets.AUTHOR_PERSONAL_ACCESS }}
+      - name: '[BUILD] | Compile'
+        run: yarn compile
+        shell: bash
+
+      - name: '[TEST] | Lint Check'
+        run: yarn lint:check
+        shell: bash
+
+      - name: '[TEST] | Unit Tests'
+        run: yarn test:unit --coverage
+        shell: bash
+
+      - name: '[TEST] | Integration Tests'
+        run: yarn test:integration --coverage
+        shell: bash
 
       - name: '[ACTION] | Clone publish npm action'
         uses: actions/checkout@v3
