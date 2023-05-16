@@ -35,7 +35,7 @@ jobs:
         with:
           repository: heronlabs/publish-npm-action
           ref: 4.0.0
-          token: ${{ secrets.AUTHOR_PERSONAL_ACCESS}}
+          token: ${{ secrets.AUTHOR_PERSONAL_ACCESS }}
           path: ./publish-npm-action
 
       - name: '[ACTION] | Run publish npm action'
