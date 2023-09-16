@@ -12,13 +12,15 @@ import {ConsolePresenter} from '../../presenters/console-presenter';
   aliases: ['i-api-broker'],
   description: 'Initialize Typescript with API Broker boilerplate',
 })
-export class InitApiBrokerBoilerplateCommand implements CommandRunner {
+export class InitApiBrokerBoilerplateCommand extends CommandRunner {
   constructor(
     @Inject(RepositoryInteractorService)
     private readonly repositoryInteractor: RepositoryInteractor,
     @Inject(ConsolePresenter)
     private readonly consolePresenter: ConsolePresenter
-  ) {}
+  ) {
+    super();
+  }
 
   @Option({
     flags: `-n, --name [${InitBoilerplateOptions.PROJECT_NAME}]`,

@@ -8,11 +8,11 @@ import {InitBoilerplateOptions} from '../../enums/init-boilerplate-options-enum'
 import {ConsolePresenter} from '../../presenters/console-presenter';
 
 @Command({
-  name: 'init-wcs-next-boilerplate',
-  aliases: ['i-wcs-next'],
-  description: 'Initialize Typescript with wcs next boilerplate',
+  name: 'init-py-boilerplate',
+  aliases: ['i-py'],
+  description: 'Initialize Typescript with Python boilerplate',
 })
-export class InitWCSNextBoilerplateCommand extends CommandRunner {
+export class InitPyBoilerplateCommand extends CommandRunner {
   constructor(
     @Inject(RepositoryInteractorService)
     private readonly repositoryInteractor: RepositoryInteractor,
@@ -37,11 +37,11 @@ export class InitWCSNextBoilerplateCommand extends CommandRunner {
       [InitBoilerplateOptions.PROJECT_NAME]: string;
     }
   ): Promise<void> {
-    const version = '9.0.0';
+    const version = '1.0.0';
 
     const repositoryEntity = RepositoryEntity.make(
-      'vai-ts-wcs-next-boilerplate',
-      `https://github.com/heronlabs/vai-ts-wcs-next-boilerplate/archive/refs/tags/${version}.zip`,
+      'vai-ts-py-boilerplate',
+      `https://github.com/heronlabs/vai-ts-py-boilerplate/archive/refs/tags/${version}.zip`,
       version
     );
 
@@ -51,7 +51,7 @@ export class InitWCSNextBoilerplateCommand extends CommandRunner {
     );
 
     this.consolePresenter.envelope(
-      'WCS Next Boilerplate initialized successfully! 📦 🃏 📘'
+      'Python Boilerplate initialized successfully! 📦 🃏 📘'
     );
   }
 }

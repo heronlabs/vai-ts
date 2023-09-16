@@ -6,13 +6,15 @@ import {PackageInteractorService} from '../../../../core/services/package-intera
 import {ConsolePresenter} from '../../presenters/console-presenter';
 
 @Command({name: 'version', description: 'Print current version'})
-export class VersionCommand implements CommandRunner {
+export class VersionCommand extends CommandRunner {
   constructor(
     @Inject(PackageInteractorService)
     private readonly packageInteractor: PackageInteractor,
     @Inject(ConsolePresenter)
     private readonly consolePresenter: ConsolePresenter
-  ) {}
+  ) {
+    super();
+  }
 
   public async run(): Promise<void> {
     const packageFile = this.packageInteractor.readSelf();

@@ -12,13 +12,15 @@ import {ConsolePresenter} from '../../presenters/console-presenter';
   aliases: ['i-component'],
   description: 'Initialize Typescript with component boilerplate',
 })
-export class InitComponentBoilerplateCommand implements CommandRunner {
+export class InitComponentBoilerplateCommand extends CommandRunner {
   constructor(
     @Inject(RepositoryInteractorService)
     private readonly repositoryInteractor: RepositoryInteractor,
     @Inject(ConsolePresenter)
     private readonly consolePresenter: ConsolePresenter
-  ) {}
+  ) {
+    super();
+  }
 
   @Option({
     flags: `-n, --name [${InitBoilerplateOptions.PROJECT_NAME}]`,

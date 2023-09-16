@@ -1,4 +1,4 @@
-import {existsSync, mkdirSync, rmdirSync} from 'fs';
+import {existsSync, mkdirSync, rmSync} from 'fs';
 
 export class BoilerplateFiles {
   public static readonly OUTPUT_FOLDER = '__output__';
@@ -6,7 +6,7 @@ export class BoilerplateFiles {
   static clean(): void {
     const path = `./${BoilerplateFiles.OUTPUT_FOLDER}`;
 
-    if (existsSync(path)) rmdirSync(path, {recursive: true});
+    if (existsSync(path)) rmSync(path, {recursive: true});
 
     mkdirSync(path);
   }

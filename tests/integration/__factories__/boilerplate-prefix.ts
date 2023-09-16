@@ -10,4 +10,6 @@ export enum BoilerplatePrefix {
   BOILERPLATE_CRON = 'boilerplate-cron',
   BOILERPLATE_WCS_NEXT = 'boilerplate-wcs-next',
   BOILERPLATE_CMS_STORE = 'boilerplate-cms',
+  BOILERPLATE_GO = 'boilerplate-go',
+  BOILERPLATE_PYTHON = 'boilerplate-py',
 }

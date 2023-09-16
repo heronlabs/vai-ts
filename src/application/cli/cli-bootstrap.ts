@@ -8,8 +8,10 @@ import {InitBasicBoilerplateCommand} from './commands/init/init-basic-boilerplat
 import {InitCmsBoilerplateCommand} from './commands/init/init-cms-boilerplate-command';
 import {InitComponentBoilerplateCommand} from './commands/init/init-component-boilerplate-command';
 import {InitCronBoilerplateCommand} from './commands/init/init-cron-boilerplate-command';
+import {InitGoBoilerplateCommand} from './commands/init/init-go-boilerplate-command';
 import {InitIacBoilerplateCommand} from './commands/init/init-iac-boilerplate-command';
 import {InitPackageBoilerplateCommand} from './commands/init/init-package-boilerplate-command';
+import {InitPyBoilerplateCommand} from './commands/init/init-py-boilerplate-command';
 import {InitWCSBoilerplateCommand} from './commands/init/init-wcs-boilerplate-command';
 import {InitWCSNextBoilerplateCommand} from './commands/init/init-wcs-next-boilerplate-command';
 import {VersionCommand} from './commands/version/version-command';
@@ -31,6 +33,8 @@ export const cliModule: ModuleMetadata = {
     InitCronBoilerplateCommand,
     InitWCSNextBoilerplateCommand,
     InitCmsBoilerplateCommand,
+    InitGoBoilerplateCommand,
+    InitPyBoilerplateCommand,
   ],
 };
 
