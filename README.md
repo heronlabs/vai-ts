@@ -39,9 +39,9 @@ Commands:
   init-package-boilerplate|i-package [options]        Initialize Typescript with package boilerplate
   init-component-boilerplate|i-component [options]    Initialize Typescript with component boilerplate
   init-wcs-boilerplate|i-wcs [options]                Initialize Typescript with wcs boilerplate
-  init-cron-boilerplate|i-cron [options]              Initialize Typescript with CRON boilerplate
+  init-cron-boilerplate|i-cron [options]              Initialize Typescript with cron boilerplate
   init-wcs-next-boilerplate|i-wcs-next [options]      Initialize Typescript with wcs next boilerplate
-  init-cms-boilerplate|i-cms [options]                Initialize Typescript with CMS Headless boilerplate
+  init-cms-boilerplate|i-cms [options]                Initialize Typescript with cms Headless boilerplate
   init-go-boilerplate|i-go [options]                  Initialize Typescript with Go boilerplate
   init-py-boilerplate|i-py [options]                  Initialize Typescript with Python boilerplate
   help [command]                                      display help for command
@@ -72,6 +72,8 @@ Currently available templates are:
 - [CRON Boilerplate](https://github.com/heronlabs/vai-ts-cron-boilerplate)
 - [WCS Next Boilerplate](https://github.com/heronlabs/vai-ts-wcs-next-boilerplate)
 - [CMS Boilerplate](https://github.com/heronlabs/vai-ts-cms-boilerplate)
+- [Go Boilerplate](https://github.com/heronlabs/vai-ts-go-boilerplate)
+- [Python Boilerplate](https://github.com/heronlabs/vai-ts-py-boilerplate)
 
 ## Next steps
 
