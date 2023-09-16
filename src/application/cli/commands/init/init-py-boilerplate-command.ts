@@ -37,7 +37,7 @@ export class InitPyBoilerplateCommand extends CommandRunner {
       [InitBoilerplateOptions.PROJECT_NAME]: string;
     }
   ): Promise<void> {
-    const version = '1.1.0';
+    const version = '1.2.0';
 
     const repositoryEntity = RepositoryEntity.make(
       'vai-ts-py-boilerplate',
