@@ -37,7 +37,7 @@ export class InitGoBoilerplateCommand extends CommandRunner {
       [InitBoilerplateOptions.PROJECT_NAME]: string;
     }
   ): Promise<void> {
-    const version = '1.0.1';
+    const version = '1.1.0';
 
     const repositoryEntity = RepositoryEntity.make(
       'vai-ts-go-boilerplate',
