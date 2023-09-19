@@ -39,11 +39,12 @@ Commands:
   init-package-boilerplate|i-package [options]        Initialize Typescript with package boilerplate
   init-component-boilerplate|i-component [options]    Initialize Typescript with component boilerplate
   init-wcs-boilerplate|i-wcs [options]                Initialize Typescript with wcs boilerplate
-  init-cron-boilerplate|i-cron [options]              Initialize Typescript with cron boilerplate
+  init-cron-boilerplate|i-cron [options]              Initialize Typescript with CRON boilerplate
   init-wcs-next-boilerplate|i-wcs-next [options]      Initialize Typescript with wcs next boilerplate
-  init-cms-boilerplate|i-cms [options]                Initialize Typescript with cms Headless boilerplate
+  init-cms-boilerplate|i-cms [options]                Initialize Typescript with CMS Headless boilerplate
   init-go-boilerplate|i-go [options]                  Initialize Typescript with Go boilerplate
   init-py-boilerplate|i-py [options]                  Initialize Typescript with Python boilerplate
+  init-go-api-boilerplate|i-go-api [options]          Initialize Typescript with Go Api boilerplate
   help [command]                                      display help for command
 ```
 
