@@ -74,6 +74,7 @@ Currently available templates are:
 - [WCS Next Boilerplate](https://github.com/heronlabs/vai-ts-wcs-next-boilerplate)
 - [CMS Boilerplate](https://github.com/heronlabs/vai-ts-cms-boilerplate)
 - [Go Boilerplate](https://github.com/heronlabs/vai-ts-go-boilerplate)
+- [Go API Boilerplate](https://github.com/heronlabs/vai-ts-go-api-boilerplate)
 - [Python Boilerplate](https://github.com/heronlabs/vai-ts-py-boilerplate)
 
 ## Next steps
