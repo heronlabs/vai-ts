@@ -11,5 +11,6 @@ export enum BoilerplatePrefix {
   BOILERPLATE_WCS_NEXT = 'boilerplate-wcs-next',
   BOILERPLATE_CMS_STORE = 'boilerplate-cms',
   BOILERPLATE_GO = 'boilerplate-go',
+  BOILERPLATE_GO_API = 'boilerplate-go-api',
   BOILERPLATE_PYTHON = 'boilerplate-py',
 }
