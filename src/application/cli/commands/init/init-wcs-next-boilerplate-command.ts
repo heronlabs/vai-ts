@@ -37,7 +37,7 @@ export class InitWCSNextBoilerplateCommand extends CommandRunner {
       [InitBoilerplateOptions.PROJECT_NAME]: string;
     }
   ): Promise<void> {
-    const version = '9.0.0';
+    const version = '10.0.0';
 
     const repositoryEntity = RepositoryEntity.make(
       'vai-ts-wcs-next-boilerplate',
