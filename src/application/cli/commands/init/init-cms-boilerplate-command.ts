@@ -37,7 +37,7 @@ export class InitCmsBoilerplateCommand extends CommandRunner {
       [InitBoilerplateOptions.PROJECT_NAME]: string;
     }
   ): Promise<void> {
-    const version = '12.0.0';
+    const version = '13.0.0';
 
     const repositoryEntity = RepositoryEntity.make(
       'vai-ts-cms-boilerplate',
