@@ -10,7 +10,7 @@ import {ConsolePresenter} from '../../presenters/console-presenter';
 @Command({
   name: 'init-go-boilerplate',
   aliases: ['i-go'],
-  description: 'Initialize Typescript with Go boilerplate',
+  description: 'Initialize with Go boilerplate',
 })
 export class InitGoBoilerplateCommand extends CommandRunner {
   constructor(
@@ -37,7 +37,7 @@ export class InitGoBoilerplateCommand extends CommandRunner {
       [InitBoilerplateOptions.PROJECT_NAME]: string;
     }
   ): Promise<void> {
-    const version = '2.0.0';
+    const version = '3.0.0';
 
     const repositoryEntity = RepositoryEntity.make(
       'vai-ts-go-boilerplate',

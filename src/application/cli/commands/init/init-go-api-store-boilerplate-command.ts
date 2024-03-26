@@ -8,11 +8,11 @@ import {InitBoilerplateOptions} from '../../enums/init-boilerplate-options-enum'
 import {ConsolePresenter} from '../../presenters/console-presenter';
 
 @Command({
-  name: 'init-iac-boilerplate',
-  aliases: ['i-iac'],
-  description: 'Initialize with IaC boilerplate',
+  name: 'init-go-api-store-boilerplate',
+  aliases: ['i-go-api-store'],
+  description: 'Initialize with Go Api Store boilerplate',
 })
-export class InitIacBoilerplateCommand extends CommandRunner {
+export class InitGoApiStoreBoilerplateCommand extends CommandRunner {
   constructor(
     @Inject(RepositoryInteractorService)
     private readonly repositoryInteractor: RepositoryInteractor,
@@ -37,11 +37,11 @@ export class InitIacBoilerplateCommand extends CommandRunner {
       [InitBoilerplateOptions.PROJECT_NAME]: string;
     }
   ): Promise<void> {
-    const version = '8.0.0';
+    const version = '1.0.0';
 
     const repositoryEntity = RepositoryEntity.make(
-      'vai-ts-iac-boilerplate',
-      `https://github.com/heronlabs/vai-ts-iac-boilerplate/archive/refs/tags/${version}.zip`,
+      'vai-ts-go-api-store-boilerplate',
+      `https://github.com/heronlabs/vai-ts-go-api-store-boilerplate/archive/refs/tags/${version}.zip`,
       version
     );
 
@@ -51,7 +51,7 @@ export class InitIacBoilerplateCommand extends CommandRunner {
     );
 
     this.consolePresenter.envelope(
-      'IaC Boilerplate initialized successfully! 📦 🃏 📘'
+      'Go Api Store Boilerplate initialized successfully! 📦 🃏 📘'
     );
   }
 }

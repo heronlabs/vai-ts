@@ -10,7 +10,7 @@ import {ConsolePresenter} from '../../presenters/console-presenter';
 @Command({
   name: 'init-api-store-boilerplate',
   aliases: ['i-api-store'],
-  description: 'Initialize Typescript with API Store boilerplate',
+  description: 'Initialize with API Store boilerplate',
 })
 export class InitApiStoreBoilerplateCommand extends CommandRunner {
   constructor(
@@ -37,7 +37,7 @@ export class InitApiStoreBoilerplateCommand extends CommandRunner {
       [InitBoilerplateOptions.PROJECT_NAME]: string;
     }
   ): Promise<void> {
-    const version = '11.1.0';
+    const version = '12.0.0';
 
     const repositoryEntity = RepositoryEntity.make(
       'vai-ts-api-store-boilerplate',

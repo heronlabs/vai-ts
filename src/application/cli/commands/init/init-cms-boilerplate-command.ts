@@ -10,7 +10,7 @@ import {ConsolePresenter} from '../../presenters/console-presenter';
 @Command({
   name: 'init-cms-boilerplate',
   aliases: ['i-cms'],
-  description: 'Initialize Typescript with CMS Headless boilerplate',
+  description: 'Initialize with CMS Headless boilerplate',
 })
 export class InitCmsBoilerplateCommand extends CommandRunner {
   constructor(

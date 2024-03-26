@@ -10,7 +10,7 @@ import {ConsolePresenter} from '../../presenters/console-presenter';
 @Command({
   name: 'init-api-boilerplate',
   aliases: ['i-api'],
-  description: 'Initialize Typescript with API boilerplate',
+  description: 'Initialize with API boilerplate',
 })
 export class InitApiBoilerplateCommand extends CommandRunner {
   constructor(

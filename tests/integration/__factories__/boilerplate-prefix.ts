@@ -12,5 +12,6 @@ export enum BoilerplatePrefix {
   BOILERPLATE_CMS_STORE = 'boilerplate-cms',
   BOILERPLATE_GO = 'boilerplate-go',
   BOILERPLATE_GO_API = 'boilerplate-go-api',
+  BOILERPLATE_GO_STORE_API = 'boilerplate-go-api-store',
   BOILERPLATE_PYTHON = 'boilerplate-py',
 }

@@ -10,7 +10,7 @@ import {ConsolePresenter} from '../../presenters/console-presenter';
 @Command({
   name: 'init-wcs-next-boilerplate',
   aliases: ['i-wcs-next'],
-  description: 'Initialize Typescript with wcs next boilerplate',
+  description: 'Initialize with wcs next boilerplate',
 })
 export class InitWCSNextBoilerplateCommand extends CommandRunner {
   constructor(

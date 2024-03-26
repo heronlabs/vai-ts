@@ -10,7 +10,7 @@ import {ConsolePresenter} from '../../presenters/console-presenter';
 @Command({
   name: 'init-cron-boilerplate',
   aliases: ['i-cron'],
-  description: 'Initialize Typescript with CRON boilerplate',
+  description: 'Initialize with CRON boilerplate',
 })
 export class InitCronBoilerplateCommand extends CommandRunner {
   constructor(

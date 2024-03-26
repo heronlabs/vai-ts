@@ -10,7 +10,7 @@ import {ConsolePresenter} from '../../presenters/console-presenter';
 @Command({
   name: 'init-basic-boilerplate',
   aliases: ['i-basic'],
-  description: 'Initialize Typescript with basic boilerplate',
+  description: 'Initialize with basic boilerplate',
 })
 export class InitBasicBoilerplateCommand extends CommandRunner {
   constructor(

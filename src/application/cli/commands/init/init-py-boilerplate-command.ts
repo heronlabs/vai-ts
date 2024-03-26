@@ -10,7 +10,7 @@ import {ConsolePresenter} from '../../presenters/console-presenter';
 @Command({
   name: 'init-py-boilerplate',
   aliases: ['i-py'],
-  description: 'Initialize Typescript with Python boilerplate',
+  description: 'Initialize with Python boilerplate',
 })
 export class InitPyBoilerplateCommand extends CommandRunner {
   constructor(
