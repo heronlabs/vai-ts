@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: '[BUILD] | Install Dependencies'
         run: yarn install --frozen-lockfile
@@ -31,11 +31,11 @@ jobs:
         shell: bash
 
       - name: '[ACTION] | Clone publish npm action'
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: heronlabs/publish-npm-action
           ref: 4.0.0
-          token: ${{ secrets.AUTHOR_PERSONAL_ACCESS }}
+          token: ${{ secrets.PAT }}
           path: ./publish-npm-action
 
       - name: '[ACTION] | Run publish npm action'
